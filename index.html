@@ -176,6 +176,22 @@
   .portfolio-card-body{padding:20px 22px;}
   .portfolio-card h3{font-size:16px; margin-bottom:6px;}
   .portfolio-card p{color:var(--gray); font-size:14px;}
+  .portfolio-card img{cursor:zoom-in;}
+
+  /* Capabilities / 3D showcase (reuses portfolio-grid/card styles) */
+  .capabilities .section-head, .render-showcase .section-head{margin-bottom:30px;}
+
+  /* Lightbox */
+  .lightbox{
+    display:none; position:fixed; inset:0; z-index:999; background:rgba(11,34,57,0.92);
+    align-items:center; justify-content:center; padding:30px; cursor:zoom-out;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:92vw; max-height:88vh; border-radius:6px; box-shadow:0 20px 50px rgba(0,0,0,0.5);}
+  .lightbox-close{
+    position:absolute; top:20px; right:26px; color:#fff; font-size:34px; line-height:1;
+    background:none; border:none; cursor:pointer; font-family:Arial, sans-serif;
+  }
 
   /* Trust note */
   .trust{
@@ -380,29 +396,135 @@
     </div>
     <div class="portfolio-grid">
       <div class="portfolio-card">
-        <img src="portfolio-uk-floorplan.png" alt="Residential floor plan converted to AutoCAD from a hand sketch, two-floor UK residential project">
+        <img src="portfolio-uk-floorplan.png" alt="Residential floor plan converted to AutoCAD from a hand sketch, two-floor UK residential project" onclick="openLightbox(this)">
         <div class="portfolio-card-body">
           <h3>Residential Floor Plan — UK Project</h3>
           <p>Two-floor residential layout redrawn to scale in AutoCAD from a hand-marked sketch. Client comments: "Mr Shohag was a great freelancer, dealing well with a fairly complicated and rapidly changing brief. I will use him again." — 5.0 rating.</p>
         </div>
       </div>
       <div class="portfolio-card">
-        <img src="portfolio-canada-wrestling.png" alt="Lower floor plan for a wrestling festival venue in Niagara Falls, Ontario, drawn in AutoCAD">
+        <img src="portfolio-canada-wrestling.png" alt="Lower floor plan for a wrestling festival venue in Niagara Falls, Ontario, drawn in AutoCAD" onclick="openLightbox(this)">
         <div class="portfolio-card-body">
           <h3>Event Venue Floor Plan — Ontario, Canada</h3>
           <p>Lower-level floor plan for a wrestling festival venue, drafted to scale in AutoCAD from the organizer's reference plans.</p>
         </div>
       </div>
       <div class="portfolio-card">
-        <img src="portfolio-cnc-laser.png" alt="Car silhouette wall art design cut on CNC and laser cutting machine">
+        <img src="portfolio-cnc-laser.png" alt="Car silhouette wall art design cut on CNC and laser cutting machine" onclick="openLightbox(this)">
         <div class="portfolio-card-body">
           <h3>CNC &amp; Laser Cut Design</h3>
           <p>Vector line-art design prepared for CNC/laser cutting — outline modeled and cleaned up for a precise, single-pass cut.</p>
         </div>
       </div>
+      <div class="portfolio-card">
+        <img src="portfolio-electrical-plan.jpg" alt="Residential electrical and lighting plan with fixture legend, drawn in AutoCAD" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Electrical &amp; Lighting Plan — Residential</h3>
+          <p>Full house electrical/lighting layout with a complete fixture legend and general notes, drafted to scale in AutoCAD.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="portfolio-floorplan-scan.jpg" alt="Multi-level residential floor plan digitized into a clean CAD-style layout" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Floor Plan Digitization — Multi-Level Home</h3>
+          <p>Scanned/app-captured floor plans cleaned up and redrawn as clear, labeled layouts across three levels.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="portfolio-luxury-floorplan.jpg" alt="Large luxury residential floor plan with fully dimensioned rooms, drawn in AutoCAD" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Luxury Residential Floor Plan — US Project</h3>
+          <p>Fully dimensioned single-level luxury home layout — garage, kitchen, master suite and covered porch, drafted to scale.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="portfolio-spa-electrical.jpg" alt="Spa reflected ceiling and electrical plan for treatment rooms, drawn in AutoCAD" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Spa Electrical &amp; RCP Plan — Commercial</h3>
+          <p>Reflected ceiling and electrical plan for a treatment-room suite, with a full electrical legend for permitting/build-out.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="portfolio-clinic-floorplan.jpg" alt="Medical clinic floor plan with exam rooms and waiting area, drawn in AutoCAD" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Medical Clinic Floor Plan — Commercial</h3>
+          <p>Multi-room clinic layout — exam rooms, consultation, waiting and staff areas — drafted to scale for planning use.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<section class="capabilities" id="capabilities">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Capabilities</div>
+      <h2>What We Can Convert</h2>
+      <p>A few examples of the input-to-output workflow: scanned drawings, map data and 3D scans turned into clean CAD documentation.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <img src="capability-master-floorplan.jpg" alt="AKP Design Studio branded master floor plan drawing sheet" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Full Drawing Sheet Layout</h3>
+          <p>Example of a complete, titled drawing sheet — dimensions, notes and a standard title block ready for review.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="capability-drawing-to-building.jpg" alt="Scanned PDF floor plan converted into a clean dimensioned CAD drawing" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Scanned PDF → CAD</h3>
+          <p>A hand-scanned/legacy PDF plan redrawn as a clean, fully dimensioned architectural floor plan.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="capability-google-map-to-cad.jpg" alt="Google Maps satellite reference converted into a labeled CAD site/block plan" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Map Data → CAD Site Plan</h3>
+          <p>Public map/satellite reference traced into a clean, editable block plan with labeled parcels and streets.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="capability-3dscan-floorplan.jpg" alt="As-built floor plan generated from a 3D scan, with room schedule" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>3D Scan → As-Built Floor Plan</h3>
+          <p>3D scan point-cloud data converted into a scaled as-built floor plan with a full room schedule.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="render-showcase" id="rendering">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">3D Visualization</div>
+      <h2>3D Renders on Request</h2>
+      <p>Alongside 2D drafting, we can produce basic 3D visualizations of a layout when a project calls for it.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <img src="render-office-pod.jpg" alt="3D render of a glass-walled garden office pod with interior desk setup" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Garden Office Pod — 3D Render</h3>
+          <p>Exterior/interior 3D visualization of a small prefab garden-office pod.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="render-office-interior.jpg" alt="3D isometric render of a furnished office interior layout" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Office Interior Layout — 3D Render</h3>
+          <p>Isometric 3D visualization of a furnished commercial office layout for space planning.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <section class="cta" id="contact">
   <div class="container">
@@ -450,5 +572,20 @@
   </div>
 </footer>
 
+<script>
+function openLightbox(imgEl){
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightbox-img');
+  lbImg.src = imgEl.src;
+  lbImg.alt = imgEl.alt;
+  lb.classList.add('open');
+}
+function closeLightbox(e){
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape'){ document.getElementById('lightbox').classList.remove('open'); }
+});
+</script>
 </body>
 </html>
