@@ -162,6 +162,21 @@
   .process-step h3{font-size:15.5px; margin-bottom:6px;}
   .process-step p{color:var(--gray); font-size:14px;}
 
+  /* Portfolio */
+  .portfolio-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:26px;
+  }
+  .portfolio-card{
+    background:#fff; border:1px solid var(--border); border-radius:10px; overflow:hidden;
+    transition:box-shadow .2s ease, transform .2s ease;
+  }
+  .portfolio-card:hover{box-shadow:0 10px 24px rgba(11,34,57,0.08); transform:translateY(-3px);}
+  .portfolio-card img{width:100%; height:auto; border-bottom:1px solid var(--border);}
+  .portfolio-card-body{padding:20px 22px;}
+  .portfolio-card h3{font-size:16px; margin-bottom:6px;}
+  .portfolio-card p{color:var(--gray); font-size:14px;}
+
   /* Trust note */
   .trust{
     background:#fff; border:1px solid var(--border); border-left:4px solid var(--orange);
@@ -208,6 +223,7 @@
       <ul>
         <li><a href="#services">Services</a></li>
         <li><a href="#why">Why Us</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -350,6 +366,32 @@
     <div style="margin-top:36px;">
       <div class="trust">
         <strong>A note on scope:</strong> We draft and prepare documentation to your specification. Where a jurisdiction requires a stamped or sealed drawing, that review and seal is provided by your project's licensed architect or engineer of record — not by AKP Design Studio.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Portfolio</div>
+      <h2>Recent Work</h2>
+      <p>A sample of completed drawing sets. Client-identifying details are removed from every sample shown here.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <img src="portfolio-uk-floorplan.png" alt="Residential floor plan converted to AutoCAD from a hand sketch, two-floor UK residential project">
+        <div class="portfolio-card-body">
+          <h3>Residential Floor Plan — UK Project</h3>
+          <p>Two-floor residential layout redrawn to scale in AutoCAD from a hand-marked sketch. Client comments: "Mr Shohag was a great freelancer, dealing well with a fairly complicated and rapidly changing brief. I will use him again." — 5.0 rating.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="portfolio-canada-wrestling.png" alt="Lower floor plan for a wrestling festival venue in Niagara Falls, Ontario, drawn in AutoCAD">
+        <div class="portfolio-card-body">
+          <h3>Event Venue Floor Plan — Ontario, Canada</h3>
+          <p>Lower-level floor plan for a wrestling festival venue, drafted to scale in AutoCAD from the organizer's reference plans.</p>
+        </div>
       </div>
     </div>
   </div>
