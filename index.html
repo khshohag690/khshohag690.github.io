@@ -175,8 +175,31 @@
   .portfolio-card p{color:var(--gray); font-size:14px;}
   .portfolio-card img{cursor:zoom-in;}
 
-  /* 3D showcase (reuses portfolio-grid/card styles) */
-  .render-showcase .section-head{margin-bottom:30px;}
+  /* Portfolio folders */
+  .folder-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:26px; margin-bottom:8px;
+  }
+  .folder-card{
+    background:#fff; border:2px solid var(--border); border-radius:10px; overflow:hidden; cursor:pointer;
+    transition:box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+  }
+  .folder-card:hover{box-shadow:0 10px 24px rgba(11,34,57,0.08); transform:translateY(-3px);}
+  .folder-card.open{border-color:var(--orange);}
+  .folder-cover-wrap{position:relative; overflow:hidden;}
+  .folder-cover{width:100%; height:190px; object-fit:cover; display:block; border-bottom:1px solid var(--border); transition:transform .3s ease;}
+  .folder-card:hover .folder-cover{transform:scale(1.05);}
+  .folder-badge{
+    position:absolute; top:10px; right:10px; background:rgba(11,34,57,0.85); color:#fff;
+    font-size:11.5px; padding:4px 10px; border-radius:20px; font-weight:bold;
+  }
+  .folder-card-body{padding:18px 20px;}
+  .folder-card-body h3{font-size:16px; margin-bottom:5px;}
+  .folder-card-body p{color:var(--gray); font-size:13.5px;}
+  .folder-content{margin-top:40px; padding-top:34px; border-top:1px dashed var(--border);}
+  .folder-content-head{text-align:center; max-width:640px; margin:0 auto 30px;}
+  .folder-content-head h3{font-size:20px; margin-bottom:8px;}
+  .folder-content-head p{color:var(--gray); font-size:14.5px;}
 
   /* Lightbox */
   .lightbox{
@@ -400,130 +423,166 @@
   <div class="container">
     <div class="section-head">
       <div class="section-eyebrow">Portfolio</div>
-      <h2>2D CAD Drafting &amp; PDF-to-CAD Conversion</h2>
-      <p>Floor plans, as-built drawings and PDF/sketch-to-DWG conversions — a sample of completed drawing sets. Client-identifying details are removed from every sample shown here.</p>
+      <h2>Our Work</h2>
+      <p>Browse by category — click a folder to open it, then click any drawing to view it full-size.</p>
     </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-card">
-        <img src="capability-master-floorplan.jpg" alt="AKP Design Studio branded master floor plan drawing sheet" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Full Drawing Sheet Layout</h3>
-          <p>Example of a complete, titled drawing sheet — dimensions, notes and a standard title block ready for review.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="capability-drawing-to-building.jpg" alt="Scanned PDF floor plan converted into a clean dimensioned CAD drawing" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Scanned PDF → CAD</h3>
-          <p>A hand-scanned/legacy PDF plan redrawn as a clean, fully dimensioned architectural floor plan.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="capability-google-map-to-cad.jpg" alt="Google Maps satellite reference converted into a labeled CAD site/block plan" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Map Data → CAD Site Plan</h3>
-          <p>Public map/satellite reference traced into a clean, editable block plan with labeled parcels and streets.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="capability-3dscan-floorplan.jpg" alt="As-built floor plan generated from a 3D scan, with room schedule" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>3D Scan → As-Built Floor Plan</h3>
-          <p>3D scan point-cloud data converted into a scaled as-built floor plan with a full room schedule.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="portfolio-uk-floorplan.png" alt="Residential floor plan converted to AutoCAD from a hand sketch, two-floor UK residential project" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Residential Floor Plan — UK Project</h3>
-          <p>Two-floor residential layout redrawn to scale in AutoCAD from a hand-marked sketch. Client comments: "Mr Shohag was a great freelancer, dealing well with a fairly complicated and rapidly changing brief. I will use him again." — 5.0 rating.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="portfolio-canada-wrestling.png" alt="Lower floor plan for a wrestling festival venue in Niagara Falls, Ontario, drawn in AutoCAD" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Event Venue Floor Plan — Ontario, Canada</h3>
-          <p>Lower-level floor plan for a wrestling festival venue, drafted to scale in AutoCAD from the organizer's reference plans.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="portfolio-electrical-plan.jpg" alt="Residential electrical and lighting plan with fixture legend, drawn in AutoCAD" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Electrical &amp; Lighting Plan — Residential</h3>
-          <p>Full house electrical/lighting layout with a complete fixture legend and general notes, drafted to scale in AutoCAD.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="portfolio-floorplan-scan.jpg" alt="Multi-level residential floor plan digitized into a clean CAD-style layout" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Floor Plan Digitization — Multi-Level Home</h3>
-          <p>Scanned/app-captured floor plans cleaned up and redrawn as clear, labeled layouts across three levels.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="portfolio-luxury-floorplan.jpg" alt="Large luxury residential floor plan with fully dimensioned rooms, drawn in AutoCAD" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Luxury Residential Floor Plan — US Project</h3>
-          <p>Fully dimensioned single-level luxury home layout — garage, kitchen, master suite and covered porch, drafted to scale.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="portfolio-spa-electrical.jpg" alt="Spa reflected ceiling and electrical plan for treatment rooms, drawn in AutoCAD" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Spa Electrical &amp; RCP Plan — Commercial</h3>
-          <p>Reflected ceiling and electrical plan for a treatment-room suite, with a full electrical legend for permitting/build-out.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="portfolio-clinic-floorplan.jpg" alt="Medical clinic floor plan with exam rooms and waiting area, drawn in AutoCAD" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Medical Clinic Floor Plan — Commercial</h3>
-          <p>Multi-room clinic layout — exam rooms, consultation, waiting and staff areas — drafted to scale for planning use.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="cnc-showcase" id="cnc">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-eyebrow">CNC &amp; Laser Cut</div>
-      <h2>CNC &amp; Laser Cut Design</h2>
-      <p>Vector line-art prepared for CNC/laser cutting. More samples coming soon.</p>
-    </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-card">
-        <img src="portfolio-cnc-laser.png" alt="Car silhouette wall art design cut on CNC and laser cutting machine" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
+    <div class="folder-grid">
+      <div class="folder-card open" data-folder="drafting" onclick="toggleFolder('drafting')">
+        <div class="folder-cover-wrap">
+          <img class="folder-cover" src="capability-master-floorplan.jpg" alt="2D CAD Drafting and PDF-to-CAD Conversion folder">
+          <span class="folder-badge">11 samples</span>
+        </div>
+        <div class="folder-card-body">
+          <h3>2D CAD Drafting &amp; PDF-to-CAD Conversion</h3>
+          <p>Floor plans, as-built drawings, PDF/sketch-to-DWG conversions</p>
+        </div>
+      </div>
+      <div class="folder-card" data-folder="cnc" onclick="toggleFolder('cnc')">
+        <div class="folder-cover-wrap">
+          <img class="folder-cover" src="portfolio-cnc-laser.png" alt="CNC and Laser Cut Design folder">
+          <span class="folder-badge">1 sample</span>
+        </div>
+        <div class="folder-card-body">
           <h3>CNC &amp; Laser Cut Design</h3>
-          <p>Vector line-art design prepared for CNC/laser cutting — outline modeled and cleaned up for a precise, single-pass cut.</p>
+          <p>Vector line-art prepared for CNC/laser cutting</p>
+        </div>
+      </div>
+      <div class="folder-card" data-folder="render" onclick="toggleFolder('render')">
+        <div class="folder-cover-wrap">
+          <img class="folder-cover" src="render-office-pod.jpg" alt="3D Renders on Request folder">
+          <span class="folder-badge">2 samples</span>
+        </div>
+        <div class="folder-card-body">
+          <h3>3D Renders on Request</h3>
+          <p>Basic 3D visualizations alongside 2D drafting</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="render-showcase" id="rendering">
-  <div class="container">
-    <div class="section-head">
-      <div class="section-eyebrow">3D Visualization</div>
-      <h2>3D Renders on Request</h2>
-      <p>Alongside 2D drafting, we can produce basic 3D visualizations of a layout when a project calls for it.</p>
-    </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-card">
-        <img src="render-office-pod.jpg" alt="3D render of a glass-walled garden office pod with interior desk setup" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Garden Office Pod — 3D Render</h3>
-          <p>Exterior/interior 3D visualization of a small prefab garden-office pod.</p>
+    <div class="folder-content" id="folder-content-drafting">
+      <div class="folder-content-head">
+        <h3>2D CAD Drafting &amp; PDF-to-CAD Conversion</h3>
+        <p>Floor plans, as-built drawings and PDF/sketch-to-DWG conversions — a sample of completed drawing sets. Client-identifying details are removed from every sample shown here.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <img src="capability-master-floorplan.jpg" alt="AKP Design Studio branded master floor plan drawing sheet" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Full Drawing Sheet Layout</h3>
+            <p>Example of a complete, titled drawing sheet — dimensions, notes and a standard title block ready for review.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="capability-drawing-to-building.jpg" alt="Scanned PDF floor plan converted into a clean dimensioned CAD drawing" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Scanned PDF → CAD</h3>
+            <p>A hand-scanned/legacy PDF plan redrawn as a clean, fully dimensioned architectural floor plan.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="capability-google-map-to-cad.jpg" alt="Google Maps satellite reference converted into a labeled CAD site/block plan" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Map Data → CAD Site Plan</h3>
+            <p>Public map/satellite reference traced into a clean, editable block plan with labeled parcels and streets.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="capability-3dscan-floorplan.jpg" alt="As-built floor plan generated from a 3D scan, with room schedule" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>3D Scan → As-Built Floor Plan</h3>
+            <p>3D scan point-cloud data converted into a scaled as-built floor plan with a full room schedule.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-uk-floorplan.png" alt="Residential floor plan converted to AutoCAD from a hand sketch, two-floor UK residential project" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Residential Floor Plan — UK Project</h3>
+            <p>Two-floor residential layout redrawn to scale in AutoCAD from a hand-marked sketch. Client comments: "Mr Shohag was a great freelancer, dealing well with a fairly complicated and rapidly changing brief. I will use him again." — 5.0 rating.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-canada-wrestling.png" alt="Lower floor plan for a wrestling festival venue in Niagara Falls, Ontario, drawn in AutoCAD" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Event Venue Floor Plan — Ontario, Canada</h3>
+            <p>Lower-level floor plan for a wrestling festival venue, drafted to scale in AutoCAD from the organizer's reference plans.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-electrical-plan.jpg" alt="Residential electrical and lighting plan with fixture legend, drawn in AutoCAD" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Electrical &amp; Lighting Plan — Residential</h3>
+            <p>Full house electrical/lighting layout with a complete fixture legend and general notes, drafted to scale in AutoCAD.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-floorplan-scan.jpg" alt="Multi-level residential floor plan digitized into a clean CAD-style layout" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Floor Plan Digitization — Multi-Level Home</h3>
+            <p>Scanned/app-captured floor plans cleaned up and redrawn as clear, labeled layouts across three levels.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-luxury-floorplan.jpg" alt="Large luxury residential floor plan with fully dimensioned rooms, drawn in AutoCAD" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Luxury Residential Floor Plan — US Project</h3>
+            <p>Fully dimensioned single-level luxury home layout — garage, kitchen, master suite and covered porch, drafted to scale.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-spa-electrical.jpg" alt="Spa reflected ceiling and electrical plan for treatment rooms, drawn in AutoCAD" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Spa Electrical &amp; RCP Plan — Commercial</h3>
+            <p>Reflected ceiling and electrical plan for a treatment-room suite, with a full electrical legend for permitting/build-out.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-clinic-floorplan.jpg" alt="Medical clinic floor plan with exam rooms and waiting area, drawn in AutoCAD" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Medical Clinic Floor Plan — Commercial</h3>
+            <p>Multi-room clinic layout — exam rooms, consultation, waiting and staff areas — drafted to scale for planning use.</p>
+          </div>
         </div>
       </div>
-      <div class="portfolio-card">
-        <img src="render-office-interior.jpg" alt="3D isometric render of a furnished office interior layout" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Office Interior Layout — 3D Render</h3>
-          <p>Isometric 3D visualization of a furnished commercial office layout for space planning.</p>
+    </div>
+
+    <div class="folder-content" id="folder-content-cnc" style="display:none;">
+      <div class="folder-content-head">
+        <div class="section-eyebrow">CNC &amp; Laser Cut</div>
+        <h3>CNC &amp; Laser Cut Design</h3>
+        <p>Vector line-art prepared for CNC/laser cutting. More samples coming soon.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <img src="portfolio-cnc-laser.png" alt="Car silhouette wall art design cut on CNC and laser cutting machine" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>CNC &amp; Laser Cut Design</h3>
+            <p>Vector line-art design prepared for CNC/laser cutting — outline modeled and cleaned up for a precise, single-pass cut.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="folder-content" id="folder-content-render" style="display:none;">
+      <div class="folder-content-head">
+        <div class="section-eyebrow">3D Visualization</div>
+        <h3>3D Renders on Request</h3>
+        <p>Alongside 2D drafting, we can produce basic 3D visualizations of a layout when a project calls for it.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <img src="render-office-pod.jpg" alt="3D render of a glass-walled garden office pod with interior desk setup" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Garden Office Pod — 3D Render</h3>
+            <p>Exterior/interior 3D visualization of a small prefab garden-office pod.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="render-office-interior.jpg" alt="3D isometric render of a furnished office interior layout" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Office Interior Layout — 3D Render</h3>
+            <p>Isometric 3D visualization of a furnished commercial office layout for space planning.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -599,6 +658,25 @@ function closeLightbox(e){
 function toggleZoom(e){
   e.stopPropagation();
   document.getElementById('lightbox-img').classList.toggle('zoomed');
+}
+function toggleFolder(name){
+  var ids = ['drafting','cnc','render'];
+  ids.forEach(function(id){
+    var content = document.getElementById('folder-content-' + id);
+    var card = document.querySelector('.folder-card[data-folder="' + id + '"]');
+    if(!content) return;
+    if(id === name){
+      var isOpen = content.style.display !== 'none';
+      content.style.display = isOpen ? 'none' : '';
+      if(card){ card.classList.toggle('open', !isOpen); }
+      if(!isOpen){
+        setTimeout(function(){ content.scrollIntoView({behavior:'smooth', block:'start'}); }, 60);
+      }
+    } else {
+      content.style.display = 'none';
+      if(card){ card.classList.remove('open'); }
+    }
+  });
 }
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape'){ document.getElementById('lightbox').classList.remove('open'); }
