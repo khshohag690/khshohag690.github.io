@@ -178,8 +178,8 @@
   .portfolio-card p{color:var(--gray); font-size:14px;}
   .portfolio-card img{cursor:zoom-in;}
 
-  /* Capabilities / 3D showcase (reuses portfolio-grid/card styles) */
-  .capabilities .section-head, .render-showcase .section-head{margin-bottom:30px;}
+  /* 3D showcase (reuses portfolio-grid/card styles) */
+  .render-showcase .section-head{margin-bottom:30px;}
 
   /* Lightbox */
   .lightbox{
@@ -396,6 +396,34 @@
     </div>
     <div class="portfolio-grid">
       <div class="portfolio-card">
+        <img src="capability-master-floorplan.jpg" alt="AKP Design Studio branded master floor plan drawing sheet" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Full Drawing Sheet Layout</h3>
+          <p>Example of a complete, titled drawing sheet — dimensions, notes and a standard title block ready for review.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="capability-drawing-to-building.jpg" alt="Scanned PDF floor plan converted into a clean dimensioned CAD drawing" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Scanned PDF → CAD</h3>
+          <p>A hand-scanned/legacy PDF plan redrawn as a clean, fully dimensioned architectural floor plan.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="capability-google-map-to-cad.jpg" alt="Google Maps satellite reference converted into a labeled CAD site/block plan" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>Map Data → CAD Site Plan</h3>
+          <p>Public map/satellite reference traced into a clean, editable block plan with labeled parcels and streets.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="capability-3dscan-floorplan.jpg" alt="As-built floor plan generated from a 3D scan, with room schedule" onclick="openLightbox(this)">
+        <div class="portfolio-card-body">
+          <h3>3D Scan → As-Built Floor Plan</h3>
+          <p>3D scan point-cloud data converted into a scaled as-built floor plan with a full room schedule.</p>
+        </div>
+      </div>
+      <div class="portfolio-card">
         <img src="portfolio-uk-floorplan.png" alt="Residential floor plan converted to AutoCAD from a hand sketch, two-floor UK residential project" onclick="openLightbox(this)">
         <div class="portfolio-card-body">
           <h3>Residential Floor Plan — UK Project</h3>
@@ -407,13 +435,6 @@
         <div class="portfolio-card-body">
           <h3>Event Venue Floor Plan — Ontario, Canada</h3>
           <p>Lower-level floor plan for a wrestling festival venue, drafted to scale in AutoCAD from the organizer's reference plans.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="portfolio-cnc-laser.png" alt="Car silhouette wall art design cut on CNC and laser cutting machine" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>CNC &amp; Laser Cut Design</h3>
-          <p>Vector line-art design prepared for CNC/laser cutting — outline modeled and cleaned up for a precise, single-pass cut.</p>
         </div>
       </div>
       <div class="portfolio-card">
@@ -455,40 +476,19 @@
   </div>
 </section>
 
-<section class="capabilities" id="capabilities">
+<section class="cnc-showcase" id="cnc">
   <div class="container">
     <div class="section-head">
-      <div class="section-eyebrow">Capabilities</div>
-      <h2>What We Can Convert</h2>
-      <p>A few examples of the input-to-output workflow: scanned drawings, map data and 3D scans turned into clean CAD documentation.</p>
+      <div class="section-eyebrow">CNC &amp; Laser Cut</div>
+      <h2>CNC &amp; Laser Cut Design</h2>
+      <p>Vector line-art prepared for CNC/laser cutting. More samples coming soon.</p>
     </div>
     <div class="portfolio-grid">
       <div class="portfolio-card">
-        <img src="capability-master-floorplan.jpg" alt="AKP Design Studio branded master floor plan drawing sheet" onclick="openLightbox(this)">
+        <img src="portfolio-cnc-laser.png" alt="Car silhouette wall art design cut on CNC and laser cutting machine" onclick="openLightbox(this)">
         <div class="portfolio-card-body">
-          <h3>Full Drawing Sheet Layout</h3>
-          <p>Example of a complete, titled drawing sheet — dimensions, notes and a standard title block ready for review.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="capability-drawing-to-building.jpg" alt="Scanned PDF floor plan converted into a clean dimensioned CAD drawing" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Scanned PDF → CAD</h3>
-          <p>A hand-scanned/legacy PDF plan redrawn as a clean, fully dimensioned architectural floor plan.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="capability-google-map-to-cad.jpg" alt="Google Maps satellite reference converted into a labeled CAD site/block plan" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>Map Data → CAD Site Plan</h3>
-          <p>Public map/satellite reference traced into a clean, editable block plan with labeled parcels and streets.</p>
-        </div>
-      </div>
-      <div class="portfolio-card">
-        <img src="capability-3dscan-floorplan.jpg" alt="As-built floor plan generated from a 3D scan, with room schedule" onclick="openLightbox(this)">
-        <div class="portfolio-card-body">
-          <h3>3D Scan → As-Built Floor Plan</h3>
-          <p>3D scan point-cloud data converted into a scaled as-built floor plan with a full room schedule.</p>
+          <h3>CNC &amp; Laser Cut Design</h3>
+          <p>Vector line-art design prepared for CNC/laser cutting — outline modeled and cleaned up for a precise, single-pass cut.</p>
         </div>
       </div>
     </div>
