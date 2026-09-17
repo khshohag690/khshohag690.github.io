@@ -107,6 +107,10 @@
     color:var(--orange); font-weight:bold; font-size:13px;
     letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px;
   }
+  .section-eyebrow-badge{
+    display:inline-block; background:var(--orange); color:#fff;
+    padding:6px 18px; border-radius:20px; font-size:12.5px; margin-bottom:16px;
+  }
   .section-head h2{font-size:30px; margin-bottom:12px;}
   .section-head p{color:var(--gray); font-size:15.5px;}
 
@@ -422,7 +426,7 @@
 <section id="portfolio">
   <div class="container">
     <div class="section-head">
-      <div class="section-eyebrow">Portfolio</div>
+      <div class="section-eyebrow section-eyebrow-badge">Portfolio</div>
       <h2>Our Work</h2>
       <p>Browse by category — click a folder to open it, then click any drawing to view it full-size.</p>
     </div>
@@ -440,8 +444,8 @@
       </div>
       <div class="folder-card" data-folder="cnc" onclick="toggleFolder('cnc')">
         <div class="folder-cover-wrap">
-          <img class="folder-cover" src="portfolio-cnc-laser.png" alt="CNC and Laser Cut Design folder">
-          <span class="folder-badge">1 sample</span>
+          <img class="folder-cover" src="portfolio-cnc-butterfly-panel.jpg" alt="CNC and Laser Cut Design folder">
+          <span class="folder-badge">6 samples</span>
         </div>
         <div class="folder-card-body">
           <h3>CNC &amp; Laser Cut Design</h3>
@@ -462,6 +466,7 @@
 
     <div class="folder-content" id="folder-content-drafting">
       <div class="folder-content-head">
+        <div class="section-eyebrow">2D CAD Drafting</div>
         <h3>2D CAD Drafting &amp; PDF-to-CAD Conversion</h3>
         <p>Floor plans, as-built drawings and PDF/sketch-to-DWG conversions — a sample of completed drawing sets. Client-identifying details are removed from every sample shown here.</p>
       </div>
@@ -550,7 +555,7 @@
       <div class="folder-content-head">
         <div class="section-eyebrow">CNC &amp; Laser Cut</div>
         <h3>CNC &amp; Laser Cut Design</h3>
-        <p>Vector line-art prepared for CNC/laser cutting. More samples coming soon.</p>
+        <p>Vector line-art prepared for CNC/laser cutting — wall-art panels, dimensioned cut outlines and image-to-DXF conversions.</p>
       </div>
       <div class="portfolio-grid">
         <div class="portfolio-card">
@@ -558,6 +563,41 @@
           <div class="portfolio-card-body">
             <h3>CNC &amp; Laser Cut Design</h3>
             <p>Vector line-art design prepared for CNC/laser cutting — outline modeled and cleaned up for a precise, single-pass cut.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-cnc-butterfly-panel.jpg" alt="Three-panel butterfly wall art design vectorized for laser cutting" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Three-Panel Butterfly Wall Art</h3>
+            <p>Segmented butterfly silhouette split across three panels (36&Prime;&times;60&Prime;), vectorized as clean cut-ready line-art.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-cnc-tree-panel.jpg" alt="Three-panel tree and leaf silhouette wall art design vectorized for laser cutting" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Three-Panel Tree Silhouette Wall Art</h3>
+            <p>Branching tree and leaf pattern split across three panels (36&Prime;&times;60&Prime;), vectorized for precise cutting.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-cnc-terrazzo-panel.jpg" alt="Terrazzo style pebble pattern panel vectorized for CNC cutting" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Terrazzo-Style Pebble Panel</h3>
+            <p>Organic pebble/terrazzo pattern vectorized for CNC cutting, prepared at multiple panel sizes (48&Prime;&times;84&Prime; and 36&Prime;&times;60&Prime;).</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-cnc-abstract-pattern.jpg" alt="Repeating abstract geometric pattern vectorized for laser cutting" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Repeating Abstract Cut Pattern</h3>
+            <p>Continuous interlocking motif vectorized as a repeatable screen/panel pattern for CNC or laser cutting.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="portfolio-cnc-hex-diagram.jpg" alt="Dimensioned hexagon panel outline prepared for CNC fabrication" onclick="openLightbox(this)">
+          <div class="portfolio-card-body">
+            <h3>Dimensioned Cut Outline</h3>
+            <p>Precise vector outline with cut dimensions called out, prepared for CNC/laser fabrication.</p>
           </div>
         </div>
       </div>
