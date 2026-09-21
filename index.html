@@ -226,6 +226,52 @@ content:"→"; opacity:0; transform:translateX(-4px);
 transition:opacity .25s ease, transform .25s ease;
 }
 .service-card:hover .service-price::after{opacity:1; transform:translateX(0);}
+.service-card{cursor:pointer;}
+.service-card:focus-visible{outline:2px solid var(--orange); outline-offset:3px;}
+
+/* Service detail modal */
+.service-modal{
+display:none; position:fixed; inset:0; z-index:999; background:rgba(11,34,57,0.85);
+align-items:center; justify-content:center; padding:24px; overflow:auto;
+}
+.service-modal.open{display:flex;}
+.service-modal-card{
+background:#fff; border-radius:14px; max-width:560px; width:100%;
+padding:40px 36px 34px; position:relative; margin:auto;
+animation:serviceModalIn .25s ease;
+}
+@keyframes serviceModalIn{
+from{opacity:0; transform:translateY(14px) scale(.98);}
+to{opacity:1; transform:translateY(0) scale(1);}
+}
+.service-modal-close{
+position:absolute; top:16px; right:18px; background:none; border:none; cursor:pointer;
+font-size:28px; line-height:1; color:var(--gray); font-family:Arial, sans-serif;
+}
+.service-modal-close:hover{color:var(--navy);}
+.service-modal-icon{
+width:52px; height:52px; border-radius:12px; background:var(--navy); color:var(--orange);
+display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+}
+.service-modal-icon svg{width:26px; height:26px;}
+.service-modal-card h3{font-size:21px; margin-bottom:8px;}
+.service-modal-price{
+font-family:Cambria, Georgia, serif; color:var(--orange); font-weight:bold; font-size:16px; margin-bottom:20px;
+}
+.service-modal-scope{list-style:none; margin-bottom:28px;}
+.service-modal-scope li{
+position:relative; padding-left:26px; margin-bottom:11px; color:var(--gray); font-size:14.5px; line-height:1.55;
+}
+.service-modal-scope li::before{
+content:"✓"; position:absolute; left:0; top:0; color:var(--orange); font-weight:bold;
+}
+.service-modal-contact{border-top:1px solid var(--border); padding-top:22px;}
+.service-modal-contact-label{font-weight:bold; color:var(--navy); font-size:14.5px; margin-bottom:14px;}
+.service-modal-contact-actions{display:flex; flex-wrap:wrap; gap:10px;}
+.service-modal-contact-actions .btn{padding:11px 18px; font-size:13.5px;}
+@media(max-width:520px){
+.service-modal-card{padding:30px 22px 26px;}
+}
 
 /* Why hire me */
 .why-grid{
@@ -589,43 +635,43 @@ section{padding:52px 0;}
 <p>Straightforward scopes and transparent starting prices. Final quotes depend on sheet count, complexity and turnaround.</p>
 </div>
 <div class="service-grid">
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('pdf-dwg')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('pdf-dwg');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h6l3 3v13H5z"/><path d="M11 4v3h3"/><path d="M15 12h5m0 0-2-2m2 2-2 2"/></svg></div>
 <h3>PDF to DWG Conversion</h3>
 <p>Scanned or PDF drawings redrawn as clean, editable AutoCAD DWG files with accurate layers and dimensions.</p>
 <div class="service-price">From $50 / sheet</div>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('sketch-cad')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('sketch-cad');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg></div>
 <h3>Hand Sketch to CAD</h3>
 <p>Hand-drawn sketches or field notes converted into properly scaled, dimensioned CAD drawings.</p>
 <div class="service-price">From $65 / sheet</div>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('mep-plumbing')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('mep-plumbing');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 13h5l-2 8 9-11h-5z"/></svg></div>
 <h3>MEP &amp; Plumbing Drafting</h3>
 <p>Mechanical, electrical and plumbing drawing sets coordinated with your architectural base plans.</p>
 <div class="service-price">From $75 / sheet</div>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('as-built')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('as-built');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-5 8 5v12"/><path d="M4 21h16"/><path d="M9 21v-6h6v6"/></svg></div>
 <h3>As-Built Drawings</h3>
 <p>Field-verified as-built documentation produced from site photos, measurements or redlines.</p>
 <div class="service-price">From $250 / project</div>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('permit-sets')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('permit-sets');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10v9h12v-9"/><path d="M10 14.5l1.5 1.5 2.5-3"/></svg></div>
 <h3>Residential Permit Sets</h3>
 <p>Full residential permit drawing sets prepared for submission — your licensed professional of record reviews and seals as required by your jurisdiction.</p>
 <div class="service-price">From $350 / set</div>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('boq')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('boq');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M8 7h8M8 11h3m3 0h2M8 15h3m3 0h2"/></svg></div>
 <h3>Quantity Takeoff / BOQ</h3>
 <p>Material takeoffs and bills of quantities prepared using PlanSwift and Bluebeam for accurate estimating.</p>
 <div class="service-price">From $150 / project</div>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('3d-render')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('3d-render');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg></div>
 <h3>3D Rendering &amp; Visualization</h3>
 <p>Basic interior or exterior 3D visualization of a layout alongside your 2D drafting — useful for presentations and client walkthroughs.</p>
@@ -634,6 +680,24 @@ section{padding:52px 0;}
 </div>
 </div>
 </section>
+
+<div class="service-modal" id="serviceModal" onclick="closeServiceModalOnOverlay(event)">
+<div class="service-modal-card" role="dialog" aria-modal="true" aria-labelledby="smTitle">
+<button class="service-modal-close" onclick="closeServiceModal()" aria-label="Close">&times;</button>
+<div class="service-modal-icon" id="smIcon"></div>
+<h3 id="smTitle"></h3>
+<div class="service-modal-price" id="smPrice"></div>
+<ul class="service-modal-scope" id="smScope"></ul>
+<div class="service-modal-contact">
+<div class="service-modal-contact-label">Ready to get started?</div>
+<div class="service-modal-contact-actions">
+<a class="btn btn-primary" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Fiverr Profile</a>
+<a class="btn btn-outline-navy" href="https://wa.me/8801737040429" target="_blank" rel="noopener">Chat on WhatsApp</a>
+<a class="btn btn-outline-navy" href="mailto:akpec.infobd@gmail.com">Email Us</a>
+</div>
+</div>
+</div>
+</div>
 
 <section id="why">
 <div class="container">
@@ -1430,6 +1494,118 @@ submitBtn.textContent = 'Send Message';
 });
 });
 })();
+
+/* ---- Service detail modal ---- */
+var SERVICE_DATA = {
+'pdf-dwg': {
+icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h6l3 3v13H5z"/><path d="M11 4v3h3"/><path d="M15 12h5m0 0-2-2m2 2-2 2"/></svg>',
+title: 'PDF to DWG Conversion',
+price: 'From $50 / sheet',
+scope: [
+'Scanned or PDF plans redrawn to scale in AutoCAD (DWG)',
+'Proper layering, line weights and standard drafting conventions',
+'Dimensions, text and annotations matched to your source file',
+'Delivered as editable DWG plus a clean PDF export',
+'Revisions included until the drawing matches your source'
+]
+},
+'sketch-cad': {
+icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg>',
+title: 'Hand Sketch to CAD',
+price: 'From $65 / sheet',
+scope: [
+'Field sketches, napkin drawings or marked-up notes converted to scale',
+'Missing dimensions or details clarified with you before finalizing',
+'Clean line work, proper layers and a standard title block',
+'Delivered as editable DWG plus a PDF export',
+'One round of revisions included to match your intent'
+]
+},
+'mep-plumbing': {
+icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 13h5l-2 8 9-11h-5z"/></svg>',
+title: 'MEP & Plumbing Drafting',
+price: 'From $75 / sheet',
+scope: [
+'Plumbing riser/layout, electrical & lighting, or basic HVAC layout drafted over your architectural base plan',
+'Fixture schedules and standard legends included',
+'Coordinated against your base plan to avoid obvious clashes',
+'Delivered as DWG + PDF, ready for review by your MEP engineer'
+]
+},
+'as-built': {
+icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-5 8 5v12"/><path d="M4 21h16"/><path d="M9 21v-6h6v6"/></svg>',
+title: 'As-Built Drawings',
+price: 'From $250 / project',
+scope: [
+'Drawings built from your site photos, field measurements or marked-up redlines',
+'Floor plans, elevations or sections produced as the project needs',
+'Reconciled against any existing drawings you provide',
+'Delivered as editable DWG plus a PDF export'
+]
+},
+'permit-sets': {
+icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10v9h12v-9"/><path d="M10 14.5l1.5 1.5 2.5-3"/></svg>',
+title: 'Residential Permit Sets',
+price: 'From $350 / set',
+scope: [
+'Floor plans, elevations, sections and basic notes prepared for permit submission',
+'Formatted to match typical jurisdiction submission requirements',
+'Coordinated with your architect/engineer of record, who reviews and seals as required',
+'One round of revisions included to address jurisdiction comments'
+]
+},
+'boq': {
+icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M8 7h8M8 11h3m3 0h2M8 15h3m3 0h2"/></svg>',
+title: 'Quantity Takeoff / BOQ',
+price: 'From $150 / project',
+scope: [
+'Material quantities extracted directly from your drawings',
+'Organized bill of quantities (BOQ) by trade or category',
+'Prepared using PlanSwift and Bluebeam for accurate measurement',
+'Delivered as an editable spreadsheet for estimating or procurement'
+]
+},
+'3d-render': {
+icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg>',
+title: '3D Rendering & Visualization',
+price: 'From $100 / render',
+scope: [
+'Basic interior or exterior 3D visualization based on your 2D plan',
+'One to two rendered views included per render package',
+'Useful for client presentations or quick design communication',
+'Not a substitute for full architectural rendering/animation services'
+]
+}
+};
+
+function openServiceModal(key){
+var d = SERVICE_DATA[key];
+if(!d) return;
+document.getElementById('smIcon').innerHTML = d.icon;
+document.getElementById('smTitle').textContent = d.title;
+document.getElementById('smPrice').textContent = d.price;
+var list = document.getElementById('smScope');
+list.innerHTML = '';
+d.scope.forEach(function(item){
+var li = document.createElement('li');
+li.textContent = item;
+list.appendChild(li);
+});
+var modal = document.getElementById('serviceModal');
+modal.classList.add('open');
+document.body.style.overflow = 'hidden';
+}
+function closeServiceModal(){
+var modal = document.getElementById('serviceModal');
+modal.classList.remove('open');
+document.body.style.overflow = '';
+}
+function closeServiceModalOnOverlay(e){
+if(e.target && e.target.id === 'serviceModal'){ closeServiceModal(); }
+}
+document.addEventListener('keydown', function(e){
+if(e.key === 'Escape'){ closeServiceModal(); }
+});
 </script>
 </body>
 </html>
