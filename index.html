@@ -214,12 +214,43 @@ transition:opacity .25s ease, transform .25s ease;
 
 /* Why hire me */
 .why-grid{
-display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:26px;
+display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:24px;
 }
-.why-item{padding:4px;}
-.why-item h3{font-size:16.5px; margin-bottom:8px;}
-.why-item p{color:var(--gray); font-size:14.5px;}
+.why-item{
+position:relative; overflow:hidden; text-align:center;
+background:#fff; border:1px solid var(--border); border-radius:14px;
+padding:36px 24px 30px;
+transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.why-item:hover{
+transform:translateY(-7px);
+box-shadow:0 18px 34px rgba(11,34,57,0.12);
+border-color:rgba(242,98,39,0.4);
+}
+.why-item::after{
+content:attr(data-index);
+position:absolute; top:-10px; right:12px; z-index:0;
+font-family:Cambria, Georgia, serif; font-weight:bold; font-size:64px; line-height:1;
+color:transparent; -webkit-text-stroke:1.4px var(--border); text-stroke:1.4px var(--border);
+transition:all .35s ease;
+}
+.why-item:hover::after{-webkit-text-stroke:1.4px rgba(242,98,39,0.55); text-stroke:1.4px rgba(242,98,39,0.55); transform:scale(1.08);}
+.why-icon{
+width:64px; height:64px; border-radius:50%; margin:0 auto 18px; position:relative; z-index:1;
+background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+color:var(--orange); display:flex; align-items:center; justify-content:center;
+box-shadow:0 10px 20px rgba(11,34,57,0.22);
+transition:transform .45s cubic-bezier(.34,1.56,.64,1), background .3s ease, color .3s ease;
+}
+.why-icon svg{width:27px; height:27px;}
+.why-item:hover .why-icon{
+transform:scale(1.14) rotate(10deg);
+background:linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+color:#fff;
+}
+.why-item h3{position:relative; z-index:1; font-size:16.5px; margin-bottom:8px;}
+.why-item p{position:relative; z-index:1; color:var(--gray); font-size:14.5px;}
 
 /* Process */
 .process{background:var(--off-white);}
@@ -490,23 +521,23 @@ section{padding:52px 0;}
 <h2>Built for US Project Standards</h2>
 </div>
 <div class="why-grid">
-<div class="why-item reveal-el">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+<div class="why-item reveal-el" data-index="01">
+<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
 <h3>13+ Years of CAD Drafting</h3>
 <p>Hands-on AutoCAD drafting experience since 2013, spanning residential, commercial and MEP work.</p>
 </div>
-<div class="why-item reveal-el">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+<div class="why-item reveal-el" data-index="02">
+<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
 <h3>Engineering Background</h3>
 <p>Run by a civil/plumbing engineer, so drawings are produced with technical accuracy in mind, not just line work.</p>
 </div>
-<div class="why-item reveal-el">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
+<div class="why-item reveal-el" data-index="03">
+<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
 <h3>Direct Communication</h3>
 <p>You work directly with the person drafting your project — no account managers, no relay delays.</p>
 </div>
-<div class="why-item reveal-el">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6z"/></svg></div>
+<div class="why-item reveal-el" data-index="04">
+<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6z"/></svg></div>
 <h3>Registered Studio</h3>
 <p>Operated as a division of AKP Engineers &amp; Construction, a Dhaka-based firm established July 2023.</p>
 </div>
