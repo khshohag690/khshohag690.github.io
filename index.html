@@ -243,14 +243,6 @@ transform:translateY(-7px);
 box-shadow:0 18px 34px rgba(11,34,57,0.12);
 border-color:rgba(242,98,39,0.4);
 }
-.why-item::after{
-content:attr(data-index);
-position:absolute; top:-10px; right:12px; z-index:0;
-font-family:Cambria, Georgia, serif; font-weight:bold; font-size:64px; line-height:1;
-color:transparent; -webkit-text-stroke:1.4px var(--border); text-stroke:1.4px var(--border);
-transition:all .35s ease;
-}
-.why-item:hover::after{-webkit-text-stroke:1.4px rgba(242,98,39,0.55); text-stroke:1.4px rgba(242,98,39,0.55); transform:scale(1.08);}
 .why-icon{
 width:64px; height:64px; border-radius:50%; margin:0 auto 18px; position:relative; z-index:1;
 background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
@@ -513,9 +505,9 @@ section{padding:52px 0;}
 <li><a href="#about">About</a></li>
 <li><a href="#services">Services</a></li>
 <li><a href="#why">Why Us</a></li>
-<li><a href="#portfolio">Portfolio</a></li>
-<li><a href="#testimonials">Testimonials</a></li>
 <li><a href="#process">Process</a></li>
+<li><a href="#testimonials">Testimonials</a></li>
+<li><a href="#portfolio">Portfolio</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
@@ -650,22 +642,22 @@ section{padding:52px 0;}
 <h2>Built for US Project Standards</h2>
 </div>
 <div class="why-grid">
-<div class="why-item reveal-el" data-index="01">
+<div class="why-item reveal-el">
 <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
 <h3>13+ Years of CAD Drafting</h3>
 <p>Hands-on AutoCAD drafting experience since 2013, spanning residential, commercial and MEP work.</p>
 </div>
-<div class="why-item reveal-el" data-index="02">
+<div class="why-item reveal-el">
 <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
 <h3>Engineering Background</h3>
 <p>Run by a civil/plumbing engineer, so drawings are produced with technical accuracy in mind, not just line work.</p>
 </div>
-<div class="why-item reveal-el" data-index="03">
+<div class="why-item reveal-el">
 <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
 <h3>Direct Communication</h3>
 <p>You work directly with the person drafting your project — no account managers, no relay delays.</p>
 </div>
-<div class="why-item reveal-el" data-index="04">
+<div class="why-item reveal-el">
 <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6z"/></svg></div>
 <h3>Registered Studio</h3>
 <p>Operated as a division of AKP Engineers &amp; Construction, a Dhaka-based firm established July 2023.</p>
@@ -709,6 +701,82 @@ section{padding:52px 0;}
 <div style="margin-top:36px;">
 <div class="trust reveal-el">
 <strong>A note on scope:</strong> We draft and prepare documentation to your specification. Where a jurisdiction requires a stamped or sealed drawing, that review and seal is provided by your project's licensed architect or engineer of record — not by AKP Design Studio.
+</div>
+</div>
+</div>
+</section>
+
+<section id="testimonials">
+<div class="container">
+<div class="section-head reveal-el">
+<div class="section-eyebrow">Client Feedback</div>
+<h2>What Fiverr Clients Say</h2>
+<p>Real reviews from US and international clients, shown as submitted on Fiverr.</p>
+</div>
+<div class="testimonial-carousel reveal-el">
+<div class="testimonial-track">
+<div class="testimonial-slide is-active">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Kamrul was an absolute pleasure to work with. He is very polite, professional, and incredibly easy to communicate with. His work is amazing high quality and he delivered with great attention to detail. He's also very understanding and works quickly without compromising on results. I would highly recommend him for any project.</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">L</span>
+<div>
+<strong>latifaa222</strong>
+<span>&#127468;&#127463; United Kingdom &middot; Fiverr Client</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Kamrul was really excellent to work with! He delivered high quality work quickly, was a great communicator, and followed my instructions really well. I'll definitely work with him in the future on other projects where I could use his expertise!</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">T</span>
+<div>
+<strong>tsoukup</strong>
+<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Excellent service. Showed deep understanding of the requirement from the start, communicated proactively and delivered quality work on a very tight timeline.</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">B</span>
+<div>
+<strong>bettinette</strong>
+<span>&#127466;&#127480; Spain &middot; Fiverr Client</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">From start to finish there was amazing work ethic, patience, creative thinking and professionalism. Highly recommend!!</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">S</span>
+<div>
+<strong>skippingstars</strong>
+<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Very easy process and easy to work with.</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">R</span>
+<div>
+<strong>ramhunter2026</strong>
+<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
+</div>
+</div>
+</div>
+</div>
+<div class="testimonial-dots">
+<button class="testimonial-dot is-active" data-slide="0" aria-label="Show testimonial 1"></button>
+<button class="testimonial-dot" data-slide="1" aria-label="Show testimonial 2"></button>
+<button class="testimonial-dot" data-slide="2" aria-label="Show testimonial 3"></button>
+<button class="testimonial-dot" data-slide="3" aria-label="Show testimonial 4"></button>
+<button class="testimonial-dot" data-slide="4" aria-label="Show testimonial 5"></button>
 </div>
 </div>
 </div>
@@ -1082,82 +1150,6 @@ section{padding:52px 0;}
 <p>Isometric 3D visualization of a furnished commercial office layout for space planning.</p>
 </div>
 </div>
-</div>
-</div>
-</div>
-</section>
-
-<section id="testimonials">
-<div class="container">
-<div class="section-head reveal-el">
-<div class="section-eyebrow">Client Feedback</div>
-<h2>What Fiverr Clients Say</h2>
-<p>Real reviews from US and international clients, shown as submitted on Fiverr.</p>
-</div>
-<div class="testimonial-carousel reveal-el">
-<div class="testimonial-track">
-<div class="testimonial-slide is-active">
-<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="testimonial-quote">Kamrul was an absolute pleasure to work with. He is very polite, professional, and incredibly easy to communicate with. His work is amazing high quality and he delivered with great attention to detail. He's also very understanding and works quickly without compromising on results. I would highly recommend him for any project.</p>
-<div class="testimonial-author">
-<span class="testimonial-avatar">L</span>
-<div>
-<strong>latifaa222</strong>
-<span>&#127468;&#127463; United Kingdom &middot; Fiverr Client</span>
-</div>
-</div>
-</div>
-<div class="testimonial-slide">
-<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="testimonial-quote">Kamrul was really excellent to work with! He delivered high quality work quickly, was a great communicator, and followed my instructions really well. I'll definitely work with him in the future on other projects where I could use his expertise!</p>
-<div class="testimonial-author">
-<span class="testimonial-avatar">T</span>
-<div>
-<strong>tsoukup</strong>
-<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
-</div>
-</div>
-</div>
-<div class="testimonial-slide">
-<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="testimonial-quote">Excellent service. Showed deep understanding of the requirement from the start, communicated proactively and delivered quality work on a very tight timeline.</p>
-<div class="testimonial-author">
-<span class="testimonial-avatar">B</span>
-<div>
-<strong>bettinette</strong>
-<span>&#127466;&#127480; Spain &middot; Fiverr Client</span>
-</div>
-</div>
-</div>
-<div class="testimonial-slide">
-<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="testimonial-quote">From start to finish there was amazing work ethic, patience, creative thinking and professionalism. Highly recommend!!</p>
-<div class="testimonial-author">
-<span class="testimonial-avatar">S</span>
-<div>
-<strong>skippingstars</strong>
-<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
-</div>
-</div>
-</div>
-<div class="testimonial-slide">
-<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="testimonial-quote">Very easy process and easy to work with.</p>
-<div class="testimonial-author">
-<span class="testimonial-avatar">R</span>
-<div>
-<strong>ramhunter2026</strong>
-<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
-</div>
-</div>
-</div>
-</div>
-<div class="testimonial-dots">
-<button class="testimonial-dot is-active" data-slide="0" aria-label="Show testimonial 1"></button>
-<button class="testimonial-dot" data-slide="1" aria-label="Show testimonial 2"></button>
-<button class="testimonial-dot" data-slide="2" aria-label="Show testimonial 3"></button>
-<button class="testimonial-dot" data-slide="3" aria-label="Show testimonial 4"></button>
-<button class="testimonial-dot" data-slide="4" aria-label="Show testimonial 5"></button>
 </div>
 </div>
 </div>
