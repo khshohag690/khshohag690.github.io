@@ -41,6 +41,18 @@ transition: background .2s ease, transform .15s ease;
 }
 .btn-primary{background:var(--orange); color:#fff;}
 .btn-primary:hover{background:var(--orange-dark); transform:translateY(-1px);}
+.btn-glow{
+position:relative;
+animation:btnPulse 2.6s ease-in-out infinite;
+}
+.btn-glow:hover{animation-play-state:paused;}
+@keyframes btnPulse{
+0%,100%{box-shadow:0 0 0 0 rgba(242,98,39,0.55);}
+50%{box-shadow:0 0 0 12px rgba(242,98,39,0);}
+}
+@media(prefers-reduced-motion: reduce){
+.btn-glow{animation:none;}
+}
 .btn-outline{background:transparent; color:#fff; border:2px solid #fff;}
 .btn-outline:hover{background:rgba(255,255,255,0.12);}
 .btn-outline-navy{background:transparent; color:var(--navy); border:2px solid var(--navy);}
@@ -130,6 +142,9 @@ display:flex; flex-wrap:wrap; align-items:center; gap:56px;
 .about-photo-wrap{
 flex:1 1 260px; max-width:300px; margin:0 auto;
 position:relative;
+}
+.about-photo-parallax{
+position:relative; will-change:transform;
 }
 .about-photo-ring{
 position:absolute; inset:-14px; border:2px solid var(--orange);
@@ -255,12 +270,41 @@ color:#fff;
 /* Process */
 .process{background:var(--off-white);}
 .process-grid{
-display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+display:grid; grid-template-columns:repeat(4,1fr);
+gap:24px; position:relative; padding-top:8px;
+}
+.process-grid::before{
+content:""; position:absolute; top:46px; left:12.5%; right:12.5%; height:2px;
+background:var(--border); z-index:0;
+}
+.process-grid::after{
+content:""; position:absolute; top:46px; left:12.5%; right:12.5%; height:2px;
+background:linear-gradient(90deg, var(--orange), var(--orange-dark));
+transform:scaleX(0); transform-origin:left; transition:transform 1.2s ease .1s; z-index:0;
+}
+.process-grid.in-view::after{transform:scaleX(1);}
+@media(max-width:860px){
+.process-grid{grid-template-columns:1fr; gap:18px;}
+.process-grid::before, .process-grid::after{display:none;}
 }
 .process-step{
-background:#fff; border:1px solid var(--border); border-radius:10px; padding:24px;
-position:relative;
+background:#fff; border:1px solid var(--border); border-radius:10px; padding:28px 20px 22px;
+position:relative; z-index:1; text-align:center;
+transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.process-step:hover{
+transform:translateY(-6px); box-shadow:0 16px 30px rgba(11,34,57,0.12);
+border-color:rgba(242,98,39,0.35);
+}
+.process-step .icon-badge{
+width:44px; height:44px; border-radius:50%; margin:0 auto 14px;
+background:var(--navy); color:var(--orange);
+box-shadow:0 0 0 6px #fff, 0 0 0 7px var(--border);
+transition:transform .4s cubic-bezier(.34,1.56,.64,1), background .3s ease, color .3s ease, box-shadow .3s ease;
+}
+.process-step:hover .icon-badge{
+transform:scale(1.14); background:var(--orange); color:#fff;
+box-shadow:0 0 0 6px #fff, 0 0 0 7px rgba(242,98,39,0.5);
 }
 .step-tag{
 display:block; color:var(--orange); font-weight:bold; font-size:11.5px;
@@ -276,14 +320,27 @@ gap:26px;
 }
 .portfolio-card{
 background:#fff; border:1px solid var(--border); border-radius:10px; overflow:hidden;
-transition:box-shadow .2s ease, transform .2s ease;
+transition:box-shadow .3s ease, transform .3s ease;
 }
-.portfolio-card:hover{box-shadow:0 10px 24px rgba(11,34,57,0.08); transform:translateY(-3px);}
-.portfolio-card img{width:100%; height:auto; border-bottom:1px solid var(--border);}
+.portfolio-card:hover{box-shadow:0 14px 30px rgba(11,34,57,0.12); transform:translateY(-5px);}
+.portfolio-img-wrap{position:relative; overflow:hidden; border-bottom:1px solid var(--border);}
+.portfolio-card img{width:100%; height:auto; display:block; transition:transform .5s ease; cursor:zoom-in;}
+.portfolio-card:hover img{transform:scale(1.09);}
+.portfolio-img-overlay{
+position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+background:linear-gradient(0deg, rgba(11,34,57,0.75) 0%, rgba(11,34,57,0.15) 60%, rgba(11,34,57,0) 100%);
+opacity:0; transition:opacity .3s ease; pointer-events:none;
+}
+.portfolio-img-overlay span{
+color:#fff; font-size:13px; font-weight:bold; letter-spacing:.3px;
+padding:8px 16px; border:1.5px solid rgba(255,255,255,0.7); border-radius:20px;
+transform:translateY(8px); transition:transform .35s ease;
+}
+.portfolio-card:hover .portfolio-img-overlay{opacity:1;}
+.portfolio-card:hover .portfolio-img-overlay span{transform:translateY(0);}
 .portfolio-card-body{padding:20px 22px;}
 .portfolio-card h3{font-size:16px; margin-bottom:6px;}
 .portfolio-card p{color:var(--gray); font-size:14px;}
-.portfolio-card img{cursor:zoom-in;}
 
 /* Portfolio folders */
 .folder-grid{
@@ -338,6 +395,75 @@ border-radius:8px; padding:22px 26px; font-size:14.5px; color:var(--gray); max-w
 }
 .trust strong{color:var(--navy);}
 
+/* Testimonials */
+#testimonials{background:var(--off-white);}
+.testimonial-carousel{max-width:760px; margin:0 auto;}
+.testimonial-track{position:relative; min-height:300px;}
+.testimonial-slide{
+position:absolute; inset:0;
+background:#fff; border:1px solid var(--border); border-radius:14px;
+padding:44px 40px 34px;
+display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+opacity:0; visibility:hidden;
+transition:opacity .7s ease, visibility 0s linear .7s;
+}
+.testimonial-slide.is-active{
+opacity:1; visibility:visible;
+transition:opacity .7s ease, visibility 0s linear 0s;
+position:relative;
+}
+.testimonial-stars{color:var(--orange); font-size:17px; letter-spacing:3px; margin-bottom:16px;}
+.testimonial-quote{font-family:Cambria, Georgia, serif; font-style:italic; font-size:18px; color:var(--navy); line-height:1.55; margin-bottom:22px;}
+.testimonial-author{display:flex; align-items:center; justify-content:center; gap:12px;}
+.testimonial-avatar{
+width:42px; height:42px; border-radius:50%; background:var(--navy); color:var(--orange);
+display:flex; align-items:center; justify-content:center; font-weight:bold; font-family:Cambria, Georgia, serif; font-size:16px;
+flex-shrink:0;
+}
+.testimonial-author div{text-align:left; font-size:13.5px; color:var(--gray);}
+.testimonial-author strong{display:block; color:var(--navy); font-size:15px; font-family:Calibri, Arial, sans-serif;}
+.testimonial-dots{display:flex; justify-content:center; gap:10px; margin-top:26px;}
+.testimonial-dot{
+width:10px; height:10px; border-radius:50%; border:none; padding:0;
+background:var(--border); cursor:pointer; transition:background .25s ease, transform .25s ease;
+}
+.testimonial-dot.is-active{background:var(--orange); transform:scale(1.25);}
+@media(prefers-reduced-motion: reduce){
+.testimonial-slide{transition:opacity .3s ease, visibility 0s linear 0s;}
+}
+@media(max-width:600px){
+.testimonial-slide{padding:32px 22px 26px;}
+.testimonial-quote{font-size:16px;}
+}
+
+/* Contact form */
+.contact-form-wrap{max-width:560px; margin:44px auto 0;}
+.contact-form-card{
+background:#fff; border-radius:14px; padding:34px 32px; text-align:left;
+box-shadow:0 20px 50px rgba(0,0,0,0.25);
+}
+.contact-form-card h3{color:var(--navy); font-size:19px; margin-bottom:20px; text-align:center;}
+.form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+.form-field{margin-bottom:16px;}
+.form-field label{display:block; font-size:13px; font-weight:bold; color:var(--navy); margin-bottom:6px;}
+.form-field input, .form-field textarea{
+width:100%; padding:11px 13px; border:1px solid var(--border); border-radius:6px;
+font-family:inherit; font-size:14.5px; color:#222; transition:border-color .2s ease, box-shadow .2s ease;
+resize:vertical;
+}
+.form-field input:focus, .form-field textarea:focus{
+outline:none; border-color:var(--orange); box-shadow:0 0 0 3px rgba(242,98,39,0.15);
+}
+#cf-submit{width:100%; border:none;}
+#cf-submit:disabled{opacity:.65; cursor:not-allowed;}
+.form-status{margin-top:14px; font-size:14px; text-align:center; min-height:20px;}
+.form-status.is-success{color:#1a7d3a;}
+.form-status.is-error{color:#c0392b;}
+@media(max-width:520px){
+.form-row{grid-template-columns:1fr;}
+.contact-form-card{padding:26px 22px;}
+}
+
 /* CTA */
 .cta{
 background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
@@ -388,6 +514,7 @@ section{padding:52px 0;}
 <li><a href="#services">Services</a></li>
 <li><a href="#why">Why Us</a></li>
 <li><a href="#portfolio">Portfolio</a></li>
+<li><a href="#testimonials">Testimonials</a></li>
 <li><a href="#process">Process</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
@@ -403,7 +530,7 @@ section{padding:52px 0;}
 <h1>Clean, Accurate CAD Drawings for US Architects, Contractors &amp; Builders</h1>
 <p>AKP Design Studio converts sketches, scans and site photos into precise AutoCAD drawing sets — as-builts, permit sets, MEP/plumbing drawings and quantity takeoffs — delivered on schedule and ready for your review.</p>
 <div class="hero-actions">
-<a class="btn btn-primary" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Fiverr Profile</a>
+<a class="btn btn-primary btn-glow" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Fiverr Profile</a>
 <a class="btn btn-outline" href="https://wa.me/8801737040429" target="_blank" rel="noopener">Chat on WhatsApp</a>
 <a class="btn btn-outline" href="mailto:akpec.infobd@gmail.com">Email Us</a>
 </div>
@@ -424,8 +551,10 @@ section{padding:52px 0;}
 <div class="container">
 <div class="about-inner">
 <div class="about-photo-wrap reveal-el">
+<div class="about-photo-parallax">
 <div class="about-photo-ring"></div>
 <img class="about-photo" src="kamrul-shohag.jpg" alt="Kamrul Shohag, Founder of AKP Design Studio">
+</div>
 </div>
 <div class="about-text reveal-el">
 <div class="section-eyebrow">Who You're Working With</div>
@@ -551,7 +680,7 @@ section{padding:52px 0;}
 <div class="section-eyebrow">How It Works</div>
 <h2>A Simple, Predictable Process</h2>
 </div>
-<div class="process-grid">
+<div class="process-grid reveal-el">
 <div class="process-step reveal-el">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M8 8l4-4 4 4"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div>
 <span class="step-tag">Step 1</span>
@@ -633,78 +762,111 @@ section{padding:52px 0;}
 <p>Floor plans, as-built drawings and PDF/sketch-to-DWG conversions — a sample of completed drawing sets. Client-identifying details are removed from every sample shown here.</p>
 </div>
 <div class="portfolio-grid">
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="capability-drawing-to-building.jpg" alt="Scanned PDF floor plan converted into a clean dimensioned CAD drawing" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Scanned PDF → CAD</h3>
 <p>A hand-scanned/legacy PDF plan redrawn as a clean, fully dimensioned architectural floor plan.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="capability-master-floorplan.jpg" alt="AKP Design Studio branded master floor plan drawing sheet" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Full Drawing Sheet Layout</h3>
 <p>Example of a complete, titled drawing sheet — dimensions, notes and a standard title block ready for review.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="capability-google-map-to-cad.jpg" alt="Google Maps satellite reference converted into a labeled CAD site/block plan" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Map Data → CAD Site Plan</h3>
 <p>Public map/satellite reference traced into a clean, editable block plan with labeled parcels and streets.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="capability-3dscan-floorplan.jpg" alt="As-built floor plan generated from a 3D scan, with room schedule" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>3D Scan → As-Built Floor Plan</h3>
 <p>3D scan point-cloud data converted into a scaled as-built floor plan with a full room schedule.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-uk-floorplan.png" alt="Residential floor plan converted to AutoCAD from a hand sketch, two-floor UK residential project" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Residential Floor Plan — UK Project</h3>
 <p>Two-floor residential layout redrawn to scale in AutoCAD from a hand-marked sketch. Client comments: "Mr Shohag was a great freelancer, dealing well with a fairly complicated and rapidly changing brief. I will use him again." — 5.0 rating.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-canada-wrestling.png" alt="Lower floor plan for a wrestling festival venue in Niagara Falls, Ontario, drawn in AutoCAD" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Event Venue Floor Plan — Ontario, Canada</h3>
 <p>Lower-level floor plan for a wrestling festival venue, drafted to scale in AutoCAD from the organizer's reference plans.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-electrical-plan.jpg" alt="Residential electrical and lighting plan with fixture legend, drawn in AutoCAD" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Electrical &amp; Lighting Plan — Residential</h3>
 <p>Full house electrical/lighting layout with a complete fixture legend and general notes, drafted to scale in AutoCAD.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-floorplan-scan.jpg" alt="Multi-level residential floor plan digitized into a clean CAD-style layout" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Floor Plan Digitization — Multi-Level Home</h3>
 <p>Scanned/app-captured floor plans cleaned up and redrawn as clear, labeled layouts across three levels.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-luxury-floorplan.jpg" alt="Large luxury residential floor plan with fully dimensioned rooms, drawn in AutoCAD" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Luxury Residential Floor Plan — US Project</h3>
 <p>Fully dimensioned single-level luxury home layout — garage, kitchen, master suite and covered porch, drafted to scale.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-spa-electrical.jpg" alt="Spa reflected ceiling and electrical plan for treatment rooms, drawn in AutoCAD" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Spa Electrical &amp; RCP Plan — Commercial</h3>
 <p>Reflected ceiling and electrical plan for a treatment-room suite, with a full electrical legend for permitting/build-out.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-clinic-floorplan.jpg" alt="Medical clinic floor plan with exam rooms and waiting area, drawn in AutoCAD" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Medical Clinic Floor Plan — Commercial</h3>
 <p>Multi-room clinic layout — exam rooms, consultation, waiting and staff areas — drafted to scale for planning use.</p>
@@ -720,120 +882,171 @@ section{padding:52px 0;}
 <p>Vector line-art prepared for CNC/laser cutting — wall-art panels, dimensioned cut outlines and image-to-DXF conversions.</p>
 </div>
 <div class="portfolio-grid">
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-laser.png" alt="Car silhouette wall art design cut on CNC and laser cutting machine" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>CNC &amp; Laser Cut Design</h3>
 <p>Vector line-art design prepared for CNC/laser cutting — outline modeled and cleaned up for a precise, single-pass cut.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-butterfly-panel.jpg" alt="Three-panel butterfly wall art design vectorized for laser cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Three-Panel Butterfly Wall Art</h3>
 <p>Segmented butterfly silhouette split across three panels (36&Prime;&times;60&Prime;), vectorized as clean cut-ready line-art.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-tree-panel.jpg" alt="Three-panel tree and leaf silhouette wall art design vectorized for laser cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Three-Panel Tree Silhouette Wall Art</h3>
 <p>Branching tree and leaf pattern split across three panels (36&Prime;&times;60&Prime;), vectorized for precise cutting.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-terrazzo-panel.jpg" alt="Terrazzo style pebble pattern panel vectorized for CNC cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Terrazzo-Style Pebble Panel</h3>
 <p>Organic pebble/terrazzo pattern vectorized for CNC cutting, prepared at multiple panel sizes (48&Prime;&times;84&Prime; and 36&Prime;&times;60&Prime;).</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-abstract-pattern.jpg" alt="Repeating abstract geometric pattern vectorized for laser cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Repeating Abstract Cut Pattern</h3>
 <p>Continuous interlocking motif vectorized as a repeatable screen/panel pattern for CNC or laser cutting.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-hex-diagram.jpg" alt="Dimensioned hexagon panel outline prepared for CNC fabrication" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Dimensioned Cut Outline</h3>
 <p>Precise vector outline with cut dimensions called out, prepared for CNC/laser fabrication.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-logo-to-dxf-demo.jpg" alt="Illustrated logo converted from a raster image into a clean single-color DXF outline for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Image-to-DXF Logo Conversion</h3>
 <p>A supplied raster logo rebuilt as a clean, single-color vector outline ready for CNC/laser cutting.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-psm-logo.jpg" alt="Circular monogram logo vectorized as a single-color cut-ready outline" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Monogram Logo — Cut-Ready Outline</h3>
 <p>Circular monogram badge traced and cleaned up into a precise single-pass cutting outline.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-club-eagle-logo.jpg" alt="Circular club crest with eagle and ball emblem vectorized for laser cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Club Crest — Cut-Ready Outline</h3>
 <p>Circular club emblem with lettering and center graphic rebuilt as clean vector line-art for cutting.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-event-sponsor-sticker.jpg" alt="Circular event sponsor sticker design with logos and lettering vectorized for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Event Sponsor Badge — Cut-Ready Outline</h3>
 <p>Circular sponsor/banquet sticker design with layered lettering and artwork, vectorized for precise cutting.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-ranch-horse-logo.jpg" alt="Circular ranch logo with horse and mountain scene vectorized as line art for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Ranch Emblem — Cut-Ready Outline</h3>
 <p>Circular ranch/farm emblem with a scenic silhouette scene, converted to clean cut-ready line-art.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-anniversary-fish-logo.jpg" alt="Circular anniversary badge with fish emblem vectorized as two-tone cut-ready art" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Anniversary Badge — Cut-Ready Outline</h3>
 <p>Circular anniversary emblem with a fish graphic and arced lettering, rebuilt as two-tone vector art for cutting.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-western-character-design.jpg" alt="Stylized western character illustration vectorized as bold cut-ready line art" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Character Illustration — Cut-Ready Outline</h3>
 <p>Bold stylized character artwork simplified and vectorized into a clean single-pass cutting outline.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-club-patch-design.jpg" alt="Circular badge design with lettering and center graphic vectorized for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Badge Design — Cut-Ready Outline</h3>
 <p>Arced lettering and a center emblem combined into a clean two-tone vector badge design for cutting.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-electric-company-logo.jpg" alt="Oval company logo with mountain graphic vectorized for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Company Logo — Cut-Ready Outline</h3>
 <p>Oval brand logo with a decorative border and center graphic, converted to clean cut-ready vector art.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-electronics-logo.jpg" alt="Circular company logo with illustrated icon vectorized for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Company Logo — Cut-Ready Outline</h3>
 <p>Circular brand logo with script lettering and an illustrated icon, rebuilt as a clean single-color cutting outline.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="portfolio-cnc-barcode-portrait.jpg" alt="Portrait rendered as a barcode-style striped line art design for laser engraving" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Barcode-Style Portrait Art</h3>
 <p>A portrait reinterpreted as a striped, barcode-style line design — a popular decorative laser/CNC effect.</p>
@@ -849,20 +1062,102 @@ section{padding:52px 0;}
 <p>Alongside 2D drafting, we can produce basic 3D visualizations of a layout when a project calls for it.</p>
 </div>
 <div class="portfolio-grid">
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="render-office-pod.jpg" alt="3D render of a glass-walled garden office pod with interior desk setup" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Garden Office Pod — 3D Render</h3>
 <p>Exterior/interior 3D visualization of a small prefab garden-office pod.</p>
 </div>
 </div>
-<div class="portfolio-card">
+<div class="portfolio-card reveal-el">
+<div class="portfolio-img-wrap">
 <img src="render-office-interior.jpg" alt="3D isometric render of a furnished office interior layout" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
+</div>
 <div class="portfolio-card-body">
 <h3>Office Interior Layout — 3D Render</h3>
 <p>Isometric 3D visualization of a furnished commercial office layout for space planning.</p>
 </div>
 </div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="testimonials">
+<div class="container">
+<div class="section-head reveal-el">
+<div class="section-eyebrow">Client Feedback</div>
+<h2>What Fiverr Clients Say</h2>
+<p>Real reviews from US and international clients, shown as submitted on Fiverr.</p>
+</div>
+<div class="testimonial-carousel reveal-el">
+<div class="testimonial-track">
+<div class="testimonial-slide is-active">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Kamrul was an absolute pleasure to work with. He is very polite, professional, and incredibly easy to communicate with. His work is amazing high quality and he delivered with great attention to detail. He's also very understanding and works quickly without compromising on results. I would highly recommend him for any project.</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">L</span>
+<div>
+<strong>latifaa222</strong>
+<span>&#127468;&#127463; United Kingdom &middot; Fiverr Client</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Kamrul was really excellent to work with! He delivered high quality work quickly, was a great communicator, and followed my instructions really well. I'll definitely work with him in the future on other projects where I could use his expertise!</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">T</span>
+<div>
+<strong>tsoukup</strong>
+<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Excellent service. Showed deep understanding of the requirement from the start, communicated proactively and delivered quality work on a very tight timeline.</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">B</span>
+<div>
+<strong>bettinette</strong>
+<span>&#127466;&#127480; Spain &middot; Fiverr Client</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">From start to finish there was amazing work ethic, patience, creative thinking and professionalism. Highly recommend!!</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">S</span>
+<div>
+<strong>skippingstars</strong>
+<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Very easy process and easy to work with.</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">R</span>
+<div>
+<strong>ramhunter2026</strong>
+<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
+</div>
+</div>
+</div>
+</div>
+<div class="testimonial-dots">
+<button class="testimonial-dot is-active" data-slide="0" aria-label="Show testimonial 1"></button>
+<button class="testimonial-dot" data-slide="1" aria-label="Show testimonial 2"></button>
+<button class="testimonial-dot" data-slide="2" aria-label="Show testimonial 3"></button>
+<button class="testimonial-dot" data-slide="3" aria-label="Show testimonial 4"></button>
+<button class="testimonial-dot" data-slide="4" aria-label="Show testimonial 5"></button>
 </div>
 </div>
 </div>
@@ -879,9 +1174,34 @@ section{padding:52px 0;}
 <h2>Have a Drawing Set That Needs Drafting?</h2>
 <p>Send over your files or scope for a straightforward quote and timeline.</p>
 <div class="cta-actions">
-<a class="btn btn-primary" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Fiverr Profile</a>
+<a class="btn btn-primary btn-glow" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Fiverr Profile</a>
 <a class="btn btn-outline" href="https://wa.me/8801737040429" target="_blank" rel="noopener">Chat on WhatsApp</a>
 <a class="btn btn-outline" href="mailto:akpec.infobd@gmail.com">akpec.infobd@gmail.com</a>
+</div>
+<div class="contact-form-wrap reveal-el">
+<div class="contact-form-card">
+<h3>Or Send Us a Message Directly</h3>
+<form id="contact-form" class="contact-form">
+<div class="form-row">
+<div class="form-field">
+<label for="cf-name">Name</label>
+<input type="text" id="cf-name" name="name" required>
+</div>
+<div class="form-field">
+<label for="cf-email">Email</label>
+<input type="email" id="cf-email" name="email" required>
+</div>
+</div>
+<div class="form-field">
+<label for="cf-message">Project Details</label>
+<textarea id="cf-message" name="message" rows="4" required placeholder="Tell us about your drawings, scope and timeline..."></textarea>
+</div>
+<input type="hidden" name="_subject" value="New inquiry from AKP Design Studio website">
+<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+<button type="submit" class="btn btn-primary" id="cf-submit">Send Message</button>
+<div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
+</form>
+</div>
 </div>
 </div>
 </section>
@@ -1015,6 +1335,108 @@ io2.unobserve(entry.target);
 });
 }, {threshold:0.4});
 nums.forEach(function(el){ io2.observe(el); });
+})();
+
+/* ---- Founder photo parallax on scroll ---- */
+(function(){
+var wrap = document.querySelector('.about-photo-parallax');
+if(!wrap) return;
+var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduceMotion) return;
+var ticking = false;
+function updateParallax(){
+ticking = false;
+var rect = wrap.getBoundingClientRect();
+var vh = window.innerHeight || document.documentElement.clientHeight;
+var center = rect.top + rect.height / 2;
+var offset = (center - vh / 2) * 0.08;
+offset = Math.max(-24, Math.min(24, offset));
+wrap.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+}
+function onScroll(){
+if(!ticking){
+window.requestAnimationFrame(updateParallax);
+ticking = true;
+}
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+window.addEventListener('resize', onScroll);
+updateParallax();
+})();
+
+/* ---- Testimonials auto-rotate carousel ---- */
+(function(){
+var track = document.querySelector('.testimonial-track');
+if(!track) return;
+var slides = Array.prototype.slice.call(track.querySelectorAll('.testimonial-slide'));
+var dots = Array.prototype.slice.call(document.querySelectorAll('.testimonial-dot'));
+if(slides.length < 2) return;
+var current = 0;
+var timer = null;
+var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function goTo(i){
+slides[current].classList.remove('is-active');
+if(dots[current]) dots[current].classList.remove('is-active');
+current = (i + slides.length) % slides.length;
+slides[current].classList.add('is-active');
+if(dots[current]) dots[current].classList.add('is-active');
+}
+function next(){ goTo(current + 1); }
+function stop(){
+if(timer){ clearInterval(timer); timer = null; }
+}
+function start(){
+stop();
+if(reduceMotion) return;
+timer = setInterval(next, 6000);
+}
+dots.forEach(function(dot, i){
+dot.addEventListener('click', function(){
+goTo(i);
+start();
+});
+});
+var carousel = document.querySelector('.testimonial-carousel');
+if(carousel){
+carousel.addEventListener('mouseenter', stop);
+carousel.addEventListener('mouseleave', start);
+carousel.addEventListener('focusin', stop);
+carousel.addEventListener('focusout', start);
+}
+start();
+})();
+
+/* ---- Contact form (FormSubmit AJAX) ---- */
+(function(){
+var form = document.getElementById('contact-form');
+if(!form) return;
+var status = document.getElementById('cf-status');
+var submitBtn = document.getElementById('cf-submit');
+form.addEventListener('submit', function(e){
+e.preventDefault();
+var honey = form.querySelector('[name="_honey"]');
+if(honey && honey.value){ return; }
+submitBtn.disabled = true;
+submitBtn.textContent = 'Sending...';
+status.textContent = '';
+status.className = 'form-status';
+var data = new FormData(form);
+fetch('https://formsubmit.co/ajax/akpec.infobd@gmail.com', {
+method: 'POST',
+headers: { 'Accept': 'application/json' },
+body: data
+}).then(function(res){ return res.json(); }).then(function(){
+status.textContent = "Thanks — your message has been sent. We'll reply within 24 hours.";
+status.className = 'form-status is-success';
+form.reset();
+}).catch(function(){
+status.textContent = 'Something went wrong. Please email us directly at akpec.infobd@gmail.com.';
+status.className = 'form-status is-error';
+}).finally(function(){
+submitBtn.disabled = false;
+submitBtn.textContent = 'Send Message';
+});
+});
 })();
 </script>
 </body>
