@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AKP Design Studio | CAD Drafting &amp; Construction Documentation for US Clients</title>
-<meta name="description" content="AKP Design Studio provides AutoCAD drafting, as-built drawings, MEP &amp; plumbing drawing sets, permit sets, and quantity takeoff/BOQ services for US architects, contractors and builders.">
+<title>AKP Design Studio | 2D CAD Drafting &amp; 3D Architectural Visualization</title>
+<meta name="description" content="AKP Design Studio provides 2D CAD drafting, construction documentation and 3D architectural visualization for contractors, architects, engineers, builders and property professionals across the United States.">
 <style>
 :root{
 --navy:#0B2239;
@@ -29,7 +29,7 @@ line-height:1.25;
 }
 a{color:inherit; text-decoration:none;}
 img{max-width:100%; display:block;}
-.container{max-width:1120px; margin:0 auto; padding:0 24px;}
+.container{max-width:1200px; margin:0 auto; padding:0 24px;}
 .btn{
 display:inline-block;
 padding:14px 28px;
@@ -37,26 +37,20 @@ border-radius:6px;
 font-weight:bold;
 font-family: Calibri, Arial, sans-serif;
 cursor:pointer;
-transition: background .2s ease, transform .15s ease;
+border:none;
+transition: background .2s ease, transform .15s ease, border-color .2s ease, color .2s ease;
 }
 .btn-primary{background:var(--orange); color:#fff;}
 .btn-primary:hover{background:var(--orange-dark); transform:translateY(-1px);}
-.btn-glow{
-position:relative;
-animation:btnPulse 2.6s ease-in-out infinite;
-}
-.btn-glow:hover{animation-play-state:paused;}
-@keyframes btnPulse{
-0%,100%{box-shadow:0 0 0 0 rgba(242,98,39,0.55);}
-50%{box-shadow:0 0 0 12px rgba(242,98,39,0);}
-}
-@media(prefers-reduced-motion: reduce){
-.btn-glow{animation:none;}
-}
 .btn-outline{background:transparent; color:#fff; border:2px solid #fff;}
 .btn-outline:hover{background:rgba(255,255,255,0.12);}
 .btn-outline-navy{background:transparent; color:var(--navy); border:2px solid var(--navy);}
 .btn-outline-navy:hover{background:var(--navy); color:#fff;}
+.btn-text{
+background:none; border:none; color:var(--gray); font-weight:bold; font-size:14px;
+padding:8px 0; text-decoration:underline; text-underline-offset:3px;
+}
+.btn-text:hover{color:var(--orange);}
 
 /* Header */
 header{
@@ -69,21 +63,21 @@ display:flex; align-items:center; justify-content:space-between;
 padding:16px 0;
 }
 .logo{
-color:#fff; font-family:Cambria, Georgia, serif; font-size:22px; font-weight:bold;
-letter-spacing:.3px;
+color:#fff; font-family:Cambria, Georgia, serif; font-size:21px; font-weight:bold;
+letter-spacing:.3px; display:flex; align-items:center; gap:2px;
 }
 .logo span{color:var(--orange);}
-nav ul{display:flex; gap:28px; list-style:none;}
-nav a{color:#dfe4ea; font-size:15px;}
+nav ul{display:flex; gap:26px; list-style:none;}
+nav a{color:#dfe4ea; font-size:14.5px;}
 nav a:hover{color:var(--orange);}
 .nav-cta{display:none;}
-@media(min-width:860px){.nav-cta{display:inline-block;}}
+@media(min-width:900px){.nav-cta{display:inline-block;}}
 
 /* Hero */
 .hero{
 background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
 color:#fff;
-padding:88px 0 96px;
+padding:84px 0 92px;
 overflow:hidden;
 }
 .hero-inner{
@@ -91,14 +85,14 @@ display:flex; flex-wrap:wrap; align-items:center; gap:48px;
 }
 .hero-text{flex:1 1 480px;}
 .hero-eyebrow{
-color:var(--orange); font-weight:bold; font-size:13px;
-letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px;
+color:var(--orange); font-weight:bold; font-size:12.5px;
+letter-spacing:1.5px; text-transform:uppercase; margin-bottom:16px;
 }
 .hero-text h1{
-font-size:40px; color:#fff; margin-bottom:18px;
+font-size:42px; color:#fff; margin-bottom:18px; letter-spacing:.3px;
 }
 .hero-text p{
-font-size:17px; color:#cdd5e0; max-width:560px; margin-bottom:30px;
+font-size:16.5px; color:#cdd5e0; max-width:580px; margin-bottom:30px;
 }
 .hero-actions{display:flex; flex-wrap:wrap; gap:14px;}
 .hero-panel{
@@ -108,7 +102,7 @@ border:1px solid rgba(255,255,255,0.14);
 border-radius:10px;
 padding:28px;
 }
-.hero-panel h3{color:#fff; font-size:17px; margin-bottom:16px;}
+.hero-panel h3{color:#fff; font-size:16px; margin-bottom:16px;}
 .hero-panel ul{list-style:none;}
 .hero-panel li{
 display:flex; gap:10px; align-items:flex-start;
@@ -116,295 +110,234 @@ color:#dfe4ea; font-size:14.5px; margin-bottom:12px;
 }
 .hero-panel li::before{content:"✓"; color:var(--orange); font-weight:bold;}
 
-/* Hero load-in animation */
 .hero-text, .hero-panel{opacity:0; transform:translateY(18px); animation:heroIn .7s ease forwards;}
 .hero-panel{animation-delay:.15s;}
 @keyframes heroIn{to{opacity:1; transform:translateY(0);}}
 
-section{padding:72px 0;}
-.section-head{text-align:center; max-width:640px; margin:0 auto 44px;}
+section{padding:76px 0;}
+.section-head{text-align:center; max-width:680px; margin:0 auto 44px;}
 .section-eyebrow{
-color:var(--orange); font-weight:bold; font-size:13px;
+color:var(--orange); font-weight:bold; font-size:12.5px;
 letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px;
 }
-.section-eyebrow-badge{
-display:inline-block; background:var(--orange); color:#fff;
-padding:6px 18px; border-radius:20px; font-size:12.5px; margin-bottom:16px;
-}
-.section-head h2{font-size:30px; margin-bottom:12px;}
+.section-head h2{font-size:29px; margin-bottom:12px;}
 .section-head p{color:var(--gray); font-size:15.5px;}
 
-/* About / Identity */
-.about{background:#fff;}
-.about-inner{
-display:flex; flex-wrap:wrap; align-items:center; gap:56px;
+/* Service blocks (2D / 3D) */
+.service-block{padding:64px 0;}
+.service-block.alt{background:var(--off-white);}
+.service-block-head{max-width:760px; margin:0 auto 40px; text-align:center;}
+.service-block-num{
+color:var(--orange); font-family:Cambria, Georgia, serif; font-weight:bold;
+font-size:14px; letter-spacing:1px; margin-bottom:8px;
 }
-.about-photo-wrap{
-flex:1 1 260px; max-width:300px; margin:0 auto;
-position:relative;
-}
-.about-photo-parallax{
-position:relative; will-change:transform;
-}
-.about-photo-ring{
-position:absolute; inset:-14px; border:2px solid var(--orange);
-border-radius:50%; opacity:.55;
-animation:ringPulse 3.2s ease-in-out infinite;
-}
-@keyframes ringPulse{
-0%,100%{transform:scale(1); opacity:.5;}
-50%{transform:scale(1.04); opacity:.9;}
-}
-.about-photo{
-width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:50%;
-border:6px solid #fff; box-shadow:0 18px 40px rgba(11,34,57,0.18);
-position:relative; z-index:1;
-}
-.about-text{flex:1 1 520px;}
-.about-title{
-color:var(--gray); font-size:15.5px; font-weight:bold; margin:6px 0 16px;
-}
-.about-bio{color:var(--gray); font-size:15.5px; margin-bottom:28px; max-width:620px;}
-.about-stats{
-display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-gap:18px; margin-bottom:26px;
-}
-.stat{
-background:var(--off-white); border:1px solid var(--border); border-radius:10px;
-padding:16px 14px; text-align:center;
-}
-.stat-num{
-display:block; font-family:Cambria, Georgia, serif; color:var(--navy);
-font-size:26px; font-weight:bold;
-}
-.stat-label{display:block; color:var(--gray); font-size:12px; margin-top:4px;}
-.about-skills{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:8px;}
-.skill-pill{
-background:var(--off-white); border:1px solid var(--border); color:var(--navy);
-font-size:12.5px; font-weight:bold; padding:7px 14px; border-radius:20px;
-}
-
-/* Services */
-.services{background:var(--off-white);}
+.service-block-head h2{font-size:27px; margin-bottom:12px;}
+.service-block-head p{color:var(--gray); font-size:15px;}
 .service-grid{
 display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:22px;
+gap:20px; margin-bottom:32px;
 }
 .service-card{
 background:#fff; border:1px solid var(--border); border-radius:10px;
-padding:26px; position:relative; overflow:hidden;
+padding:24px; position:relative; overflow:hidden;
 transition:box-shadow .25s ease, transform .25s ease, border-color .25s ease;
 }
+.service-block.alt .service-card{background:#fff;}
 .service-card::before{
 content:""; position:absolute; top:0; left:0; right:0; height:3px;
 background:linear-gradient(90deg, var(--orange), var(--orange-dark));
 transform:scaleX(0); transform-origin:left; transition:transform .35s ease;
 }
 .service-card:hover{
-box-shadow:0 14px 28px rgba(11,34,57,0.1); transform:translateY(-5px);
-border-color:rgba(242,98,39,0.35);
+box-shadow:0 12px 24px rgba(11,34,57,0.08); transform:translateY(-4px);
+border-color:rgba(242,98,39,0.3);
 }
 .service-card:hover::before{transform:scaleX(1);}
 .icon-badge{
-width:46px; height:46px; border-radius:10px; background:var(--navy);
+width:44px; height:44px; border-radius:9px; background:var(--navy);
 color:var(--orange); display:flex; align-items:center; justify-content:center;
-margin-bottom:16px; flex-shrink:0;
-transition:transform .35s cubic-bezier(.34,1.56,.64,1), background .25s ease, color .25s ease;
+margin-bottom:15px; flex-shrink:0;
+transition:background .25s ease, color .25s ease;
 }
-.icon-badge svg{width:23px; height:23px;}
-.service-card:hover .icon-badge{
-transform:scale(1.1) rotate(-6deg); background:var(--orange); color:#fff;
+.icon-badge svg{width:22px; height:22px;}
+.service-card:hover .icon-badge{background:var(--orange); color:#fff;}
+.service-card h3{font-size:15.5px; margin-bottom:7px;}
+.service-card p{color:var(--gray); font-size:13.5px;}
+.service-block-attribution{
+text-align:center; color:var(--gray); font-size:13.5px; border-top:1px solid var(--border);
+padding-top:20px; max-width:640px; margin:0 auto;
 }
-.service-card h3{font-size:17px; margin-bottom:8px;}
-.service-card p{color:var(--gray); font-size:14.5px; margin-bottom:14px;}
-.service-price{
-font-family:Cambria, Georgia, serif; color:var(--orange); font-weight:bold; font-size:15px;
-display:inline-flex; align-items:center; gap:6px;
-}
-.service-price::after{
-content:"→"; opacity:0; transform:translateX(-4px);
-transition:opacity .25s ease, transform .25s ease;
-}
-.service-card:hover .service-price::after{opacity:1; transform:translateX(0);}
-.service-card{cursor:pointer;}
-.service-card:focus-visible{outline:2px solid var(--orange); outline-offset:3px;}
+.service-block-attribution strong{color:var(--navy);}
 
-/* Service detail modal */
-.service-modal{
-display:none; position:fixed; inset:0; z-index:999; background:rgba(11,34,57,0.85);
-align-items:center; justify-content:center; padding:24px; overflow:auto;
+/* Additional service categories */
+.service-mini-grid{
+display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px;
 }
-.service-modal.open{display:flex;}
-.service-modal-card{
-background:#fff; border-radius:14px; max-width:560px; width:100%;
-padding:40px 36px 34px; position:relative; margin:auto;
-animation:serviceModalIn .25s ease;
+.service-mini-card{
+background:var(--off-white); border:1px solid var(--border); border-radius:10px;
+padding:24px; text-align:center;
 }
-@keyframes serviceModalIn{
-from{opacity:0; transform:translateY(14px) scale(.98);}
-to{opacity:1; transform:translateY(0) scale(1);}
-}
-.service-modal-close{
-position:absolute; top:16px; right:18px; background:none; border:none; cursor:pointer;
-font-size:28px; line-height:1; color:var(--gray); font-family:Arial, sans-serif;
-}
-.service-modal-close:hover{color:var(--navy);}
-.service-modal-icon{
-width:52px; height:52px; border-radius:12px; background:var(--navy); color:var(--orange);
-display:flex; align-items:center; justify-content:center; margin-bottom:18px;
-}
-.service-modal-icon svg{width:26px; height:26px;}
-.service-modal-card h3{font-size:21px; margin-bottom:8px;}
-.service-modal-price{
-font-family:Cambria, Georgia, serif; color:var(--orange); font-weight:bold; font-size:16px; margin-bottom:20px;
-}
-.service-modal-scope{list-style:none; margin-bottom:28px;}
-.service-modal-scope li{
-position:relative; padding-left:26px; margin-bottom:11px; color:var(--gray); font-size:14.5px; line-height:1.55;
-}
-.service-modal-scope li::before{
-content:"✓"; position:absolute; left:0; top:0; color:var(--orange); font-weight:bold;
-}
-.service-modal-contact{border-top:1px solid var(--border); padding-top:22px;}
-.service-modal-contact-label{font-weight:bold; color:var(--navy); font-size:14.5px; margin-bottom:14px;}
-.service-modal-contact-actions{display:flex; flex-wrap:wrap; gap:10px;}
-.service-modal-contact-actions .btn{padding:11px 18px; font-size:13.5px;}
-@media(max-width:520px){
-.service-modal-card{padding:30px 22px 26px;}
-}
+.service-mini-card .icon-badge{margin:0 auto 14px;}
+.service-mini-card h3{font-size:15px; margin-bottom:8px;}
+.service-mini-card p{color:var(--gray); font-size:13.5px;}
 
-/* Why hire me */
-.why-grid{
-display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:24px;
-}
-.why-item{
-position:relative; overflow:hidden; text-align:center;
-background:#fff; border:1px solid var(--border); border-radius:14px;
-padding:36px 24px 30px;
-transition:transform .35s ease, box-shadow .35s ease, border-color .35s ease;
-}
-.why-item:hover{
-transform:translateY(-7px);
-box-shadow:0 18px 34px rgba(11,34,57,0.12);
-border-color:rgba(242,98,39,0.4);
-}
-.why-icon{
-width:64px; height:64px; border-radius:50%; margin:0 auto 18px; position:relative; z-index:1;
-background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-color:var(--orange); display:flex; align-items:center; justify-content:center;
-box-shadow:0 10px 20px rgba(11,34,57,0.22);
-transition:transform .45s cubic-bezier(.34,1.56,.64,1), background .3s ease, color .3s ease;
-}
-.why-icon svg{width:27px; height:27px;}
-.why-item:hover .why-icon{
-transform:scale(1.14) rotate(10deg);
-background:linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
-color:#fff;
-}
-.why-item h3{position:relative; z-index:1; font-size:16.5px; margin-bottom:8px;}
-.why-item p{position:relative; z-index:1; color:var(--gray); font-size:14.5px;}
-
-/* Process */
-.process{background:var(--off-white);}
-.process-grid{
+/* Step grid (workflow + process, connected line) */
+.step-grid{
 display:grid; grid-template-columns:repeat(4,1fr);
-gap:24px; position:relative; padding-top:8px;
+gap:22px; position:relative; padding-top:8px;
 }
-.process-grid::before{
-content:""; position:absolute; top:46px; left:12.5%; right:12.5%; height:2px;
+.step-grid::before{
+content:""; position:absolute; top:44px; left:12.5%; right:12.5%; height:2px;
 background:var(--border); z-index:0;
 }
-.process-grid::after{
-content:""; position:absolute; top:46px; left:12.5%; right:12.5%; height:2px;
+.step-grid::after{
+content:""; position:absolute; top:44px; left:12.5%; right:12.5%; height:2px;
 background:linear-gradient(90deg, var(--orange), var(--orange-dark));
-transform:scaleX(0); transform-origin:left; transition:transform 1.2s ease .1s; z-index:0;
+transform:scaleX(0); transform-origin:left; transition:transform 1.1s ease .1s; z-index:0;
 }
-.process-grid.in-view::after{transform:scaleX(1);}
+.step-grid.in-view::after{transform:scaleX(1);}
 @media(max-width:860px){
-.process-grid{grid-template-columns:1fr; gap:18px;}
-.process-grid::before, .process-grid::after{display:none;}
+.step-grid{grid-template-columns:1fr; gap:16px;}
+.step-grid::before, .step-grid::after{display:none;}
 }
-.process-step{
-background:#fff; border:1px solid var(--border); border-radius:10px; padding:28px 20px 22px;
+.step-card{
+background:#fff; border:1px solid var(--border); border-radius:10px; padding:26px 18px 20px;
 position:relative; z-index:1; text-align:center;
 transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
 }
-.process-step:hover{
-transform:translateY(-6px); box-shadow:0 16px 30px rgba(11,34,57,0.12);
-border-color:rgba(242,98,39,0.35);
+.step-card:hover{
+transform:translateY(-5px); box-shadow:0 14px 26px rgba(11,34,57,0.1);
+border-color:rgba(242,98,39,0.3);
 }
-.process-step .icon-badge{
-width:44px; height:44px; border-radius:50%; margin:0 auto 14px;
-background:var(--navy); color:var(--orange);
+.step-card .icon-badge{
+width:42px; height:42px; border-radius:50%; margin:0 auto 12px;
 box-shadow:0 0 0 6px #fff, 0 0 0 7px var(--border);
-transition:transform .4s cubic-bezier(.34,1.56,.64,1), background .3s ease, color .3s ease, box-shadow .3s ease;
-}
-.process-step:hover .icon-badge{
-transform:scale(1.14); background:var(--orange); color:#fff;
-box-shadow:0 0 0 6px #fff, 0 0 0 7px rgba(242,98,39,0.5);
 }
 .step-tag{
-display:block; color:var(--orange); font-weight:bold; font-size:11.5px;
+display:block; color:var(--orange); font-weight:bold; font-size:11px;
 letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;
 }
-.process-step h3{font-size:15.5px; margin-bottom:6px;}
-.process-step p{color:var(--gray); font-size:14px;}
+.step-card h3{font-size:14.5px; margin-bottom:6px;}
+.step-card p{color:var(--gray); font-size:13.5px;}
+.workflow-summary{
+text-align:center; margin-top:34px; font-family:Cambria, Georgia, serif; color:var(--navy);
+font-size:16px; font-weight:bold;
+}
+
+/* About */
+.about-body{max-width:780px; margin:0 auto; text-align:center;}
+.about-body p{color:var(--gray); font-size:15.5px; margin-bottom:18px;}
+.about-body p:last-child{margin-bottom:0;}
+
+/* Team */
+.team-grid{
+display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px; align-items:stretch;
+}
+.team-card{
+background:#fff; border:1px solid var(--border); border-radius:14px;
+padding:36px 30px 30px; text-align:center;
+display:flex; flex-direction:column;
+transition:box-shadow .3s ease, transform .3s ease;
+}
+.team-card:hover{box-shadow:0 18px 34px rgba(11,34,57,0.1); transform:translateY(-4px);}
+.team-photo{
+width:120px; height:120px; border-radius:50%; object-fit:cover; margin:0 auto 18px;
+border:4px solid var(--off-white); box-shadow:0 8px 20px rgba(11,34,57,0.15);
+}
+.team-card h3{font-size:19px; margin-bottom:4px;}
+.team-specialty{color:var(--orange); font-weight:bold; font-size:13px; margin-bottom:20px;}
+.team-stats{
+display:grid; grid-template-columns:repeat(auto-fit,minmax(90px,1fr));
+gap:12px; margin-bottom:20px;
+}
+.team-stats .stat{
+background:var(--off-white); border:1px solid var(--border); border-radius:8px;
+padding:12px 8px;
+}
+.team-stats .stat-num{
+display:block; font-family:Cambria, Georgia, serif; color:var(--navy);
+font-size:20px; font-weight:bold;
+}
+.team-stats .stat-label{display:block; color:var(--gray); font-size:11px; margin-top:3px;}
+.team-expertise{color:var(--gray); font-size:13px; margin-bottom:22px; padding-bottom:22px; border-bottom:1px solid var(--border);}
+.team-expertise strong{color:var(--navy); display:block; margin-bottom:4px; font-size:12.5px; text-transform:uppercase; letter-spacing:.5px;}
+.team-card .btn{margin-top:auto; align-self:center;}
+
+/* Why AKP */
+.why-grid{
+display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:22px;
+}
+.why-item{
+text-align:center;
+background:#fff; border:1px solid var(--border); border-radius:12px;
+padding:30px 22px 26px;
+transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.why-item:hover{
+transform:translateY(-5px);
+box-shadow:0 14px 26px rgba(11,34,57,0.1);
+border-color:rgba(242,98,39,0.3);
+}
+.why-icon{
+width:56px; height:56px; border-radius:50%; margin:0 auto 16px;
+background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+color:var(--orange); display:flex; align-items:center; justify-content:center;
+box-shadow:0 8px 16px rgba(11,34,57,0.2);
+transition:transform .35s ease, background .25s ease, color .25s ease;
+}
+.why-icon svg{width:24px; height:24px;}
+.why-item:hover .why-icon{
+transform:scale(1.08);
+background:linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+color:#fff;
+}
+.why-item h3{font-size:15.5px; margin-bottom:8px;}
+.why-item p{color:var(--gray); font-size:13.5px;}
 
 /* Portfolio */
+.portfolio-filter-bar{
+display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:36px;
+}
+.filter-btn{
+background:#fff; border:1.5px solid var(--border); color:var(--navy);
+font-weight:bold; font-size:13px; padding:9px 20px; border-radius:24px;
+cursor:pointer; transition:background .2s ease, color .2s ease, border-color .2s ease;
+font-family:Calibri, Arial, sans-serif;
+}
+.filter-btn:hover{border-color:rgba(242,98,39,0.5);}
+.filter-btn.is-active{background:var(--navy); border-color:var(--navy); color:#fff;}
 .portfolio-grid{
-display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:26px;
+display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:24px;
 }
 .portfolio-card{
 background:#fff; border:1px solid var(--border); border-radius:10px; overflow:hidden;
 transition:box-shadow .3s ease, transform .3s ease;
 }
-.portfolio-card:hover{box-shadow:0 14px 30px rgba(11,34,57,0.12); transform:translateY(-5px);}
+.portfolio-card.is-hidden{display:none;}
+.portfolio-card:hover{box-shadow:0 14px 28px rgba(11,34,57,0.1); transform:translateY(-4px);}
 .portfolio-img-wrap{position:relative; overflow:hidden; border-bottom:1px solid var(--border);}
 .portfolio-card img{width:100%; height:auto; display:block; transition:transform .5s ease; cursor:zoom-in;}
-.portfolio-card:hover img{transform:scale(1.09);}
+.portfolio-card:hover img{transform:scale(1.07);}
 .portfolio-img-overlay{
 position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
 background:linear-gradient(0deg, rgba(11,34,57,0.75) 0%, rgba(11,34,57,0.15) 60%, rgba(11,34,57,0) 100%);
 opacity:0; transition:opacity .3s ease; pointer-events:none;
 }
 .portfolio-img-overlay span{
-color:#fff; font-size:13px; font-weight:bold; letter-spacing:.3px;
-padding:8px 16px; border:1.5px solid rgba(255,255,255,0.7); border-radius:20px;
-transform:translateY(8px); transition:transform .35s ease;
+color:#fff; font-size:12.5px; font-weight:bold; letter-spacing:.3px;
+padding:7px 15px; border:1.5px solid rgba(255,255,255,0.7); border-radius:20px;
 }
 .portfolio-card:hover .portfolio-img-overlay{opacity:1;}
-.portfolio-card:hover .portfolio-img-overlay span{transform:translateY(0);}
-.portfolio-card-body{padding:20px 22px;}
-.portfolio-card h3{font-size:16px; margin-bottom:6px;}
-.portfolio-card p{color:var(--gray); font-size:14px;}
-
-/* Portfolio folders */
-.folder-grid{
-display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:26px; margin-bottom:8px;
+.portfolio-card-body{padding:18px 20px;}
+.portfolio-tag{
+display:inline-block; background:var(--off-white); color:var(--orange); font-size:11px; font-weight:bold;
+padding:3px 10px; border-radius:12px; margin-bottom:9px; letter-spacing:.3px; text-transform:uppercase;
 }
-.folder-card{
-background:#fff; border:2px solid var(--border); border-radius:10px; overflow:hidden; cursor:pointer;
-transition:box-shadow .2s ease, transform .2s ease, border-color .2s ease;
-}
-.folder-card:hover{box-shadow:0 10px 24px rgba(11,34,57,0.08); transform:translateY(-3px);}
-.folder-card.open{border-color:var(--orange);}
-.folder-cover-wrap{position:relative; overflow:hidden;}
-.folder-cover{width:100%; height:190px; object-fit:cover; display:block; border-bottom:1px solid var(--border); transition:transform .3s ease;}
-.folder-card:hover .folder-cover{transform:scale(1.05);}
-.folder-badge{
-position:absolute; top:10px; right:10px; background:rgba(11,34,57,0.85); color:#fff;
-font-size:11.5px; padding:4px 10px; border-radius:20px; font-weight:bold;
-}
-.folder-card-body{padding:18px 20px;}
-.folder-card-body h3{font-size:16px; margin-bottom:5px;}
-.folder-card-body p{color:var(--gray); font-size:13.5px;}
-.folder-content{margin-top:40px; padding-top:34px; border-top:1px dashed var(--border);}
-.folder-content-head{text-align:center; max-width:640px; margin:0 auto 30px;}
-.folder-content-head h3{font-size:20px; margin-bottom:8px;}
-.folder-content-head p{color:var(--gray); font-size:14.5px;}
+.portfolio-card h3{font-size:15px; margin-bottom:6px;}
+.portfolio-card p{color:var(--gray); font-size:13.5px;}
 
 /* Lightbox */
 .lightbox{
@@ -436,11 +369,11 @@ border-radius:8px; padding:22px 26px; font-size:14.5px; color:var(--gray); max-w
 /* Testimonials */
 #testimonials{background:var(--off-white);}
 .testimonial-carousel{max-width:760px; margin:0 auto;}
-.testimonial-track{position:relative; min-height:300px;}
+.testimonial-track{position:relative; min-height:280px;}
 .testimonial-slide{
 position:absolute; inset:0;
 background:#fff; border:1px solid var(--border); border-radius:14px;
-padding:44px 40px 34px;
+padding:40px 38px 30px;
 display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
 opacity:0; visibility:hidden;
 transition:opacity .7s ease, visibility 0s linear .7s;
@@ -450,49 +383,50 @@ opacity:1; visibility:visible;
 transition:opacity .7s ease, visibility 0s linear 0s;
 position:relative;
 }
-.testimonial-stars{color:var(--orange); font-size:17px; letter-spacing:3px; margin-bottom:16px;}
-.testimonial-quote{font-family:Cambria, Georgia, serif; font-style:italic; font-size:18px; color:var(--navy); line-height:1.55; margin-bottom:22px;}
+.testimonial-stars{color:var(--orange); font-size:16px; letter-spacing:3px; margin-bottom:14px;}
+.testimonial-quote{font-family:Cambria, Georgia, serif; font-style:italic; font-size:17px; color:var(--navy); line-height:1.55; margin-bottom:20px;}
 .testimonial-author{display:flex; align-items:center; justify-content:center; gap:12px;}
 .testimonial-avatar{
-width:42px; height:42px; border-radius:50%; background:var(--navy); color:var(--orange);
-display:flex; align-items:center; justify-content:center; font-weight:bold; font-family:Cambria, Georgia, serif; font-size:16px;
+width:40px; height:40px; border-radius:50%; background:var(--navy); color:var(--orange);
+display:flex; align-items:center; justify-content:center; font-weight:bold; font-family:Cambria, Georgia, serif; font-size:15px;
 flex-shrink:0;
 }
-.testimonial-author div{text-align:left; font-size:13.5px; color:var(--gray);}
-.testimonial-author strong{display:block; color:var(--navy); font-size:15px; font-family:Calibri, Arial, sans-serif;}
-.testimonial-dots{display:flex; justify-content:center; gap:10px; margin-top:26px;}
+.testimonial-author div{text-align:left; font-size:13px; color:var(--gray);}
+.testimonial-author strong{display:block; color:var(--navy); font-size:14.5px; font-family:Calibri, Arial, sans-serif;}
+.testimonial-dots{display:flex; justify-content:center; gap:10px; margin-top:24px;}
 .testimonial-dot{
-width:10px; height:10px; border-radius:50%; border:none; padding:0;
+width:9px; height:9px; border-radius:50%; border:none; padding:0;
 background:var(--border); cursor:pointer; transition:background .25s ease, transform .25s ease;
 }
 .testimonial-dot.is-active{background:var(--orange); transform:scale(1.25);}
-@media(prefers-reduced-motion: reduce){
-.testimonial-slide{transition:opacity .3s ease, visibility 0s linear 0s;}
-}
 @media(max-width:600px){
-.testimonial-slide{padding:32px 22px 26px;}
-.testimonial-quote{font-size:16px;}
+.testimonial-slide{padding:30px 22px 24px;}
+.testimonial-quote{font-size:15.5px;}
 }
 
 /* Contact form */
-.contact-form-wrap{max-width:560px; margin:44px auto 0;}
-.contact-form-card{
-background:#fff; border-radius:14px; padding:34px 32px; text-align:left;
-box-shadow:0 20px 50px rgba(0,0,0,0.25);
+.contact-layout{
+display:grid; grid-template-columns:1.3fr 1fr; gap:44px; align-items:start;
 }
-.contact-form-card h3{color:var(--navy); font-size:19px; margin-bottom:20px; text-align:center;}
+@media(max-width:860px){.contact-layout{grid-template-columns:1fr;}}
+.contact-form-card{
+background:#fff; border-radius:14px; padding:36px 34px; text-align:left;
+border:1px solid var(--border); box-shadow:0 16px 36px rgba(11,34,57,0.06);
+}
 .form-row{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
-.form-field{margin-bottom:16px;}
+.form-field{margin-bottom:18px;}
 .form-field label{display:block; font-size:13px; font-weight:bold; color:var(--navy); margin-bottom:6px;}
-.form-field input, .form-field textarea{
+.form-field .optional{color:var(--gray); font-weight:normal; text-transform:none; font-size:12px;}
+.form-field input, .form-field textarea, .form-field select{
 width:100%; padding:11px 13px; border:1px solid var(--border); border-radius:6px;
 font-family:inherit; font-size:14.5px; color:#222; transition:border-color .2s ease, box-shadow .2s ease;
-resize:vertical;
+resize:vertical; background:#fff;
 }
-.form-field input:focus, .form-field textarea:focus{
+.form-field input:focus, .form-field textarea:focus, .form-field select:focus{
 outline:none; border-color:var(--orange); box-shadow:0 0 0 3px rgba(242,98,39,0.15);
 }
-#cf-submit{width:100%; border:none;}
+.form-field input[type="file"]{padding:9px 10px; font-size:13.5px;}
+#cf-submit{width:100%; border:none; margin-top:4px;}
 #cf-submit:disabled{opacity:.65; cursor:not-allowed;}
 .form-status{margin-top:14px; font-size:14px; text-align:center; min-height:20px;}
 .form-status.is-success{color:#1a7d3a;}
@@ -501,15 +435,20 @@ outline:none; border-color:var(--orange); box-shadow:0 0 0 3px rgba(242,98,39,0.
 .form-row{grid-template-columns:1fr;}
 .contact-form-card{padding:26px 22px;}
 }
-
-/* CTA */
-.cta{
-background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-color:#fff; text-align:center;
+.contact-direct{padding-top:6px;}
+.contact-direct h3{font-size:17px; margin-bottom:16px;}
+.contact-direct-list{list-style:none;}
+.contact-direct-list li{margin-bottom:14px;}
+.contact-direct-list .btn{width:100%; text-align:center;}
+.contact-fiverr-link{
+display:inline-block; margin-top:10px; font-size:13px; color:var(--gray); text-decoration:underline; text-underline-offset:3px;
 }
-.cta h2{color:#fff; font-size:28px; margin-bottom:14px;}
-.cta p{color:#cdd5e0; margin-bottom:28px; font-size:15.5px;}
-.cta-actions{display:flex; flex-wrap:wrap; gap:14px; justify-content:center;}
+.contact-fiverr-link:hover{color:var(--orange);}
+
+/* CTA (top nav start-project) */
+.nav-cta{
+display:none;
+}
 
 /* Footer */
 footer{background:#08192b; color:#aab4c0; padding:44px 0 28px; font-size:14px;}
@@ -529,15 +468,15 @@ display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; color:#7c
 nav ul{display:none;}
 .hero-text h1{font-size:30px;}
 section{padding:52px 0;}
+.service-block{padding:44px 0;}
 }
 
 /* Scroll-reveal (site-wide dynamic motion) */
-.reveal-el{opacity:0; transform:translateY(26px); transition:opacity .6s ease, transform .6s ease;}
+.reveal-el{opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease;}
 .reveal-el.in-view{opacity:1; transform:translateY(0);}
 @media(prefers-reduced-motion: reduce){
 .reveal-el{opacity:1; transform:none; transition:none;}
 .hero-text, .hero-panel{animation:none; opacity:1; transform:none;}
-.about-photo-ring{animation:none;}
 }
 </style>
 </head>
@@ -550,232 +489,686 @@ section{padding:52px 0;}
 <ul>
 <li><a href="#about">About</a></li>
 <li><a href="#services">Services</a></li>
-<li><a href="#why">Why Us</a></li>
-<li><a href="#process">Process</a></li>
-<li><a href="#testimonials">Testimonials</a></li>
 <li><a href="#portfolio">Portfolio</a></li>
+<li><a href="#team">Team</a></li>
+<li><a href="#why">Why AKP</a></li>
+<li><a href="#process">Process</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
-<a class="btn btn-primary nav-cta" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Fiverr Profile</a>
+<a class="btn btn-primary nav-cta" href="#contact">Start Your Project</a>
 </div>
 </header>
 
 <section class="hero">
 <div class="container hero-inner">
 <div class="hero-text">
-<div class="hero-eyebrow">CAD Drafting &amp; Construction Documentation</div>
-<h1>Clean, Accurate CAD Drawings for US Architects, Contractors &amp; Builders</h1>
-<p>AKP Design Studio converts sketches, scans and site photos into precise AutoCAD drawing sets — as-builts, permit sets, MEP/plumbing drawings and quantity takeoffs — delivered on schedule and ready for your review.</p>
+<div class="hero-eyebrow">2D CAD &middot; Construction Documentation &middot; 3D Architectural Visualization</div>
+<h1>AKP Design Studio</h1>
+<p>Technical CAD documentation and architectural visualization working together on the same project. We help contractors, architects, engineers, builders and property professionals turn plans, sketches and ideas into accurate technical drawings and professional architectural visualizations.</p>
 <div class="hero-actions">
-<a class="btn btn-primary btn-glow" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Fiverr Profile</a>
-<a class="btn btn-outline" href="https://wa.me/8801737040429" target="_blank" rel="noopener">Chat on WhatsApp</a>
-<a class="btn btn-outline" href="mailto:akpec.infobd@gmail.com">Email Us</a>
+<a class="btn btn-primary" href="#contact">Start Your Project</a>
+<a class="btn btn-outline" href="#portfolio">View Our Work</a>
 </div>
 </div>
 <div class="hero-panel">
-<h3>What you get</h3>
+<h3>What we bring to a project</h3>
 <ul>
-<li>Drawings drafted by a team with 13+ years of hands-on CAD experience</li>
-<li>Clear file handoff — DWG, PDF, and vector formats as needed</li>
-<li>Direct communication throughout the project, not a support queue</li>
+<li>Two specialized disciplines — CAD documentation and 3D visualization — coordinated under one studio</li>
+<li>13+ years of CAD drafting experience and 10+ years of 3D visualization experience</li>
+<li>Direct communication with the specialist working on your project, not a support queue</li>
 <li>Dhaka-based studio, built specifically to serve US project timelines</li>
 </ul>
 </div>
 </div>
 </section>
 
-<section class="about" id="about">
+<section class="service-block" id="services">
 <div class="container">
-<div class="about-inner">
-<div class="about-photo-wrap reveal-el">
-<div class="about-photo-parallax">
-<div class="about-photo-ring"></div>
-<img class="about-photo" src="kamrul-shohag.jpg" alt="Kamrul Shohag, Founder of AKP Design Studio">
-</div>
-</div>
-<div class="about-text reveal-el">
-<div class="section-eyebrow">Who You're Working With</div>
-<h2>Kamrul Shohag</h2>
-<div class="about-title">Construction CAD Drafting Specialist &middot; Founder &amp; CEO, AKP Design Studio</div>
-<p class="about-bio">Helping U.S. contractors, architects, engineers and fabrication shops turn sketches, PDFs and markups into accurate, construction-ready CAD drawings. Backed by 13+ years of hands-on drafting experience and 1,500+ CAD projects delivered, I specialize in floor plans, permit drawing support, plumbing layouts, PDF-to-AutoCAD conversion and production-ready DXF files for CNC, laser, plasma and waterjet cutting.</p>
-
-<div class="about-stats">
-<div class="stat"><span class="stat-num" data-count="13" data-suffix="+">0</span><span class="stat-label">Years Experience</span></div>
-<div class="stat"><span class="stat-num" data-count="1500" data-suffix="+">0</span><span class="stat-label">CAD Projects Delivered</span></div>
-<div class="stat"><span class="stat-num" data-count="4.9" data-decimals="1">0</span><span class="stat-label">Fiverr Rating &middot; 92 Reviews</span></div>
-<div class="stat"><span class="stat-num" data-count="2" data-prefix="Level ">0</span><span class="stat-label">Fiverr Seller Level</span></div>
-</div>
-
-<div class="about-skills">
-<span class="skill-pill">Civil Engineer</span>
-<span class="skill-pill">Building Architect</span>
-<span class="skill-pill">AutoCAD &amp; AutoCAD MEP Expert</span>
-<span class="skill-pill">2D Drafter</span>
-<span class="skill-pill">Landscape &amp; Site Plans</span>
-<span class="skill-pill">Commercial Building Design</span>
-<span class="skill-pill">Laser / CNC Cutting Expert</span>
-<span class="skill-pill">Floor Plan Designer</span>
-</div>
-
-<div class="hero-actions" style="margin-top:26px;">
-<a class="btn btn-primary" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Fiverr Profile</a>
-<a class="btn btn-outline-navy" href="#contact">Get In Touch</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<section class="services" id="services">
-<div class="container">
-<div class="section-head reveal-el">
-<div class="section-eyebrow">Services</div>
-<h2>Drafting &amp; Documentation Services</h2>
-<p>Straightforward scopes and transparent starting prices. Final quotes depend on sheet count, complexity and turnaround.</p>
+<div class="service-block-head reveal-el">
+<div class="service-block-num">01 &mdash; 2D CAD &amp; Construction Documentation</div>
+<h2>Technical Drafting for Construction Workflows</h2>
+<p>Technical CAD drafting and construction documentation for residential, commercial and project-based workflows.</p>
 </div>
 <div class="service-grid">
-<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('pdf-dwg')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('pdf-dwg');}">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h6l3 3v13H5z"/><path d="M11 4v3h3"/><path d="M15 12h5m0 0-2-2m2 2-2 2"/></svg></div>
-<h3>PDF to DWG Conversion</h3>
-<p>Scanned or PDF drawings redrawn as clean, editable AutoCAD DWG files with accurate layers and dimensions.</p>
-<div class="service-price">From $50 / sheet</div>
+<div class="service-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+<h3>2D CAD Drafting</h3>
+<p>Layouts, plans and technical drawings prepared to scale in AutoCAD.</p>
 </div>
-<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('sketch-cad')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('sketch-cad');}">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg></div>
-<h3>Hand Sketch to CAD</h3>
-<p>Hand-drawn sketches or field notes converted into properly scaled, dimensioned CAD drawings.</p>
-<div class="service-price">From $65 / sheet</div>
-</div>
-<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('mep-plumbing')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('mep-plumbing');}">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 13h5l-2 8 9-11h-5z"/></svg></div>
-<h3>MEP &amp; Plumbing Drafting</h3>
-<p>Mechanical, electrical and plumbing drawing sets coordinated with your architectural base plans.</p>
-<div class="service-price">From $75 / sheet</div>
-</div>
-<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('as-built')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('as-built');}">
+<div class="service-card reveal-el">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-5 8 5v12"/><path d="M4 21h16"/><path d="M9 21v-6h6v6"/></svg></div>
-<h3>As-Built Drawings</h3>
-<p>Field-verified as-built documentation produced from site photos, measurements or redlines.</p>
-<div class="service-price">From $250 / project</div>
+<h3>Floor Plans</h3>
+<p>Residential and commercial floor plans, fully dimensioned and ready for review.</p>
 </div>
-<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('permit-sets')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('permit-sets');}">
+<div class="service-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg></div>
+<h3>PDF / Sketch to AutoCAD</h3>
+<p>Scanned drawings, PDFs and hand sketches converted into clean, editable CAD files.</p>
+</div>
+<div class="service-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h6l3 3v13H5z"/><path d="M11 4v3h3"/><path d="M9 12h4M9 16h4"/></svg></div>
+<h3>Construction Drawings</h3>
+<p>Detailed construction documentation coordinated across your drawing set.</p>
+</div>
+<div class="service-card reveal-el">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10v9h12v-9"/><path d="M10 14.5l1.5 1.5 2.5-3"/></svg></div>
-<h3>Residential Permit Sets</h3>
-<p>Full residential permit drawing sets prepared for submission — your licensed professional of record reviews and seals as required by your jurisdiction.</p>
-<div class="service-price">From $350 / set</div>
+<h3>Permit Drawing Support</h3>
+<p>Drawings prepared for permit submission, coordinated with your engineer of record.</p>
 </div>
-<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('boq')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('boq');}">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M8 7h8M8 11h3m3 0h2M8 15h3m3 0h2"/></svg></div>
-<h3>Quantity Takeoff / BOQ</h3>
-<p>Material takeoffs and bills of quantities prepared using PlanSwift and Bluebeam for accurate estimating.</p>
-<div class="service-price">From $150 / project</div>
+<div class="service-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/></svg></div>
+<h3>As-Built Drawings</h3>
+<p>Field-verified documentation produced from site photos, measurements or redlines.</p>
 </div>
-<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('3d-render')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('3d-render');}">
+</div>
+<div class="service-block-attribution reveal-el">
+Professional lead: <strong>Kamrul Shohag</strong> &nbsp;|&nbsp; Specialization: 2D CAD &amp; Construction Documentation
+</div>
+</div>
+</section>
+
+<section class="service-block alt">
+<div class="container">
+<div class="service-block-head reveal-el">
+<div class="service-block-num">02 &mdash; 3D Architectural Visualization &amp; Design</div>
+<h2>Professional Visualization for Design Communication</h2>
+<p>Professional architectural modeling and visualization for communicating design ideas clearly and presenting projects professionally.</p>
+</div>
+<div class="service-grid">
+<div class="service-card reveal-el">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg></div>
-<h3>3D Rendering &amp; Visualization</h3>
-<p>Basic interior or exterior 3D visualization of a layout alongside your 2D drafting — useful for presentations and client walkthroughs.</p>
-<div class="service-price">From $100 / render</div>
+<h3>Architectural 3D Modeling</h3>
+<p>Accurate 3D models built from your 2D plans or design concept.</p>
+</div>
+<div class="service-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/></svg></div>
+<h3>Exterior Visualization</h3>
+<p>Photorealistic exterior renders for presentations and marketing.</p>
+</div>
+<div class="service-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 15l5-4 4 3 5-5 4 3"/></svg></div>
+<h3>Interior Visualization</h3>
+<p>Detailed interior renders that communicate materials, lighting and layout.</p>
+</div>
+<div class="service-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.4"/></svg></div>
+<h3>Photorealistic Rendering</h3>
+<p>High-quality still renders for client presentations and approvals.</p>
+</div>
+<div class="service-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 16v5"/></svg></div>
+<h3>Architectural Presentation</h3>
+<p>Presentation boards and visual sets prepared for client or stakeholder review.</p>
+</div>
+<div class="service-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l14 8-14 8V4z"/></svg></div>
+<h3>3D Walkthrough &amp; Animation</h3>
+<p>Animated walkthroughs that bring a design to life before it's built.</p>
+</div>
+</div>
+<div class="service-block-attribution reveal-el">
+Professional lead: <strong>Rayhan Saykat</strong> &nbsp;|&nbsp; Specialization: 3D Architectural Visualization &amp; Design
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-head reveal-el">
+<div class="section-eyebrow">Additional Capabilities</div>
+<h2>More Ways We Support a Project</h2>
+</div>
+<div class="service-mini-grid">
+<div class="service-mini-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 13h5l-2 8 9-11h-5z"/></svg></div>
+<h3>MEP &amp; Plumbing</h3>
+<p>Mechanical, electrical and plumbing drawing sets coordinated with your architectural base plans.</p>
+</div>
+<div class="service-mini-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.2"/><circle cx="6" cy="17" r="2.2"/><path d="M7.8 8.4 20 20M7.8 15.6 20 4"/></svg></div>
+<h3>Fabrication &amp; Production Files</h3>
+<p>Vector line-art and DXF files prepared for CNC, laser, plasma and waterjet cutting.</p>
+</div>
+<div class="service-mini-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M8 7h8M8 11h3m3 0h2M8 15h3m3 0h2"/></svg></div>
+<h3>Estimating / Quantity Takeoff</h3>
+<p>Material takeoffs and bills of quantities prepared using PlanSwift and Bluebeam.</p>
 </div>
 </div>
 </div>
 </section>
 
-<div class="service-modal" id="serviceModal" onclick="closeServiceModalOnOverlay(event)">
-<div class="service-modal-card" role="dialog" aria-modal="true" aria-labelledby="smTitle">
-<button class="service-modal-close" onclick="closeServiceModal()" aria-label="Close">&times;</button>
-<div class="service-modal-icon" id="smIcon"></div>
-<h3 id="smTitle"></h3>
-<div class="service-modal-price" id="smPrice"></div>
-<ul class="service-modal-scope" id="smScope"></ul>
-<div class="service-modal-contact">
-<div class="service-modal-contact-label">Ready to get started?</div>
-<div class="service-modal-contact-actions">
-<a class="btn btn-primary" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Fiverr Profile</a>
-<a class="btn btn-outline-navy" href="https://wa.me/8801737040429" target="_blank" rel="noopener">Chat on WhatsApp</a>
-<a class="btn btn-outline-navy" href="mailto:akpec.infobd@gmail.com">Email Us</a>
+<section style="background:var(--off-white);">
+<div class="container">
+<div class="section-head reveal-el">
+<div class="section-eyebrow">From Drawing to Visualization</div>
+<h2>One Project, Two Coordinated Capabilities</h2>
+<p>Both disciplines can work together on the same project, moving seamlessly from technical documentation to professional visualization.</p>
+</div>
+<div class="step-grid reveal-el">
+<div class="step-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+<span class="step-tag">Step 01</span>
+<h3>2D CAD</h3>
+<p>Plans, layouts, technical drawings and construction documentation.</p>
+</div>
+<div class="step-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg></div>
+<span class="step-tag">Step 02</span>
+<h3>3D Model</h3>
+<p>Architectural model development based on approved drawings.</p>
+</div>
+<div class="step-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.4"/></svg></div>
+<span class="step-tag">Step 03</span>
+<h3>Visualization</h3>
+<p>Interior / exterior rendering and presentation.</p>
+</div>
+<div class="step-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 16v5"/></svg></div>
+<span class="step-tag">Step 04</span>
+<h3>Final Presentation</h3>
+<p>Professional project visuals ready for client presentation, marketing or project communication.</p>
+</div>
+</div>
+<div class="workflow-summary reveal-el">One project. Two specialized capabilities. One coordinated studio.</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container">
+<div class="section-head reveal-el">
+<div class="section-eyebrow">About AKP Design Studio</div>
+<h2>A Studio Built Around Two Disciplines</h2>
+</div>
+<div class="about-body reveal-el">
+<p>AKP Design Studio is a specialized drafting and visualization studio operating under AKP Engineers &amp; Construction. We combine technical 2D CAD and construction documentation with professional 3D architectural visualization to help clients move from drawings to presentation-ready visuals.</p>
+<p>Established July 2023 in Dhaka, Bangladesh, we focus on serving contractors, architects, engineers, builders and property professionals across the United States.</p>
+<p>The studio is led by two specialists — one in technical CAD documentation, one in architectural visualization — working together under one coordinated process.</p>
+</div>
+</div>
+</section>
+
+<section id="team" style="background:var(--off-white);">
+<div class="container">
+<div class="section-head reveal-el">
+<div class="section-eyebrow">Meet the Team</div>
+<h2>Meet the Team</h2>
+<p>Two specialized skill sets working together under one studio.</p>
+</div>
+<div class="team-grid">
+<div class="team-card reveal-el">
+<img class="team-photo" src="kamrul-shohag.jpg" alt="Kamrul Shohag, 2D CAD &amp; Construction Documentation lead at AKP Design Studio">
+<h3>Kamrul Shohag</h3>
+<div class="team-specialty">2D CAD &amp; Construction Documentation</div>
+<div class="team-stats">
+<div class="stat"><span class="stat-num" data-count="13" data-suffix="+">0</span><span class="stat-label">Years Experience</span></div>
+<div class="stat"><span class="stat-num" data-count="1500" data-suffix="+">0</span><span class="stat-label">CAD Projects</span></div>
+<div class="stat"><span class="stat-num" data-count="4.9" data-decimals="1">0</span><span class="stat-label">Rating &middot; 92 Reviews</span></div>
+</div>
+<div class="team-expertise">
+<strong>Background</strong>
+Civil &amp; Plumbing Engineering
+<br><strong style="margin-top:8px; display:block;">Expertise</strong>
+AutoCAD &middot; AutoCAD MEP &middot; CAD Drafting
+</div>
+<button class="btn btn-outline-navy" onclick="goToPortfolio('2d-cad')">View Profile</button>
+</div>
+<div class="team-card reveal-el">
+<img class="team-photo" src="rayhan-saykat.jpg" alt="Rayhan Saykat, 3D Architectural Visualization &amp; Design lead at AKP Design Studio">
+<h3>Rayhan Saykat</h3>
+<div class="team-specialty">3D Architectural Visualization &amp; Design</div>
+<div class="team-stats">
+<div class="stat"><span class="stat-num" data-count="10" data-suffix="+">0</span><span class="stat-label">Years Experience</span></div>
+<div class="stat"><span class="stat-num" data-count="500" data-suffix="+">0</span><span class="stat-label">Projects</span></div>
+<div class="stat"><span class="stat-num" data-count="300" data-suffix="+">0</span><span class="stat-label">Clients</span></div>
+</div>
+<div class="team-expertise">
+<strong>Background</strong>
+B.Arch &mdash; Bachelor of Architecture
+<br><strong style="margin-top:8px; display:block;">Expertise</strong>
+AutoCAD &middot; SketchUp &middot; 3ds Max &middot; Lumion &middot; D5 &middot; Photoshop
+</div>
+<button class="btn btn-outline-navy" onclick="goToPortfolio('3d')">View Profile</button>
 </div>
 </div>
 </div>
-</div>
+</section>
 
 <section id="why">
 <div class="container">
 <div class="section-head reveal-el">
-<div class="section-eyebrow">Why Work With Us</div>
-<h2>Built for US Project Standards</h2>
+<div class="section-eyebrow">Why AKP Design Studio</div>
+<h2>Why AKP Design Studio</h2>
 </div>
 <div class="why-grid">
 <div class="why-item reveal-el">
-<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
-<h3>13+ Years of CAD Drafting</h3>
-<p>Hands-on AutoCAD drafting experience since 2013, spanning residential, commercial and MEP work.</p>
+<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="6"/><circle cx="15" cy="12" r="6"/></svg></div>
+<h3>Two Specialized Disciplines</h3>
+<p>CAD documentation and 3D visualization delivered by dedicated specialists, not generalists.</p>
 </div>
 <div class="why-item reveal-el">
-<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
-<h3>Engineering Background</h3>
-<p>Run by a civil/plumbing engineer, so drawings are produced with technical accuracy in mind, not just line work.</p>
+<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+<h3>13+ Years of CAD Experience</h3>
+<p>Hands-on AutoCAD drafting experience since 2013.</p>
+</div>
+<div class="why-item reveal-el">
+<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg></div>
+<h3>10+ Years of 3D Visualization Experience</h3>
+<p>Architectural modeling and rendering experience since 2016.</p>
+</div>
+<div class="why-item reveal-el">
+<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6z"/></svg></div>
+<h3>Engineering + Architectural Understanding</h3>
+<p>A civil/plumbing engineering background on the CAD side, a Bachelor of Architecture on the visualization side.</p>
 </div>
 <div class="why-item reveal-el">
 <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
 <h3>Direct Communication</h3>
-<p>You work directly with the person drafting your project — no account managers, no relay delays.</p>
+<p>You work directly with the specialist handling your project — no account managers, no relay delays.</p>
 </div>
 <div class="why-item reveal-el">
-<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6z"/></svg></div>
-<h3>Registered Studio</h3>
-<p>Operated as a division of AKP Engineers &amp; Construction, a Dhaka-based firm established July 2023.</p>
+<div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v18M5 3h11l-2 4 2 4H5"/></svg></div>
+<h3>U.S. Project Focus</h3>
+<p>Dhaka-based studio, built specifically to serve US project timelines and submission standards.</p>
 </div>
 </div>
 </div>
 </section>
 
-<section class="process" id="process">
+<section id="portfolio" style="background:var(--off-white);">
 <div class="container">
 <div class="section-head reveal-el">
-<div class="section-eyebrow">How It Works</div>
-<h2>A Simple, Predictable Process</h2>
+<div class="section-eyebrow">Portfolio</div>
+<h2>Portfolio</h2>
+<p>Recent work across our core disciplines.</p>
 </div>
-<div class="process-grid reveal-el">
-<div class="process-step reveal-el">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M8 8l4-4 4 4"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div>
-<span class="step-tag">Step 1</span>
-<h3>Share Your Files</h3>
-<p>Send sketches, PDFs, scans or site photos along with your scope and target turnaround.</p>
+<div class="portfolio-filter-bar reveal-el">
+<button class="filter-btn is-active" data-filter="all" onclick="filterPortfolio('all')">All</button>
+<button class="filter-btn" data-filter="2d-cad" onclick="filterPortfolio('2d-cad')">2D CAD</button>
+<button class="filter-btn" data-filter="3d" onclick="filterPortfolio('3d')">3D Visualization</button>
+<button class="filter-btn" data-filter="mep" onclick="filterPortfolio('mep')">MEP / Plumbing</button>
+<button class="filter-btn" data-filter="fabrication" onclick="filterPortfolio('fabrication')">Fabrication</button>
 </div>
-<div class="process-step reveal-el">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v3h3"/><path d="M9 12h6M9 16h6"/></svg></div>
-<span class="step-tag">Step 2</span>
-<h3>Scope &amp; Quote</h3>
-<p>You get a clear quote and timeline before any work begins — no surprise revisions to pricing.</p>
+<div class="portfolio-grid" id="portfolioGrid">
+
+<div class="portfolio-card reveal-el" data-category="2d-cad">
+<div class="portfolio-img-wrap">
+<img src="capability-drawing-to-building.jpg" alt="Scanned PDF floor plan converted into a clean dimensioned CAD drawing" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
 </div>
-<div class="process-step reveal-el">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/></svg></div>
-<span class="step-tag">Step 3</span>
-<h3>Drafting &amp; Review</h3>
-<p>Drawings are produced and shared for your comments; revisions are addressed directly with you.</p>
-</div>
-<div class="process-step reveal-el">
-<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
-<span class="step-tag">Step 4</span>
-<h3>Final Delivery</h3>
-<p>Final files delivered in the formats you need — DWG, PDF, or vector — ready for your next step.</p>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">2D CAD</span>
+<h3>Scanned PDF &rarr; CAD</h3>
+<p>A hand-scanned/legacy PDF plan redrawn as a clean, fully dimensioned architectural floor plan.</p>
 </div>
 </div>
-<div style="margin-top:36px;">
-<div class="trust reveal-el">
-<strong>A note on scope:</strong> We draft and prepare documentation to your specification. Where a jurisdiction requires a stamped or sealed drawing, that review and seal is provided by your project's licensed architect or engineer of record — not by AKP Design Studio.
+
+<div class="portfolio-card reveal-el" data-category="2d-cad">
+<div class="portfolio-img-wrap">
+<img src="capability-master-floorplan.jpg" alt="AKP Design Studio branded master floor plan drawing sheet" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
 </div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">2D CAD</span>
+<h3>Full Drawing Sheet Layout</h3>
+<p>Example of a complete, titled drawing sheet — dimensions, notes and a standard title block ready for review.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="2d-cad">
+<div class="portfolio-img-wrap">
+<img src="capability-google-map-to-cad.jpg" alt="Google Maps satellite reference converted into a labeled CAD site/block plan" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">2D CAD</span>
+<h3>Map Data &rarr; CAD Site Plan</h3>
+<p>Public map/satellite reference traced into a clean, editable block plan with labeled parcels and streets.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="2d-cad">
+<div class="portfolio-img-wrap">
+<img src="capability-3dscan-floorplan.jpg" alt="As-built floor plan generated from a 3D scan, with room schedule" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">2D CAD</span>
+<h3>3D Scan &rarr; As-Built Floor Plan</h3>
+<p>3D scan point-cloud data converted into a scaled as-built floor plan with a full room schedule.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="2d-cad">
+<div class="portfolio-img-wrap">
+<img src="portfolio-uk-floorplan.png" alt="Residential floor plan converted to AutoCAD from a hand sketch, two-floor UK residential project" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">2D CAD</span>
+<h3>Residential Floor Plan &mdash; UK Project</h3>
+<p>Two-floor residential layout redrawn to scale in AutoCAD from a hand-marked sketch.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="2d-cad">
+<div class="portfolio-img-wrap">
+<img src="portfolio-canada-wrestling.png" alt="Lower floor plan for a wrestling festival venue in Niagara Falls, Ontario, drawn in AutoCAD" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">2D CAD</span>
+<h3>Event Venue Floor Plan &mdash; Ontario, Canada</h3>
+<p>Lower-level floor plan for a wrestling festival venue, drafted to scale in AutoCAD from the organizer's reference plans.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="mep">
+<div class="portfolio-img-wrap">
+<img src="portfolio-electrical-plan.jpg" alt="Residential electrical and lighting plan with fixture legend, drawn in AutoCAD" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">MEP / Plumbing</span>
+<h3>Electrical &amp; Lighting Plan &mdash; Residential</h3>
+<p>Full house electrical/lighting layout with a complete fixture legend and general notes, drafted to scale in AutoCAD.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="2d-cad">
+<div class="portfolio-img-wrap">
+<img src="portfolio-floorplan-scan.jpg" alt="Multi-level residential floor plan digitized into a clean CAD-style layout" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">2D CAD</span>
+<h3>Floor Plan Digitization &mdash; Multi-Level Home</h3>
+<p>Scanned/app-captured floor plans cleaned up and redrawn as clear, labeled layouts across three levels.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="2d-cad">
+<div class="portfolio-img-wrap">
+<img src="portfolio-luxury-floorplan.jpg" alt="Large luxury residential floor plan with fully dimensioned rooms, drawn in AutoCAD" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">2D CAD</span>
+<h3>Luxury Residential Floor Plan &mdash; US Project</h3>
+<p>Fully dimensioned single-level luxury home layout — garage, kitchen, master suite and covered porch, drafted to scale.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="mep">
+<div class="portfolio-img-wrap">
+<img src="portfolio-spa-electrical.jpg" alt="Spa reflected ceiling and electrical plan for treatment rooms, drawn in AutoCAD" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">MEP / Plumbing</span>
+<h3>Spa Electrical &amp; RCP Plan &mdash; Commercial</h3>
+<p>Reflected ceiling and electrical plan for a treatment-room suite, with a full electrical legend for permitting/build-out.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="2d-cad">
+<div class="portfolio-img-wrap">
+<img src="portfolio-clinic-floorplan.jpg" alt="Medical clinic floor plan with exam rooms and waiting area, drawn in AutoCAD" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">2D CAD</span>
+<h3>Medical Clinic Floor Plan &mdash; Commercial</h3>
+<p>Multi-room clinic layout — exam rooms, consultation, waiting and staff areas — drafted to scale for planning use.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="3d">
+<div class="portfolio-img-wrap">
+<img src="render-office-pod.jpg" alt="3D render of a glass-walled garden office pod with interior desk setup" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">3D Visualization</span>
+<h3>Garden Office Pod &mdash; 3D Render</h3>
+<p>Exterior/interior 3D visualization of a small prefab garden-office pod.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="3d">
+<div class="portfolio-img-wrap">
+<img src="render-office-interior.jpg" alt="3D isometric render of a furnished office interior layout" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">3D Visualization</span>
+<h3>Office Interior Layout &mdash; 3D Render</h3>
+<p>Isometric 3D visualization of a furnished commercial office layout for space planning.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-laser.png" alt="Car silhouette wall art design cut on CNC and laser cutting machine" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>CNC &amp; Laser Cut Design</h3>
+<p>Vector line-art design prepared for CNC/laser cutting — outline modeled and cleaned up for a precise, single-pass cut.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-butterfly-panel.jpg" alt="Three-panel butterfly wall art design vectorized for laser cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Three-Panel Butterfly Wall Art</h3>
+<p>Segmented butterfly silhouette split across three panels (36&Prime;&times;60&Prime;), vectorized as clean cut-ready line-art.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-tree-panel.jpg" alt="Three-panel tree and leaf silhouette wall art design vectorized for laser cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Three-Panel Tree Silhouette Wall Art</h3>
+<p>Branching tree and leaf pattern split across three panels (36&Prime;&times;60&Prime;), vectorized for precise cutting.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-terrazzo-panel.jpg" alt="Terrazzo style pebble pattern panel vectorized for CNC cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Terrazzo-Style Pebble Panel</h3>
+<p>Organic pebble/terrazzo pattern vectorized for CNC cutting, prepared at multiple panel sizes (48&Prime;&times;84&Prime; and 36&Prime;&times;60&Prime;).</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-abstract-pattern.jpg" alt="Repeating abstract geometric pattern vectorized for laser cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Repeating Abstract Cut Pattern</h3>
+<p>Continuous interlocking motif vectorized as a repeatable screen/panel pattern for CNC or laser cutting.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-hex-diagram.jpg" alt="Dimensioned hexagon panel outline prepared for CNC fabrication" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Dimensioned Cut Outline</h3>
+<p>Precise vector outline with cut dimensions called out, prepared for CNC/laser fabrication.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-logo-to-dxf-demo.jpg" alt="Illustrated logo converted from a raster image into a clean single-color DXF outline for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Image-to-DXF Logo Conversion</h3>
+<p>A supplied raster logo rebuilt as a clean, single-color vector outline ready for CNC/laser cutting.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-psm-logo.jpg" alt="Circular monogram logo vectorized as a single-color cut-ready outline" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Monogram Logo &mdash; Cut-Ready Outline</h3>
+<p>Circular monogram badge traced and cleaned up into a precise single-pass cutting outline.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-club-eagle-logo.jpg" alt="Circular club crest with eagle and ball emblem vectorized for laser cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Club Crest &mdash; Cut-Ready Outline</h3>
+<p>Circular club emblem with lettering and center graphic rebuilt as clean vector line-art for cutting.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-event-sponsor-sticker.jpg" alt="Circular event sponsor sticker design with logos and lettering vectorized for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Event Sponsor Badge &mdash; Cut-Ready Outline</h3>
+<p>Circular sponsor/banquet sticker design with layered lettering and artwork, vectorized for precise cutting.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-ranch-horse-logo.jpg" alt="Circular ranch logo with horse and mountain scene vectorized as line art for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Ranch Emblem &mdash; Cut-Ready Outline</h3>
+<p>Circular ranch/farm emblem with a scenic silhouette scene, converted to clean cut-ready line-art.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-anniversary-fish-logo.jpg" alt="Circular anniversary badge with fish emblem vectorized as two-tone cut-ready art" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Anniversary Badge &mdash; Cut-Ready Outline</h3>
+<p>Circular anniversary emblem with a fish graphic and arced lettering, rebuilt as two-tone vector art for cutting.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-western-character-design.jpg" alt="Stylized western character illustration vectorized as bold cut-ready line art" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Character Illustration &mdash; Cut-Ready Outline</h3>
+<p>Bold stylized character artwork simplified and vectorized into a clean single-pass cutting outline.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-club-patch-design.jpg" alt="Circular badge design with lettering and center graphic vectorized for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Badge Design &mdash; Cut-Ready Outline</h3>
+<p>Arced lettering and a center emblem combined into a clean two-tone vector badge design for cutting.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-electric-company-logo.jpg" alt="Oval company logo with mountain graphic vectorized for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Company Logo &mdash; Cut-Ready Outline</h3>
+<p>Oval brand logo with a decorative border and center graphic, converted to clean cut-ready vector art.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-electronics-logo.jpg" alt="Circular company logo with illustrated icon vectorized for cutting" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Company Logo &mdash; Cut-Ready Outline</h3>
+<p>Circular brand logo with script lettering and an illustrated icon, rebuilt as a clean single-color cutting outline.</p>
+</div>
+</div>
+
+<div class="portfolio-card reveal-el" data-category="fabrication">
+<div class="portfolio-img-wrap">
+<img src="portfolio-cnc-barcode-portrait.jpg" alt="Portrait rendered as a barcode-style striped line art design for laser engraving" onclick="openLightbox(this)">
+<div class="portfolio-img-overlay"><span>View Full Size</span></div>
+</div>
+<div class="portfolio-card-body">
+<span class="portfolio-tag">Fabrication</span>
+<h3>Barcode-Style Portrait Art</h3>
+<p>A portrait reinterpreted as a striped, barcode-style line design — a popular decorative laser/CNC effect.</p>
+</div>
+</div>
+
 </div>
 </div>
 </section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+<button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
+<img id="lightbox-img" src="" alt="" onclick="toggleZoom(event)">
+<div class="lightbox-hint">Click image to zoom in/out</div>
+</div>
 
 <section id="testimonials">
 <div class="container">
 <div class="section-head reveal-el">
 <div class="section-eyebrow">Client Feedback</div>
-<h2>What Fiverr Clients Say</h2>
-<p>Real reviews from US and international clients, shown as submitted on Fiverr.</p>
+<h2>What Our Clients Say</h2>
+<p>Real client feedback, shown as submitted.</p>
 </div>
 <div class="testimonial-carousel reveal-el">
 <div class="testimonial-track">
@@ -786,7 +1179,7 @@ section{padding:52px 0;}
 <span class="testimonial-avatar">L</span>
 <div>
 <strong>latifaa222</strong>
-<span>&#127468;&#127463; United Kingdom &middot; Fiverr Client</span>
+<span>United Kingdom &middot; verified Fiverr review</span>
 </div>
 </div>
 </div>
@@ -797,7 +1190,7 @@ section{padding:52px 0;}
 <span class="testimonial-avatar">T</span>
 <div>
 <strong>tsoukup</strong>
-<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
+<span>United States &middot; verified Fiverr review</span>
 </div>
 </div>
 </div>
@@ -808,7 +1201,7 @@ section{padding:52px 0;}
 <span class="testimonial-avatar">B</span>
 <div>
 <strong>bettinette</strong>
-<span>&#127466;&#127480; Spain &middot; Fiverr Client</span>
+<span>Spain &middot; verified Fiverr review</span>
 </div>
 </div>
 </div>
@@ -819,7 +1212,7 @@ section{padding:52px 0;}
 <span class="testimonial-avatar">S</span>
 <div>
 <strong>skippingstars</strong>
-<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
+<span>United States &middot; verified Fiverr review</span>
 </div>
 </div>
 </div>
@@ -830,7 +1223,7 @@ section{padding:52px 0;}
 <span class="testimonial-avatar">R</span>
 <div>
 <strong>ramhunter2026</strong>
-<span>&#127482;&#127480; United States &middot; Fiverr Client</span>
+<span>United States &middot; verified Fiverr review</span>
 </div>
 </div>
 </div>
@@ -846,397 +1239,56 @@ section{padding:52px 0;}
 </div>
 </section>
 
-<section id="portfolio">
+<section class="process" id="process" style="background:var(--off-white);">
 <div class="container">
 <div class="section-head reveal-el">
-<div class="section-eyebrow section-eyebrow-badge">Portfolio</div>
-<h2>Our Work</h2>
-<p>Browse by category — click a folder to open it, then click any drawing to view it full-size.</p>
-</div>
-
-<div class="folder-grid">
-<div class="folder-card open reveal-el" data-folder="drafting" onclick="toggleFolder('drafting')">
-<div class="folder-cover-wrap">
-<img class="folder-cover" src="capability-master-floorplan.jpg" alt="2D CAD Drafting and PDF-to-CAD Conversion folder">
-<span class="folder-badge">11 samples</span>
-</div>
-<div class="folder-card-body">
-<h3>2D CAD Drafting &amp; PDF-to-CAD Conversion</h3>
-<p>Floor plans, as-built drawings, PDF/sketch-to-DWG conversions</p>
-</div>
-</div>
-<div class="folder-card reveal-el" data-folder="cnc" onclick="toggleFolder('cnc')">
-<div class="folder-cover-wrap">
-<img class="folder-cover" src="portfolio-cnc-logo-to-dxf-demo.jpg" alt="CNC and Laser Cut Design folder">
-<span class="folder-badge">17 samples</span>
-</div>
-<div class="folder-card-body">
-<h3>CNC &amp; Laser Cut Design</h3>
-<p>Vector line-art prepared for CNC/laser cutting</p>
-</div>
-</div>
-<div class="folder-card reveal-el" data-folder="render" onclick="toggleFolder('render')">
-<div class="folder-cover-wrap">
-<img class="folder-cover" src="render-office-pod.jpg" alt="3D Renders on Request folder">
-<span class="folder-badge">2 samples</span>
-</div>
-<div class="folder-card-body">
-<h3>3D Renders on Request</h3>
-<p>Basic 3D visualizations alongside 2D drafting</p>
-</div>
-</div>
-</div>
-
-<div class="folder-content" id="folder-content-drafting">
-<div class="folder-content-head">
-<div class="section-eyebrow">2D CAD Drafting</div>
-<h3>2D CAD Drafting &amp; PDF-to-CAD Conversion</h3>
-<p>Floor plans, as-built drawings and PDF/sketch-to-DWG conversions — a sample of completed drawing sets. Client-identifying details are removed from every sample shown here.</p>
-</div>
-<div class="portfolio-grid">
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="capability-drawing-to-building.jpg" alt="Scanned PDF floor plan converted into a clean dimensioned CAD drawing" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Scanned PDF → CAD</h3>
-<p>A hand-scanned/legacy PDF plan redrawn as a clean, fully dimensioned architectural floor plan.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="capability-master-floorplan.jpg" alt="AKP Design Studio branded master floor plan drawing sheet" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Full Drawing Sheet Layout</h3>
-<p>Example of a complete, titled drawing sheet — dimensions, notes and a standard title block ready for review.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="capability-google-map-to-cad.jpg" alt="Google Maps satellite reference converted into a labeled CAD site/block plan" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Map Data → CAD Site Plan</h3>
-<p>Public map/satellite reference traced into a clean, editable block plan with labeled parcels and streets.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="capability-3dscan-floorplan.jpg" alt="As-built floor plan generated from a 3D scan, with room schedule" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>3D Scan → As-Built Floor Plan</h3>
-<p>3D scan point-cloud data converted into a scaled as-built floor plan with a full room schedule.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-uk-floorplan.png" alt="Residential floor plan converted to AutoCAD from a hand sketch, two-floor UK residential project" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Residential Floor Plan — UK Project</h3>
-<p>Two-floor residential layout redrawn to scale in AutoCAD from a hand-marked sketch. Client comments: "Mr Shohag was a great freelancer, dealing well with a fairly complicated and rapidly changing brief. I will use him again." — 5.0 rating.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-canada-wrestling.png" alt="Lower floor plan for a wrestling festival venue in Niagara Falls, Ontario, drawn in AutoCAD" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Event Venue Floor Plan — Ontario, Canada</h3>
-<p>Lower-level floor plan for a wrestling festival venue, drafted to scale in AutoCAD from the organizer's reference plans.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-electrical-plan.jpg" alt="Residential electrical and lighting plan with fixture legend, drawn in AutoCAD" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Electrical &amp; Lighting Plan — Residential</h3>
-<p>Full house electrical/lighting layout with a complete fixture legend and general notes, drafted to scale in AutoCAD.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-floorplan-scan.jpg" alt="Multi-level residential floor plan digitized into a clean CAD-style layout" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Floor Plan Digitization — Multi-Level Home</h3>
-<p>Scanned/app-captured floor plans cleaned up and redrawn as clear, labeled layouts across three levels.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-luxury-floorplan.jpg" alt="Large luxury residential floor plan with fully dimensioned rooms, drawn in AutoCAD" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Luxury Residential Floor Plan — US Project</h3>
-<p>Fully dimensioned single-level luxury home layout — garage, kitchen, master suite and covered porch, drafted to scale.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-spa-electrical.jpg" alt="Spa reflected ceiling and electrical plan for treatment rooms, drawn in AutoCAD" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Spa Electrical &amp; RCP Plan — Commercial</h3>
-<p>Reflected ceiling and electrical plan for a treatment-room suite, with a full electrical legend for permitting/build-out.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-clinic-floorplan.jpg" alt="Medical clinic floor plan with exam rooms and waiting area, drawn in AutoCAD" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Medical Clinic Floor Plan — Commercial</h3>
-<p>Multi-room clinic layout — exam rooms, consultation, waiting and staff areas — drafted to scale for planning use.</p>
-</div>
-</div>
-</div>
-</div>
-
-<div class="folder-content" id="folder-content-cnc" style="display:none;">
-<div class="folder-content-head">
-<div class="section-eyebrow">CNC &amp; Laser Cut</div>
-<h3>CNC &amp; Laser Cut Design</h3>
-<p>Vector line-art prepared for CNC/laser cutting — wall-art panels, dimensioned cut outlines and image-to-DXF conversions.</p>
-</div>
-<div class="portfolio-grid">
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-laser.png" alt="Car silhouette wall art design cut on CNC and laser cutting machine" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>CNC &amp; Laser Cut Design</h3>
-<p>Vector line-art design prepared for CNC/laser cutting — outline modeled and cleaned up for a precise, single-pass cut.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-butterfly-panel.jpg" alt="Three-panel butterfly wall art design vectorized for laser cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Three-Panel Butterfly Wall Art</h3>
-<p>Segmented butterfly silhouette split across three panels (36&Prime;&times;60&Prime;), vectorized as clean cut-ready line-art.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-tree-panel.jpg" alt="Three-panel tree and leaf silhouette wall art design vectorized for laser cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Three-Panel Tree Silhouette Wall Art</h3>
-<p>Branching tree and leaf pattern split across three panels (36&Prime;&times;60&Prime;), vectorized for precise cutting.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-terrazzo-panel.jpg" alt="Terrazzo style pebble pattern panel vectorized for CNC cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Terrazzo-Style Pebble Panel</h3>
-<p>Organic pebble/terrazzo pattern vectorized for CNC cutting, prepared at multiple panel sizes (48&Prime;&times;84&Prime; and 36&Prime;&times;60&Prime;).</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-abstract-pattern.jpg" alt="Repeating abstract geometric pattern vectorized for laser cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Repeating Abstract Cut Pattern</h3>
-<p>Continuous interlocking motif vectorized as a repeatable screen/panel pattern for CNC or laser cutting.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-hex-diagram.jpg" alt="Dimensioned hexagon panel outline prepared for CNC fabrication" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Dimensioned Cut Outline</h3>
-<p>Precise vector outline with cut dimensions called out, prepared for CNC/laser fabrication.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-logo-to-dxf-demo.jpg" alt="Illustrated logo converted from a raster image into a clean single-color DXF outline for cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Image-to-DXF Logo Conversion</h3>
-<p>A supplied raster logo rebuilt as a clean, single-color vector outline ready for CNC/laser cutting.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-psm-logo.jpg" alt="Circular monogram logo vectorized as a single-color cut-ready outline" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Monogram Logo — Cut-Ready Outline</h3>
-<p>Circular monogram badge traced and cleaned up into a precise single-pass cutting outline.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-club-eagle-logo.jpg" alt="Circular club crest with eagle and ball emblem vectorized for laser cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Club Crest — Cut-Ready Outline</h3>
-<p>Circular club emblem with lettering and center graphic rebuilt as clean vector line-art for cutting.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-event-sponsor-sticker.jpg" alt="Circular event sponsor sticker design with logos and lettering vectorized for cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Event Sponsor Badge — Cut-Ready Outline</h3>
-<p>Circular sponsor/banquet sticker design with layered lettering and artwork, vectorized for precise cutting.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-ranch-horse-logo.jpg" alt="Circular ranch logo with horse and mountain scene vectorized as line art for cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Ranch Emblem — Cut-Ready Outline</h3>
-<p>Circular ranch/farm emblem with a scenic silhouette scene, converted to clean cut-ready line-art.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-anniversary-fish-logo.jpg" alt="Circular anniversary badge with fish emblem vectorized as two-tone cut-ready art" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Anniversary Badge — Cut-Ready Outline</h3>
-<p>Circular anniversary emblem with a fish graphic and arced lettering, rebuilt as two-tone vector art for cutting.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-western-character-design.jpg" alt="Stylized western character illustration vectorized as bold cut-ready line art" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Character Illustration — Cut-Ready Outline</h3>
-<p>Bold stylized character artwork simplified and vectorized into a clean single-pass cutting outline.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-club-patch-design.jpg" alt="Circular badge design with lettering and center graphic vectorized for cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Badge Design — Cut-Ready Outline</h3>
-<p>Arced lettering and a center emblem combined into a clean two-tone vector badge design for cutting.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-electric-company-logo.jpg" alt="Oval company logo with mountain graphic vectorized for cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Company Logo — Cut-Ready Outline</h3>
-<p>Oval brand logo with a decorative border and center graphic, converted to clean cut-ready vector art.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-electronics-logo.jpg" alt="Circular company logo with illustrated icon vectorized for cutting" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Company Logo — Cut-Ready Outline</h3>
-<p>Circular brand logo with script lettering and an illustrated icon, rebuilt as a clean single-color cutting outline.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="portfolio-cnc-barcode-portrait.jpg" alt="Portrait rendered as a barcode-style striped line art design for laser engraving" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Barcode-Style Portrait Art</h3>
-<p>A portrait reinterpreted as a striped, barcode-style line design — a popular decorative laser/CNC effect.</p>
-</div>
-</div>
-</div>
-</div>
-
-<div class="folder-content" id="folder-content-render" style="display:none;">
-<div class="folder-content-head">
-<div class="section-eyebrow">3D Visualization</div>
-<h3>3D Renders on Request</h3>
-<p>Alongside 2D drafting, we can produce basic 3D visualizations of a layout when a project calls for it.</p>
-</div>
-<div class="portfolio-grid">
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="render-office-pod.jpg" alt="3D render of a glass-walled garden office pod with interior desk setup" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Garden Office Pod — 3D Render</h3>
-<p>Exterior/interior 3D visualization of a small prefab garden-office pod.</p>
-</div>
-</div>
-<div class="portfolio-card reveal-el">
-<div class="portfolio-img-wrap">
-<img src="render-office-interior.jpg" alt="3D isometric render of a furnished office interior layout" onclick="openLightbox(this)">
-<div class="portfolio-img-overlay"><span>🔍 View Full Size</span></div>
-</div>
-<div class="portfolio-card-body">
-<h3>Office Interior Layout — 3D Render</h3>
-<p>Isometric 3D visualization of a furnished commercial office layout for space planning.</p>
-</div>
-</div>
+<div class="section-eyebrow">How It Works</div>
+<h2>How It Works</h2>
+<p>The same simple, predictable process whether you're ordering 2D drafting, 3D visualization, or both.</p>
+</div>
+<div class="step-grid reveal-el">
+<div class="step-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M8 8l4-4 4 4"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg></div>
+<span class="step-tag">Step 1</span>
+<h3>Share Your Files</h3>
+<p>Send sketches, PDFs, scans or a project brief along with your scope and target turnaround.</p>
+</div>
+<div class="step-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v3h3"/><path d="M9 12h6M9 16h6"/></svg></div>
+<span class="step-tag">Step 2</span>
+<h3>Scope &amp; Quote</h3>
+<p>You get a clear quote and timeline before any work begins — no surprise revisions to pricing.</p>
+</div>
+<div class="step-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/></svg></div>
+<span class="step-tag">Step 3</span>
+<h3>Drafting / Modeling &amp; Review</h3>
+<p>Work is produced and shared for your comments; revisions are addressed directly with the specialist on your project.</p>
+</div>
+<div class="step-card reveal-el">
+<div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg></div>
+<span class="step-tag">Step 4</span>
+<h3>Final Delivery</h3>
+<p>Final files delivered in the formats you need — DWG, PDF, vector or rendered images — ready for your next step.</p>
+</div>
+</div>
+<div style="margin-top:36px;">
+<div class="trust reveal-el">
+<strong>Professional seals:</strong> We draft and prepare documentation to your specification. Where a jurisdiction requires a stamped or sealed drawing, that review and seal is provided by your project's licensed architect or engineer of record — not by AKP Design Studio.
 </div>
 </div>
 </div>
 </section>
 
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-<button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
-<img id="lightbox-img" src="" alt="" onclick="toggleZoom(event)">
-<div class="lightbox-hint">Click image to zoom in/out</div>
-</div>
-
-<section class="cta" id="contact">
+<section class="cta" id="contact" style="background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color:#fff;">
 <div class="container">
-<h2>Have a Drawing Set That Needs Drafting?</h2>
-<p>Send over your files or scope for a straightforward quote and timeline.</p>
-<div class="cta-actions">
-<a class="btn btn-primary btn-glow" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Fiverr Profile</a>
-<a class="btn btn-outline" href="https://wa.me/8801737040429" target="_blank" rel="noopener">Chat on WhatsApp</a>
-<a class="btn btn-outline" href="mailto:akpec.infobd@gmail.com">akpec.infobd@gmail.com</a>
+<div class="section-head reveal-el" style="max-width:720px;">
+<div class="section-eyebrow">Start Your Project</div>
+<h2 style="color:#fff;">Start Your Project</h2>
+<p style="color:#cdd5e0;">Share your project details for a straightforward quote and timeline.</p>
 </div>
-<div class="contact-form-wrap reveal-el">
-<div class="contact-form-card">
-<h3>Or Send Us a Message Directly</h3>
+<div class="contact-layout">
+<div class="contact-form-card reveal-el">
 <form id="contact-form" class="contact-form">
 <div class="form-row">
 <div class="form-field">
@@ -1244,19 +1296,54 @@ section{padding:52px 0;}
 <input type="text" id="cf-name" name="name" required>
 </div>
 <div class="form-field">
+<label for="cf-company">Company <span class="optional">(optional)</span></label>
+<input type="text" id="cf-company" name="company">
+</div>
+</div>
+<div class="form-row">
+<div class="form-field">
 <label for="cf-email">Email</label>
 <input type="email" id="cf-email" name="email" required>
 </div>
+<div class="form-field">
+<label for="cf-deadline">Target Deadline <span class="optional">(optional)</span></label>
+<input type="date" id="cf-deadline" name="deadline">
+</div>
 </div>
 <div class="form-field">
-<label for="cf-message">Project Details</label>
-<textarea id="cf-message" name="message" rows="4" required placeholder="Tell us about your drawings, scope and timeline..."></textarea>
+<label for="cf-service">Service Needed</label>
+<select id="cf-service" name="service" required>
+<option value="" disabled selected>Select a service</option>
+<option value="2D CAD">2D CAD</option>
+<option value="3D Visualization">3D Visualization</option>
+<option value="2D + 3D">2D + 3D</option>
+<option value="MEP / Plumbing">MEP / Plumbing</option>
+<option value="Fabrication / DXF">Fabrication / DXF</option>
+<option value="Quantity Takeoff">Quantity Takeoff</option>
+<option value="Other">Other</option>
+</select>
 </div>
-<input type="hidden" name="_subject" value="New inquiry from AKP Design Studio website">
+<div class="form-field">
+<label for="cf-message">Project Description <span class="optional">(optional)</span></label>
+<textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your project, scope and timeline..."></textarea>
+</div>
+<div class="form-field">
+<label for="cf-files">Upload Files <span class="optional">(optional)</span></label>
+<input type="file" id="cf-files" name="attachment" multiple>
+</div>
+<input type="hidden" name="_subject" value="New project inquiry from AKP Design Studio website">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-<button type="submit" class="btn btn-primary" id="cf-submit">Send Message</button>
+<button type="submit" class="btn btn-primary" id="cf-submit">Request a Project Quote</button>
 <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
 </form>
+</div>
+<div class="contact-direct reveal-el">
+<h3 style="color:#fff;">Direct Contact</h3>
+<ul class="contact-direct-list">
+<li><a class="btn btn-outline" style="display:block; text-align:center;" href="mailto:akpec.infobd@gmail.com">akpec.infobd@gmail.com</a></li>
+<li><a class="btn btn-outline" style="display:block; text-align:center;" href="https://wa.me/8801737040429" target="_blank" rel="noopener">WhatsApp: +880 1737-040429</a></li>
+</ul>
+<a class="contact-fiverr-link" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">Fiverr &mdash; View Profile</a>
 </div>
 </div>
 </div>
@@ -1267,26 +1354,26 @@ section{padding:52px 0;}
 <div class="footer-grid">
 <div>
 <h4>AKP Design Studio</h4>
-<p>A drafting &amp; documentation division of AKP Engineers &amp; Construction, established July 2023.</p>
+<p>A drafting &amp; visualization division of AKP Engineers &amp; Construction, established July 2023.</p>
 <p>Dhaka, Bangladesh — serving clients across the United States.</p>
 </div>
 <div>
 <h4>Services</h4>
 <ul>
-<li>PDF to DWG Conversion</li>
-<li>Hand Sketch to CAD</li>
-<li>MEP &amp; Plumbing Drafting</li>
-<li>As-Built Drawings</li>
-<li>Residential Permit Sets</li>
-<li>Quantity Takeoff / BOQ</li>
+<li>2D CAD Drafting</li>
+<li>Construction Documentation</li>
+<li>3D Architectural Visualization</li>
+<li>Photorealistic Rendering</li>
+<li>MEP &amp; Plumbing</li>
+<li>Fabrication &amp; DXF Files</li>
 </ul>
 </div>
 <div>
 <h4>Contact</h4>
 <ul>
-<li><a href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">Fiverr Profile</a></li>
-<li><a href="https://wa.me/8801737040429" target="_blank" rel="noopener">WhatsApp: +880 1737-040429</a></li>
 <li><a href="mailto:akpec.infobd@gmail.com">akpec.infobd@gmail.com</a></li>
+<li><a href="https://wa.me/8801737040429" target="_blank" rel="noopener">WhatsApp: +880 1737-040429</a></li>
+<li><a href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">Fiverr Profile</a></li>
 </ul>
 </div>
 </div>
@@ -1297,6 +1384,7 @@ section{padding:52px 0;}
 </footer>
 
 <script>
+/* ---- Lightbox ---- */
 function openLightbox(imgEl){
 var lb = document.getElementById('lightbox');
 var lbImg = document.getElementById('lightbox-img');
@@ -1314,28 +1402,24 @@ function toggleZoom(e){
 e.stopPropagation();
 document.getElementById('lightbox-img').classList.toggle('zoomed');
 }
-function toggleFolder(name){
-var ids = ['drafting','cnc','render'];
-ids.forEach(function(id){
-var content = document.getElementById('folder-content-' + id);
-var card = document.querySelector('.folder-card[data-folder="' + id + '"]');
-if(!content) return;
-if(id === name){
-var isOpen = content.style.display !== 'none';
-content.style.display = isOpen ? 'none' : '';
-if(card){ card.classList.toggle('open', !isOpen); }
-if(!isOpen){
-setTimeout(function(){ content.scrollIntoView({behavior:'smooth', block:'start'}); }, 60);
-}
-} else {
-content.style.display = 'none';
-if(card){ card.classList.remove('open'); }
-}
+
+/* ---- Portfolio filtering ---- */
+function filterPortfolio(category){
+var buttons = document.querySelectorAll('.filter-btn');
+buttons.forEach(function(btn){
+btn.classList.toggle('is-active', btn.getAttribute('data-filter') === category);
+});
+var cards = document.querySelectorAll('.portfolio-card');
+cards.forEach(function(card){
+var match = category === 'all' || card.getAttribute('data-category') === category;
+card.classList.toggle('is-hidden', !match);
 });
 }
-document.addEventListener('keydown', function(e){
-if(e.key === 'Escape'){ document.getElementById('lightbox').classList.remove('open'); }
-});
+function goToPortfolio(category){
+filterPortfolio(category);
+var target = document.getElementById('portfolio');
+if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+}
 
 /* ---- Scroll-reveal animation (site-wide) ---- */
 (function(){
@@ -1354,6 +1438,25 @@ io.unobserve(el);
 });
 }, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
 els.forEach(function(el){ io.observe(el); });
+})();
+
+/* ---- Step-grid connecting line (workflow + process) ---- */
+(function(){
+var grids = document.querySelectorAll('.step-grid');
+if(!grids.length) return;
+if(!('IntersectionObserver' in window)){
+grids.forEach(function(g){ g.classList.add('in-view'); });
+return;
+}
+var io3 = new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+entry.target.classList.add('in-view');
+io3.unobserve(entry.target);
+}
+});
+}, {threshold:0.3});
+grids.forEach(function(g){ io3.observe(g); });
 })();
 
 /* ---- Animated stat counters ---- */
@@ -1391,33 +1494,6 @@ io2.unobserve(entry.target);
 });
 }, {threshold:0.4});
 nums.forEach(function(el){ io2.observe(el); });
-})();
-
-/* ---- Founder photo parallax on scroll ---- */
-(function(){
-var wrap = document.querySelector('.about-photo-parallax');
-if(!wrap) return;
-var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(reduceMotion) return;
-var ticking = false;
-function updateParallax(){
-ticking = false;
-var rect = wrap.getBoundingClientRect();
-var vh = window.innerHeight || document.documentElement.clientHeight;
-var center = rect.top + rect.height / 2;
-var offset = (center - vh / 2) * 0.08;
-offset = Math.max(-24, Math.min(24, offset));
-wrap.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
-}
-function onScroll(){
-if(!ticking){
-window.requestAnimationFrame(updateParallax);
-ticking = true;
-}
-}
-window.addEventListener('scroll', onScroll, {passive:true});
-window.addEventListener('resize', onScroll);
-updateParallax();
 })();
 
 /* ---- Testimonials auto-rotate carousel ---- */
@@ -1482,7 +1558,7 @@ method: 'POST',
 headers: { 'Accept': 'application/json' },
 body: data
 }).then(function(res){ return res.json(); }).then(function(){
-status.textContent = "Thanks — your message has been sent. We'll reply within 24 hours.";
+status.textContent = "Thanks — your project details have been sent. We'll reply within 24 hours.";
 status.className = 'form-status is-success';
 form.reset();
 }).catch(function(){
@@ -1490,122 +1566,10 @@ status.textContent = 'Something went wrong. Please email us directly at akpec.in
 status.className = 'form-status is-error';
 }).finally(function(){
 submitBtn.disabled = false;
-submitBtn.textContent = 'Send Message';
+submitBtn.textContent = 'Request a Project Quote';
 });
 });
 })();
-
-/* ---- Service detail modal ---- */
-var SERVICE_DATA = {
-'pdf-dwg': {
-icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h6l3 3v13H5z"/><path d="M11 4v3h3"/><path d="M15 12h5m0 0-2-2m2 2-2 2"/></svg>',
-title: 'PDF to DWG Conversion',
-price: 'From $50 / sheet',
-scope: [
-'Scanned or PDF plans redrawn to scale in AutoCAD (DWG)',
-'Proper layering, line weights and standard drafting conventions',
-'Dimensions, text and annotations matched to your source file',
-'Delivered as editable DWG plus a clean PDF export',
-'Revisions included until the drawing matches your source'
-]
-},
-'sketch-cad': {
-icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg>',
-title: 'Hand Sketch to CAD',
-price: 'From $65 / sheet',
-scope: [
-'Field sketches, napkin drawings or marked-up notes converted to scale',
-'Missing dimensions or details clarified with you before finalizing',
-'Clean line work, proper layers and a standard title block',
-'Delivered as editable DWG plus a PDF export',
-'One round of revisions included to match your intent'
-]
-},
-'mep-plumbing': {
-icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 13h5l-2 8 9-11h-5z"/></svg>',
-title: 'MEP & Plumbing Drafting',
-price: 'From $75 / sheet',
-scope: [
-'Plumbing riser/layout, electrical & lighting, or basic HVAC layout drafted over your architectural base plan',
-'Fixture schedules and standard legends included',
-'Coordinated against your base plan to avoid obvious clashes',
-'Delivered as DWG + PDF, ready for review by your MEP engineer'
-]
-},
-'as-built': {
-icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-5 8 5v12"/><path d="M4 21h16"/><path d="M9 21v-6h6v6"/></svg>',
-title: 'As-Built Drawings',
-price: 'From $250 / project',
-scope: [
-'Drawings built from your site photos, field measurements or marked-up redlines',
-'Floor plans, elevations or sections produced as the project needs',
-'Reconciled against any existing drawings you provide',
-'Delivered as editable DWG plus a PDF export'
-]
-},
-'permit-sets': {
-icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10v9h12v-9"/><path d="M10 14.5l1.5 1.5 2.5-3"/></svg>',
-title: 'Residential Permit Sets',
-price: 'From $350 / set',
-scope: [
-'Floor plans, elevations, sections and basic notes prepared for permit submission',
-'Formatted to match typical jurisdiction submission requirements',
-'Coordinated with your architect/engineer of record, who reviews and seals as required',
-'One round of revisions included to address jurisdiction comments'
-]
-},
-'boq': {
-icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M8 7h8M8 11h3m3 0h2M8 15h3m3 0h2"/></svg>',
-title: 'Quantity Takeoff / BOQ',
-price: 'From $150 / project',
-scope: [
-'Material quantities extracted directly from your drawings',
-'Organized bill of quantities (BOQ) by trade or category',
-'Prepared using PlanSwift and Bluebeam for accurate measurement',
-'Delivered as an editable spreadsheet for estimating or procurement'
-]
-},
-'3d-render': {
-icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg>',
-title: '3D Rendering & Visualization',
-price: 'From $100 / render',
-scope: [
-'Basic interior or exterior 3D visualization based on your 2D plan',
-'One to two rendered views included per render package',
-'Useful for client presentations or quick design communication',
-'Not a substitute for full architectural rendering/animation services'
-]
-}
-};
-
-function openServiceModal(key){
-var d = SERVICE_DATA[key];
-if(!d) return;
-document.getElementById('smIcon').innerHTML = d.icon;
-document.getElementById('smTitle').textContent = d.title;
-document.getElementById('smPrice').textContent = d.price;
-var list = document.getElementById('smScope');
-list.innerHTML = '';
-d.scope.forEach(function(item){
-var li = document.createElement('li');
-li.textContent = item;
-list.appendChild(li);
-});
-var modal = document.getElementById('serviceModal');
-modal.classList.add('open');
-document.body.style.overflow = 'hidden';
-}
-function closeServiceModal(){
-var modal = document.getElementById('serviceModal');
-modal.classList.remove('open');
-document.body.style.overflow = '';
-}
-function closeServiceModalOnOverlay(e){
-if(e.target && e.target.id === 'serviceModal'){ closeServiceModal(); }
-}
-document.addEventListener('keydown', function(e){
-if(e.key === 'Escape'){ closeServiceModal(); }
-});
 </script>
 </body>
 </html>
