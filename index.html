@@ -164,6 +164,36 @@ transition:background .25s ease, color .25s ease;
 .service-card:hover .icon-badge{background:var(--orange); color:#fff;}
 .service-card h3{font-size:15.5px; margin-bottom:7px;}
 .service-card p{color:var(--gray); font-size:13.5px;}
+.service-card{padding:0; perspective:1200px;}
+.service-card-flip{
+position:relative; width:100%; transition:transform .55s cubic-bezier(.4,.2,.2,1);
+transform-style:preserve-3d;
+}
+.service-card:hover .service-card-flip, .service-card:focus-visible .service-card-flip{transform:rotateY(180deg);}
+.service-card-front, .service-card-back{
+backface-visibility:hidden; -webkit-backface-visibility:hidden;
+}
+.service-card-front{padding:24px;}
+.service-card-back{
+position:absolute; inset:0; transform:rotateY(180deg);
+background:var(--navy); border-radius:10px; padding:20px 20px 18px;
+display:flex; flex-direction:column; color:#fff;
+}
+.service-card-back h4{
+font-size:11px; text-transform:uppercase; letter-spacing:.6px; color:var(--orange);
+margin-bottom:10px; font-weight:bold;
+}
+.service-card-back ul{list-style:none; margin-bottom:auto;}
+.service-card-back li{
+font-size:12px; line-height:1.5; margin-bottom:6px; padding-left:15px; position:relative; color:#dbe2eb;
+}
+.service-card-back li::before{content:"\2713"; position:absolute; left:0; top:0; color:var(--orange); font-weight:bold; font-size:11px;}
+.service-card-back .flip-cta{
+font-size:12px; font-weight:bold; color:var(--orange); margin-top:12px; display:flex; align-items:center; gap:5px;
+}
+@media (prefers-reduced-motion: reduce){
+.service-card-flip{transition:none;}
+}
 .service-block-attribution{
 text-align:center; color:var(--gray); font-size:13.5px; border-top:1px solid var(--border);
 padding-top:20px; max-width:640px; margin:0 auto;
@@ -544,6 +574,18 @@ outline:none; border-color:var(--orange); box-shadow:0 0 0 3px rgba(242,98,39,0.
 .form-status{margin-top:14px; font-size:14px; text-align:center; min-height:20px;}
 .form-status.is-success{color:#1a7d3a;}
 .form-status.is-error{color:#c0392b;}
+.cf-success-panel{
+display:none; flex-direction:column; align-items:center; text-align:center; padding:20px 10px 6px;
+}
+.cf-success-panel.is-visible{display:flex;}
+.cf-success-icon{
+width:60px; height:60px; border-radius:50%; background:#e9f7ee; color:#1a7d3a;
+display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+animation:modalIn .3s ease;
+}
+.cf-success-icon svg{width:28px; height:28px;}
+.cf-success-panel h3{font-size:19px; margin-bottom:10px; color:var(--navy);}
+.cf-success-panel p{color:var(--gray); font-size:14px; margin-bottom:22px; max-width:360px;}
 @media(max-width:520px){
 .form-row{grid-template-columns:1fr;}
 .contact-form-card{padding:26px 22px;}
@@ -1501,6 +1543,12 @@ AutoCAD &middot; SketchUp &middot; 3ds Max &middot; Lumion &middot; D5 &middot; 
 <button type="submit" class="btn btn-primary" id="cf-submit">Request a Project Quote</button>
 <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
 </form>
+<div class="cf-success-panel" id="cf-success" role="status" aria-live="polite">
+<div class="cf-success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+<h3>Thanks &mdash; Your Request Is In</h3>
+<p>Your project details have been sent to AKP Design Studio. We'll reply within 24 hours.</p>
+<button type="button" class="btn btn-outline-navy" id="cf-submit-another">Submit Another Quote</button>
+</div>
 </div>
 <div class="contact-direct reveal-el">
 <h3 style="color:#fff;">Direct Contact</h3>
@@ -1738,6 +1786,42 @@ function closeServiceModalOnOverlay(e){
 if(e.target.id === 'serviceModal'){ closeServiceModal(); }
 }
 
+/* ---- Build hover-flip preview faces on the 12 service cards ---- */
+(function(){
+var cards = document.querySelectorAll('.service-card[onclick*="openServiceModal"]');
+cards.forEach(function(card){
+var m = /openServiceModal\('([^']+)'\)/.exec(card.getAttribute('onclick') || '');
+if(!m) return;
+var data = SERVICE_DATA[m[1]];
+if(!data) return;
+var front = document.createElement('div');
+front.className = 'service-card-front';
+front.innerHTML = card.innerHTML;
+var back = document.createElement('div');
+back.className = 'service-card-back';
+var heading = document.createElement('h4');
+heading.textContent = 'What\'s Included';
+back.appendChild(heading);
+var list = document.createElement('ul');
+data.scope.slice(0, 3).forEach(function(item){
+var li = document.createElement('li');
+li.textContent = item;
+list.appendChild(li);
+});
+back.appendChild(list);
+var cta = document.createElement('div');
+cta.className = 'flip-cta';
+cta.textContent = 'View Full Scope →';
+back.appendChild(cta);
+var flip = document.createElement('div');
+flip.className = 'service-card-flip';
+flip.appendChild(front);
+flip.appendChild(back);
+card.innerHTML = '';
+card.appendChild(flip);
+});
+})();
+
 /* ---- Close any open modal/lightbox on Escape ---- */
 document.addEventListener('keydown', function(e){
 if(e.key !== 'Escape') return;
@@ -1887,6 +1971,8 @@ var form = document.getElementById('contact-form');
 if(!form) return;
 var status = document.getElementById('cf-status');
 var submitBtn = document.getElementById('cf-submit');
+var successPanel = document.getElementById('cf-success');
+var submitAnotherBtn = document.getElementById('cf-submit-another');
 form.addEventListener('submit', function(e){
 var honey = form.querySelector('[name="_honey"]');
 if(honey && honey.value){ e.preventDefault(); return; }
@@ -1896,9 +1982,28 @@ status.textContent = '';
 status.className = 'form-status';
 /* Standard form POST — browser handles the submission and redirect to _next. */
 });
+function showSuccess(){
+form.style.display = 'none';
+if(successPanel) successPanel.classList.add('is-visible');
+}
+function showForm(){
+if(successPanel) successPanel.classList.remove('is-visible');
+form.style.display = '';
+form.reset();
+submitBtn.disabled = false;
+submitBtn.textContent = 'Request a Project Quote';
+status.textContent = '';
+status.className = 'form-status';
+}
 if(/[?&]sent=1/.test(window.location.search)){
-status.textContent = "Thanks — your project details have been sent. We'll reply within 24 hours.";
-status.className = 'form-status is-success';
+showSuccess();
+/* Clean the ?sent=1 from the URL so a refresh doesn't re-trigger the success view. */
+if(window.history && window.history.replaceState){
+window.history.replaceState(null, '', window.location.pathname + '#contact');
+}
+}
+if(submitAnotherBtn){
+submitAnotherBtn.addEventListener('click', showForm);
 }
 })();
 </script>
