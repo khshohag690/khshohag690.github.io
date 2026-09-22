@@ -241,15 +241,23 @@ background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
 position:relative; overflow:hidden;
 }
 #team::before{
-content:""; position:absolute; inset:0; pointer-events:none;
+content:""; position:absolute; inset:0; pointer-events:none; z-index:0;
 background-image:
-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-background-size:42px 42px;
+radial-gradient(circle at 6% 10%, rgba(242,98,39,0.26) 0%, rgba(242,98,39,0) 46%),
+radial-gradient(circle at 95% 90%, rgba(242,98,39,0.18) 0%, rgba(242,98,39,0) 46%),
+linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+background-size:auto, auto, 42px 42px, 42px 42px;
 }
+.team-watermark{
+position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+width:460px; height:460px; color:#fff; opacity:0.045; pointer-events:none; z-index:0;
+}
+.team-watermark svg{width:100%; height:100%;}
 #team .container{position:relative; z-index:1;}
+#team .section-eyebrow{color:var(--orange);}
 #team .section-head h2{color:#fff;}
-#team .section-head p{color:#cdd5e0;}
+#team .section-head p{color:#cdd5e0; max-width:600px; margin-left:auto; margin-right:auto;}
 .team-grid{
 display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:30px; align-items:stretch;
@@ -322,26 +330,40 @@ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px
 }
 .portfolio-cat-card{
 background:#fff; border:1px solid var(--border); border-radius:14px; padding:34px 28px;
-text-align:center; cursor:pointer; transition:box-shadow .3s ease, border-color .3s ease, transform .15s ease-out;
+text-align:center; cursor:pointer; overflow:hidden;
+transition:box-shadow .3s ease, border-color .3s ease, transform .15s ease-out;
 }
-.portfolio-cat-card:hover{box-shadow:0 20px 40px rgba(11,34,57,0.14); border-color:rgba(242,98,39,0.35);}
+.portfolio-cat-card:hover{box-shadow:0 20px 40px rgba(11,34,57,0.16); border-color:rgba(242,98,39,0.35);}
 .portfolio-cat-card:focus-visible{outline:2px solid var(--orange); outline-offset:3px;}
-.portfolio-cat-icon{
-width:64px; height:64px; border-radius:50%; margin:0 auto 18px;
-background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-color:var(--orange); display:flex; align-items:center; justify-content:center;
-box-shadow:0 10px 20px rgba(11,34,57,0.2); transition:transform .35s ease, background .25s ease, color .25s ease;
+.portfolio-cat-img-wrap{
+position:relative; margin:-34px -28px 20px; height:170px; overflow:hidden;
 }
-.portfolio-cat-icon svg{width:28px; height:28px;}
-.portfolio-cat-card:hover .portfolio-cat-icon{background:linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%); color:#fff; transform:scale(1.08) rotate(-4deg);}
+.portfolio-cat-img-wrap img{
+width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease;
+}
+.portfolio-cat-img-wrap::after{
+content:""; position:absolute; inset:0;
+background:linear-gradient(0deg, rgba(11,34,57,0.6) 0%, rgba(11,34,57,0.05) 45%, rgba(11,34,57,0) 70%);
+}
+.portfolio-cat-card:hover .portfolio-cat-img-wrap img{transform:scale(1.09);}
+.portfolio-cat-badge{
+position:absolute; left:16px; bottom:12px; z-index:1;
+width:40px; height:40px; border-radius:9px; background:rgba(255,255,255,0.15);
+border:1px solid rgba(255,255,255,0.4); backdrop-filter:blur(2px);
+color:#fff; display:flex; align-items:center; justify-content:center;
+}
+.portfolio-cat-badge svg{width:20px; height:20px;}
 .portfolio-cat-card h3{font-size:17px; margin-bottom:10px;}
 .portfolio-cat-card p{color:var(--gray); font-size:13.5px; margin-bottom:16px;}
 .portfolio-cat-count{
 display:inline-block; background:var(--off-white); color:var(--navy); font-size:12px; font-weight:bold;
 padding:5px 14px; border-radius:14px; letter-spacing:.3px;
 }
-.portfolio-fiverr-cta{text-align:center; padding-top:12px; border-top:1px solid var(--border);}
-.portfolio-fiverr-cta p{color:var(--gray); font-size:14px; margin-bottom:14px;}
+.portfolio-fiverr-cta{
+text-align:center; background:#fff; border:1px solid var(--border); border-radius:14px;
+padding:30px 26px; box-shadow:0 8px 20px rgba(11,34,57,0.06);
+}
+.portfolio-fiverr-cta p{color:var(--gray); font-size:14px; margin-bottom:16px;}
 
 /* Portfolio category modal */
 @keyframes modalIn{from{opacity:0; transform:translateY(12px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);}}
@@ -374,9 +396,12 @@ transition:box-shadow .3s ease, transform .3s ease;
 }
 .portfolio-card.is-hidden{display:none;}
 .portfolio-card:hover{box-shadow:0 14px 28px rgba(11,34,57,0.1); transform:translateY(-4px);}
-.portfolio-img-wrap{position:relative; overflow:hidden; border-bottom:1px solid var(--border);}
-.portfolio-card img{width:100%; height:auto; display:block; transition:transform .5s ease; cursor:zoom-in;}
+.portfolio-img-wrap{position:relative; overflow:hidden; border-bottom:1px solid var(--border); perspective:600px;}
+.portfolio-card img{width:100%; height:auto; display:block; transition:transform .5s cubic-bezier(.22,.68,.35,1.2); cursor:zoom-in; transform-style:preserve-3d; will-change:transform;}
+.portfolio-card:hover img{transform:scale(1.12) rotateY(6deg) rotateX(-3deg);}
+@media (prefers-reduced-motion: reduce){
 .portfolio-card:hover img{transform:scale(1.07);}
+}
 .portfolio-img-overlay{
 position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
 background:linear-gradient(0deg, rgba(11,34,57,0.75) 0%, rgba(11,34,57,0.15) 60%, rgba(11,34,57,0) 100%);
@@ -611,6 +636,82 @@ section{padding:52px 0;}
 </div>
 </section>
 
+<section id="testimonials">
+<div class="container">
+<div class="section-head reveal-el">
+<div class="section-eyebrow">Client Feedback</div>
+<h2>What Our Clients Say</h2>
+<p>Real client feedback, shown as submitted.</p>
+</div>
+<div class="testimonial-carousel reveal-el">
+<div class="testimonial-track">
+<div class="testimonial-slide is-active">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Kamrul was an absolute pleasure to work with. He is very polite, professional, and incredibly easy to communicate with. His work is amazing high quality and he delivered with great attention to detail. He's also very understanding and works quickly without compromising on results. I would highly recommend him for any project.</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">L</span>
+<div>
+<strong>latifaa222</strong>
+<span>United Kingdom &middot; verified Fiverr review</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Kamrul was really excellent to work with! He delivered high quality work quickly, was a great communicator, and followed my instructions really well. I'll definitely work with him in the future on other projects where I could use his expertise!</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">T</span>
+<div>
+<strong>tsoukup</strong>
+<span>United States &middot; verified Fiverr review</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Excellent service. Showed deep understanding of the requirement from the start, communicated proactively and delivered quality work on a very tight timeline.</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">B</span>
+<div>
+<strong>bettinette</strong>
+<span>Spain &middot; verified Fiverr review</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">From start to finish there was amazing work ethic, patience, creative thinking and professionalism. Highly recommend!!</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">S</span>
+<div>
+<strong>skippingstars</strong>
+<span>United States &middot; verified Fiverr review</span>
+</div>
+</div>
+</div>
+<div class="testimonial-slide">
+<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="testimonial-quote">Very easy process and easy to work with.</p>
+<div class="testimonial-author">
+<span class="testimonial-avatar">R</span>
+<div>
+<strong>ramhunter2026</strong>
+<span>United States &middot; verified Fiverr review</span>
+</div>
+</div>
+</div>
+</div>
+<div class="testimonial-dots">
+<button class="testimonial-dot is-active" data-slide="0" aria-label="Show testimonial 1"></button>
+<button class="testimonial-dot" data-slide="1" aria-label="Show testimonial 2"></button>
+<button class="testimonial-dot" data-slide="2" aria-label="Show testimonial 3"></button>
+<button class="testimonial-dot" data-slide="3" aria-label="Show testimonial 4"></button>
+<button class="testimonial-dot" data-slide="4" aria-label="Show testimonial 5"></button>
+</div>
+</div>
+</div>
+</section>
+
 <section class="service-block" id="services">
 <div class="container">
 <div class="service-block-head reveal-el">
@@ -792,11 +893,12 @@ Professional lead: <strong>Rayhan Saykat</strong> &nbsp;|&nbsp; Specialization: 
 </section>
 
 <section id="team">
+<div class="team-watermark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3.2"/><path d="M12 5.2 6.5 21h11L12 5.2z"/><circle cx="12" cy="4" r="1.8"/><path d="M8.5 15h7"/></svg></div>
 <div class="container">
 <div class="section-head reveal-el">
-<div class="section-eyebrow">Meet the Team</div>
+<div class="section-eyebrow">Our Specialists</div>
 <h2>Meet the Team</h2>
-<p>Two specialized skill sets working together under one studio.</p>
+<p>Every project is led by a dedicated specialist, not a generalist &mdash; precision CAD drafting and photorealistic 3D visualization, coordinated end to end under one studio.</p>
 </div>
 <div class="team-grid">
 <div class="team-card reveal-el">
@@ -887,19 +989,28 @@ AutoCAD &middot; SketchUp &middot; 3ds Max &middot; Lumion &middot; D5 &middot; 
 </div>
 <div class="portfolio-categories">
 <div class="portfolio-cat-card reveal-el" data-cat="cad" tabindex="0" role="button" aria-haspopup="dialog" onclick="openPortfolioCategory('cad')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPortfolioCategory('cad');}">
-<div class="portfolio-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+<div class="portfolio-cat-img-wrap">
+<img src="capability-master-floorplan.jpg" alt="Branded AKP Design Studio floor plan drawing sheet">
+<div class="portfolio-cat-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+</div>
 <h3>2D CAD &amp; Construction Drawings</h3>
 <p>Floor plans, site plans, electrical/MEP layouts and construction documentation.</p>
 <span class="portfolio-cat-count">11 Projects</span>
 </div>
 <div class="portfolio-cat-card reveal-el" data-cat="3d" tabindex="0" role="button" aria-haspopup="dialog" onclick="openPortfolioCategory('3d')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPortfolioCategory('3d');}">
-<div class="portfolio-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg></div>
+<div class="portfolio-cat-img-wrap">
+<img src="render-office-interior.jpg" alt="Isometric 3D office interior render">
+<div class="portfolio-cat-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg></div>
+</div>
 <h3>3D Visualization</h3>
 <p>Architectural renders and interior / exterior visualizations.</p>
 <span class="portfolio-cat-count">2 Projects</span>
 </div>
 <div class="portfolio-cat-card reveal-el" data-cat="fab" tabindex="0" role="button" aria-haspopup="dialog" onclick="openPortfolioCategory('fab')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPortfolioCategory('fab');}">
-<div class="portfolio-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.2"/><circle cx="6" cy="17" r="2.2"/><path d="M7.8 8.4 20 20M7.8 15.6 20 4"/></svg></div>
+<div class="portfolio-cat-img-wrap">
+<img src="portfolio-cnc-butterfly-panel.jpg" alt="Three-panel butterfly wall art, CNC cut-ready design">
+<div class="portfolio-cat-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.2"/><circle cx="6" cy="17" r="2.2"/><path d="M7.8 8.4 20 20M7.8 15.6 20 4"/></svg></div>
+</div>
 <h3>CNC &amp; Fabrication Files</h3>
 <p>Vector line-art and cut-ready designs for laser, CNC and plasma production.</p>
 <span class="portfolio-cat-count">17 Projects</span>
@@ -907,7 +1018,7 @@ AutoCAD &middot; SketchUp &middot; 3ds Max &middot; Lumion &middot; D5 &middot; 
 </div>
 <div class="portfolio-fiverr-cta reveal-el">
 <p>Prefer to browse and place your order directly? All active project requests are handled through our verified Fiverr profile.</p>
-<a class="btn btn-outline-navy" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Our Fiverr Profile</a>
+<a class="btn btn-primary" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">Fiverr Profile</a>
 </div>
 </div>
 </section>
@@ -1290,82 +1401,6 @@ AutoCAD &middot; SketchUp &middot; 3ds Max &middot; Lumion &middot; D5 &middot; 
 <div class="lightbox-hint">Click image to zoom in/out</div>
 </div>
 
-<section id="testimonials">
-<div class="container">
-<div class="section-head reveal-el">
-<div class="section-eyebrow">Client Feedback</div>
-<h2>What Our Clients Say</h2>
-<p>Real client feedback, shown as submitted.</p>
-</div>
-<div class="testimonial-carousel reveal-el">
-<div class="testimonial-track">
-<div class="testimonial-slide is-active">
-<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="testimonial-quote">Kamrul was an absolute pleasure to work with. He is very polite, professional, and incredibly easy to communicate with. His work is amazing high quality and he delivered with great attention to detail. He's also very understanding and works quickly without compromising on results. I would highly recommend him for any project.</p>
-<div class="testimonial-author">
-<span class="testimonial-avatar">L</span>
-<div>
-<strong>latifaa222</strong>
-<span>United Kingdom &middot; verified Fiverr review</span>
-</div>
-</div>
-</div>
-<div class="testimonial-slide">
-<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="testimonial-quote">Kamrul was really excellent to work with! He delivered high quality work quickly, was a great communicator, and followed my instructions really well. I'll definitely work with him in the future on other projects where I could use his expertise!</p>
-<div class="testimonial-author">
-<span class="testimonial-avatar">T</span>
-<div>
-<strong>tsoukup</strong>
-<span>United States &middot; verified Fiverr review</span>
-</div>
-</div>
-</div>
-<div class="testimonial-slide">
-<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="testimonial-quote">Excellent service. Showed deep understanding of the requirement from the start, communicated proactively and delivered quality work on a very tight timeline.</p>
-<div class="testimonial-author">
-<span class="testimonial-avatar">B</span>
-<div>
-<strong>bettinette</strong>
-<span>Spain &middot; verified Fiverr review</span>
-</div>
-</div>
-</div>
-<div class="testimonial-slide">
-<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="testimonial-quote">From start to finish there was amazing work ethic, patience, creative thinking and professionalism. Highly recommend!!</p>
-<div class="testimonial-author">
-<span class="testimonial-avatar">S</span>
-<div>
-<strong>skippingstars</strong>
-<span>United States &middot; verified Fiverr review</span>
-</div>
-</div>
-</div>
-<div class="testimonial-slide">
-<div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="testimonial-quote">Very easy process and easy to work with.</p>
-<div class="testimonial-author">
-<span class="testimonial-avatar">R</span>
-<div>
-<strong>ramhunter2026</strong>
-<span>United States &middot; verified Fiverr review</span>
-</div>
-</div>
-</div>
-</div>
-<div class="testimonial-dots">
-<button class="testimonial-dot is-active" data-slide="0" aria-label="Show testimonial 1"></button>
-<button class="testimonial-dot" data-slide="1" aria-label="Show testimonial 2"></button>
-<button class="testimonial-dot" data-slide="2" aria-label="Show testimonial 3"></button>
-<button class="testimonial-dot" data-slide="3" aria-label="Show testimonial 4"></button>
-<button class="testimonial-dot" data-slide="4" aria-label="Show testimonial 5"></button>
-</div>
-</div>
-</div>
-</section>
-
 <section class="process" id="process" style="background:var(--off-white);">
 <div class="container">
 <div class="section-head reveal-el">
@@ -1416,7 +1451,7 @@ AutoCAD &middot; SketchUp &middot; 3ds Max &middot; Lumion &middot; D5 &middot; 
 </div>
 <div class="contact-layout">
 <div class="contact-form-card reveal-el">
-<form id="contact-form" class="contact-form">
+<form id="contact-form" class="contact-form" action="https://formsubmit.co/akpec.infobd@gmail.com" method="POST" enctype="multipart/form-data">
 <div class="form-row">
 <div class="form-field">
 <label for="cf-name">Name</label>
@@ -1459,6 +1494,9 @@ AutoCAD &middot; SketchUp &middot; 3ds Max &middot; Lumion &middot; D5 &middot; 
 <input type="file" id="cf-files" name="attachment" multiple>
 </div>
 <input type="hidden" name="_subject" value="New project inquiry from AKP Design Studio website">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://khshohag690.github.io/?sent=1#contact">
 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 <button type="submit" class="btn btn-primary" id="cf-submit">Request a Project Quote</button>
 <div class="form-status" id="cf-status" role="status" aria-live="polite"></div>
@@ -1843,37 +1881,25 @@ carousel.addEventListener('focusout', start);
 start();
 })();
 
-/* ---- Contact form (FormSubmit AJAX) ---- */
+/* ---- Contact form (FormSubmit standard POST, supports file uploads) ---- */
 (function(){
 var form = document.getElementById('contact-form');
 if(!form) return;
 var status = document.getElementById('cf-status');
 var submitBtn = document.getElementById('cf-submit');
 form.addEventListener('submit', function(e){
-e.preventDefault();
 var honey = form.querySelector('[name="_honey"]');
-if(honey && honey.value){ return; }
+if(honey && honey.value){ e.preventDefault(); return; }
 submitBtn.disabled = true;
 submitBtn.textContent = 'Sending...';
 status.textContent = '';
 status.className = 'form-status';
-var data = new FormData(form);
-fetch('https://formsubmit.co/ajax/akpec.infobd@gmail.com', {
-method: 'POST',
-headers: { 'Accept': 'application/json' },
-body: data
-}).then(function(res){ return res.json(); }).then(function(){
+/* Standard form POST — browser handles the submission and redirect to _next. */
+});
+if(/[?&]sent=1/.test(window.location.search)){
 status.textContent = "Thanks — your project details have been sent. We'll reply within 24 hours.";
 status.className = 'form-status is-success';
-form.reset();
-}).catch(function(){
-status.textContent = 'Something went wrong. Please email us directly at akpec.infobd@gmail.com.';
-status.className = 'form-status is-error';
-}).finally(function(){
-submitBtn.disabled = false;
-submitBtn.textContent = 'Request a Project Quote';
-});
-});
+}
 })();
 </script>
 </body>
