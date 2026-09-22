@@ -139,9 +139,10 @@ gap:20px; margin-bottom:32px;
 }
 .service-card{
 background:#fff; border:1px solid var(--border); border-radius:10px;
-padding:24px; position:relative; overflow:hidden;
+padding:24px; position:relative; overflow:hidden; cursor:pointer;
 transition:box-shadow .25s ease, transform .25s ease, border-color .25s ease;
 }
+.service-card:focus-visible{outline:2px solid var(--orange); outline-offset:2px;}
 .service-block.alt .service-card{background:#fff;}
 .service-card::before{
 content:""; position:absolute; top:0; left:0; right:0; height:3px;
@@ -176,7 +177,12 @@ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px
 .service-mini-card{
 background:var(--off-white); border:1px solid var(--border); border-radius:10px;
 padding:24px; text-align:center;
+transition:box-shadow .3s ease, transform .15s ease-out, border-color .3s ease;
 }
+.service-mini-card:hover{
+box-shadow:0 14px 26px rgba(11,34,57,0.1); border-color:rgba(242,98,39,0.3);
+}
+.service-mini-card:hover .icon-badge{background:var(--orange); color:#fff;}
 .service-mini-card .icon-badge{margin:0 auto 14px;}
 .service-mini-card h3{font-size:15px; margin-bottom:8px;}
 .service-mini-card p{color:var(--gray); font-size:13.5px;}
@@ -203,7 +209,7 @@ transform:scaleX(0); transform-origin:left; transition:transform 1.1s ease .1s; 
 .step-card{
 background:#fff; border:1px solid var(--border); border-radius:10px; padding:26px 18px 20px;
 position:relative; z-index:1; text-align:center;
-transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+transition:transform .15s ease-out, box-shadow .3s ease, border-color .3s ease;
 }
 .step-card:hover{
 transform:translateY(-5px); box-shadow:0 14px 26px rgba(11,34,57,0.1);
@@ -230,6 +236,20 @@ font-size:16px; font-weight:bold;
 .about-body p:last-child{margin-bottom:0;}
 
 /* Team */
+#team{
+background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+position:relative; overflow:hidden;
+}
+#team::before{
+content:""; position:absolute; inset:0; pointer-events:none;
+background-image:
+linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+background-size:42px 42px;
+}
+#team .container{position:relative; z-index:1;}
+#team .section-head h2{color:#fff;}
+#team .section-head p{color:#cdd5e0;}
 .team-grid{
 display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
 gap:30px; align-items:stretch;
@@ -273,7 +293,7 @@ gap:22px;
 text-align:center;
 background:#fff; border:1px solid var(--border); border-radius:12px;
 padding:30px 22px 26px;
-transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+transition:transform .15s ease-out, box-shadow .3s ease, border-color .3s ease;
 }
 .why-item:hover{
 transform:translateY(-5px);
@@ -297,17 +317,53 @@ color:#fff;
 .why-item p{color:var(--gray); font-size:13.5px;}
 
 /* Portfolio */
-.portfolio-filter-bar{
-display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:36px;
+.portfolio-categories{
+display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; margin-bottom:28px;
 }
-.filter-btn{
-background:#fff; border:1.5px solid var(--border); color:var(--navy);
-font-weight:bold; font-size:13px; padding:9px 20px; border-radius:24px;
-cursor:pointer; transition:background .2s ease, color .2s ease, border-color .2s ease;
-font-family:Calibri, Arial, sans-serif;
+.portfolio-cat-card{
+background:#fff; border:1px solid var(--border); border-radius:14px; padding:34px 28px;
+text-align:center; cursor:pointer; transition:box-shadow .3s ease, border-color .3s ease, transform .15s ease-out;
 }
-.filter-btn:hover{border-color:rgba(242,98,39,0.5);}
-.filter-btn.is-active{background:var(--navy); border-color:var(--navy); color:#fff;}
+.portfolio-cat-card:hover{box-shadow:0 20px 40px rgba(11,34,57,0.14); border-color:rgba(242,98,39,0.35);}
+.portfolio-cat-card:focus-visible{outline:2px solid var(--orange); outline-offset:3px;}
+.portfolio-cat-icon{
+width:64px; height:64px; border-radius:50%; margin:0 auto 18px;
+background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+color:var(--orange); display:flex; align-items:center; justify-content:center;
+box-shadow:0 10px 20px rgba(11,34,57,0.2); transition:transform .35s ease, background .25s ease, color .25s ease;
+}
+.portfolio-cat-icon svg{width:28px; height:28px;}
+.portfolio-cat-card:hover .portfolio-cat-icon{background:linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%); color:#fff; transform:scale(1.08) rotate(-4deg);}
+.portfolio-cat-card h3{font-size:17px; margin-bottom:10px;}
+.portfolio-cat-card p{color:var(--gray); font-size:13.5px; margin-bottom:16px;}
+.portfolio-cat-count{
+display:inline-block; background:var(--off-white); color:var(--navy); font-size:12px; font-weight:bold;
+padding:5px 14px; border-radius:14px; letter-spacing:.3px;
+}
+.portfolio-fiverr-cta{text-align:center; padding-top:12px; border-top:1px solid var(--border);}
+.portfolio-fiverr-cta p{color:var(--gray); font-size:14px; margin-bottom:14px;}
+
+/* Portfolio category modal */
+@keyframes modalIn{from{opacity:0; transform:translateY(12px) scale(.98);} to{opacity:1; transform:translateY(0) scale(1);}}
+.portfolio-modal{
+display:none; position:fixed; inset:0; z-index:950; background:rgba(11,34,57,0.85);
+align-items:flex-start; justify-content:center; padding:60px 20px; overflow:auto;
+}
+.portfolio-modal.open{display:flex;}
+.portfolio-modal-card{
+background:#fff; border-radius:14px; max-width:1100px; width:100%;
+padding:34px; position:relative; animation:modalIn .25s ease; margin:auto;
+}
+.portfolio-modal-close{
+position:absolute; top:16px; right:20px; background:none; border:none; font-size:28px;
+line-height:1; color:var(--gray); cursor:pointer;
+}
+.portfolio-modal-close:hover{color:var(--navy);}
+.portfolio-modal-card h3{font-size:21px; margin-bottom:26px; padding-right:40px;}
+.portfolio-modal-grid{
+display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:22px;
+}
 .portfolio-grid{
 display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:24px;
@@ -338,6 +394,38 @@ padding:3px 10px; border-radius:12px; margin-bottom:9px; letter-spacing:.3px; te
 }
 .portfolio-card h3{font-size:15px; margin-bottom:6px;}
 .portfolio-card p{color:var(--gray); font-size:13.5px;}
+
+/* Service scope-of-work modal */
+.service-modal{
+display:none; position:fixed; inset:0; z-index:998; background:rgba(11,34,57,0.75);
+align-items:center; justify-content:center; padding:24px; overflow:auto;
+}
+.service-modal.open{display:flex;}
+.service-modal-card{
+background:#fff; border-radius:14px; max-width:480px; width:100%;
+padding:36px 32px 32px; position:relative; box-shadow:0 24px 60px rgba(0,0,0,0.3);
+animation:modalIn .25s ease; margin:auto;
+}
+.service-modal-close{
+position:absolute; top:16px; right:16px; background:none; border:none; font-size:26px;
+line-height:1; color:var(--gray); cursor:pointer;
+}
+.service-modal-close:hover{color:var(--navy);}
+.service-modal-icon{
+width:52px; height:52px; border-radius:12px; background:var(--navy); color:var(--orange);
+display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+}
+.service-modal-icon svg{width:26px; height:26px;}
+.service-modal-card h3{font-size:21px; margin-bottom:14px;}
+.service-modal-scope{list-style:none; margin-bottom:24px;}
+.service-modal-scope li{
+display:flex; gap:10px; align-items:flex-start; color:var(--gray); font-size:14px;
+margin-bottom:10px; line-height:1.45;
+}
+.service-modal-scope li::before{content:"\2713"; color:var(--orange); font-weight:bold; flex-shrink:0;}
+.service-modal-contact{
+border-top:1px solid var(--border); padding-top:20px; display:flex; flex-wrap:wrap; gap:10px;
+}
 
 /* Lightbox */
 .lightbox{
@@ -531,32 +619,32 @@ section{padding:52px 0;}
 <p>Technical CAD drafting and construction documentation for residential, commercial and project-based workflows.</p>
 </div>
 <div class="service-grid">
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('cad-drafting')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('cad-drafting');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
 <h3>2D CAD Drafting</h3>
 <p>Layouts, plans and technical drawings prepared to scale in AutoCAD.</p>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('floor-plans')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('floor-plans');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V9l8-5 8 5v12"/><path d="M4 21h16"/><path d="M9 21v-6h6v6"/></svg></div>
 <h3>Floor Plans</h3>
 <p>Residential and commercial floor plans, fully dimensioned and ready for review.</p>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('sketch-to-cad')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('sketch-to-cad');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/></svg></div>
 <h3>PDF / Sketch to AutoCAD</h3>
 <p>Scanned drawings, PDFs and hand sketches converted into clean, editable CAD files.</p>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('construction-drawings')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('construction-drawings');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h6l3 3v13H5z"/><path d="M11 4v3h3"/><path d="M9 12h4M9 16h4"/></svg></div>
 <h3>Construction Drawings</h3>
 <p>Detailed construction documentation coordinated across your drawing set.</p>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('permit-support')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('permit-support');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5 12 5l8 6.5"/><path d="M6 10v9h12v-9"/><path d="M10 14.5l1.5 1.5 2.5-3"/></svg></div>
 <h3>Permit Drawing Support</h3>
 <p>Drawings prepared for permit submission, coordinated with your engineer of record.</p>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('as-built')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('as-built');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/></svg></div>
 <h3>As-Built Drawings</h3>
 <p>Field-verified documentation produced from site photos, measurements or redlines.</p>
@@ -576,32 +664,32 @@ Professional lead: <strong>Kamrul Shohag</strong> &nbsp;|&nbsp; Specialization: 
 <p>Professional architectural modeling and visualization for communicating design ideas clearly and presenting projects professionally.</p>
 </div>
 <div class="service-grid">
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('modeling-3d')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('modeling-3d');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg></div>
 <h3>Architectural 3D Modeling</h3>
 <p>Accurate 3D models built from your 2D plans or design concept.</p>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('exterior-viz')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('exterior-viz');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/></svg></div>
 <h3>Exterior Visualization</h3>
 <p>Photorealistic exterior renders for presentations and marketing.</p>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('interior-viz')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('interior-viz');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 15l5-4 4 3 5-5 4 3"/></svg></div>
 <h3>Interior Visualization</h3>
 <p>Detailed interior renders that communicate materials, lighting and layout.</p>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('photorealistic')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('photorealistic');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.4"/></svg></div>
 <h3>Photorealistic Rendering</h3>
 <p>High-quality still renders for client presentations and approvals.</p>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('presentation-boards')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('presentation-boards');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 16v5"/></svg></div>
 <h3>Architectural Presentation</h3>
 <p>Presentation boards and visual sets prepared for client or stakeholder review.</p>
 </div>
-<div class="service-card reveal-el">
+<div class="service-card reveal-el" tabindex="0" role="button" aria-haspopup="dialog" onclick="openServiceModal('walkthrough-animation')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openServiceModal('walkthrough-animation');}">
 <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l14 8-14 8V4z"/></svg></div>
 <h3>3D Walkthrough &amp; Animation</h3>
 <p>Animated walkthroughs that bring a design to life before it's built.</p>
@@ -612,6 +700,19 @@ Professional lead: <strong>Rayhan Saykat</strong> &nbsp;|&nbsp; Specialization: 
 </div>
 </div>
 </section>
+
+<div class="service-modal" id="serviceModal" onclick="closeServiceModalOnOverlay(event)">
+<div class="service-modal-card">
+<button class="service-modal-close" onclick="closeServiceModal()" aria-label="Close">&times;</button>
+<div class="service-modal-icon" id="serviceModalIcon"></div>
+<h3 id="serviceModalTitle"></h3>
+<ul class="service-modal-scope" id="serviceModalScope"></ul>
+<div class="service-modal-contact">
+<a class="btn btn-primary" style="flex:1; text-align:center;" href="#contact" onclick="closeServiceModal()">Start This Project</a>
+<a class="btn btn-outline-navy" style="flex:1; text-align:center;" href="mailto:akpec.infobd@gmail.com">Email Us</a>
+</div>
+</div>
+</div>
 
 <section>
 <div class="container">
@@ -690,7 +791,7 @@ Professional lead: <strong>Rayhan Saykat</strong> &nbsp;|&nbsp; Specialization: 
 </div>
 </section>
 
-<section id="team" style="background:var(--off-white);">
+<section id="team">
 <div class="container">
 <div class="section-head reveal-el">
 <div class="section-eyebrow">Meet the Team</div>
@@ -713,7 +814,7 @@ Civil &amp; Plumbing Engineering
 <br><strong style="margin-top:8px; display:block;">Expertise</strong>
 AutoCAD &middot; AutoCAD MEP &middot; CAD Drafting
 </div>
-<button class="btn btn-outline-navy" onclick="goToPortfolio('2d-cad')">View Profile</button>
+<button class="btn btn-outline-navy" onclick="goToPortfolio('cad')">View Profile</button>
 </div>
 <div class="team-card reveal-el">
 <img class="team-photo" src="rayhan-saykat.jpg" alt="Rayhan Saykat, 3D Architectural Visualization &amp; Design lead at AKP Design Studio">
@@ -780,18 +881,43 @@ AutoCAD &middot; SketchUp &middot; 3ds Max &middot; Lumion &middot; D5 &middot; 
 <section id="portfolio" style="background:var(--off-white);">
 <div class="container">
 <div class="section-head reveal-el">
-<div class="section-eyebrow">Portfolio</div>
+<div class="section-eyebrow">Our Work</div>
 <h2>Portfolio</h2>
-<p>Recent work across our core disciplines.</p>
+<p>Browse by category &mdash; click a category to view the full project set.</p>
 </div>
-<div class="portfolio-filter-bar reveal-el">
-<button class="filter-btn is-active" data-filter="all" onclick="filterPortfolio('all')">All</button>
-<button class="filter-btn" data-filter="2d-cad" onclick="filterPortfolio('2d-cad')">2D CAD</button>
-<button class="filter-btn" data-filter="3d" onclick="filterPortfolio('3d')">3D Visualization</button>
-<button class="filter-btn" data-filter="mep" onclick="filterPortfolio('mep')">MEP / Plumbing</button>
-<button class="filter-btn" data-filter="fabrication" onclick="filterPortfolio('fabrication')">Fabrication</button>
+<div class="portfolio-categories">
+<div class="portfolio-cat-card reveal-el" data-cat="cad" tabindex="0" role="button" aria-haspopup="dialog" onclick="openPortfolioCategory('cad')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPortfolioCategory('cad');}">
+<div class="portfolio-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/></svg></div>
+<h3>2D CAD &amp; Construction Drawings</h3>
+<p>Floor plans, site plans, electrical/MEP layouts and construction documentation.</p>
+<span class="portfolio-cat-count">11 Projects</span>
 </div>
-<div class="portfolio-grid" id="portfolioGrid">
+<div class="portfolio-cat-card reveal-el" data-cat="3d" tabindex="0" role="button" aria-haspopup="dialog" onclick="openPortfolioCategory('3d')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPortfolioCategory('3d');}">
+<div class="portfolio-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/></svg></div>
+<h3>3D Visualization</h3>
+<p>Architectural renders and interior / exterior visualizations.</p>
+<span class="portfolio-cat-count">2 Projects</span>
+</div>
+<div class="portfolio-cat-card reveal-el" data-cat="fab" tabindex="0" role="button" aria-haspopup="dialog" onclick="openPortfolioCategory('fab')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPortfolioCategory('fab');}">
+<div class="portfolio-cat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.2"/><circle cx="6" cy="17" r="2.2"/><path d="M7.8 8.4 20 20M7.8 15.6 20 4"/></svg></div>
+<h3>CNC &amp; Fabrication Files</h3>
+<p>Vector line-art and cut-ready designs for laser, CNC and plasma production.</p>
+<span class="portfolio-cat-count">17 Projects</span>
+</div>
+</div>
+<div class="portfolio-fiverr-cta reveal-el">
+<p>Prefer to browse and place your order directly? All active project requests are handled through our verified Fiverr profile.</p>
+<a class="btn btn-outline-navy" href="https://www.fiverr.com/khshohag690" target="_blank" rel="noopener">View Our Fiverr Profile</a>
+</div>
+</div>
+</section>
+
+<div class="portfolio-modal" id="portfolioModal" onclick="closePortfolioModalOnOverlay(event)">
+<div class="portfolio-modal-card">
+<button class="portfolio-modal-close" onclick="closePortfolioCategory()" aria-label="Close">&times;</button>
+<h3 id="portfolioModalTitle"></h3>
+<div class="portfolio-modal-grid" id="portfolioModalGrid">
+
 
 <div class="portfolio-card reveal-el" data-category="2d-cad">
 <div class="portfolio-img-wrap">
@@ -1155,7 +1281,8 @@ AutoCAD &middot; SketchUp &middot; 3ds Max &middot; Lumion &middot; D5 &middot; 
 
 </div>
 </div>
-</section>
+</div>
+
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
 <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close">&times;</button>
@@ -1403,23 +1530,201 @@ e.stopPropagation();
 document.getElementById('lightbox-img').classList.toggle('zoomed');
 }
 
-/* ---- Portfolio filtering ---- */
-function filterPortfolio(category){
-var buttons = document.querySelectorAll('.filter-btn');
-buttons.forEach(function(btn){
-btn.classList.toggle('is-active', btn.getAttribute('data-filter') === category);
-});
-var cards = document.querySelectorAll('.portfolio-card');
+/* ---- Portfolio category popup ---- */
+var PORTFOLIO_CAT_MATCH = {
+cad: function(c){ return c === '2d-cad' || c === 'mep'; },
+'3d': function(c){ return c === '3d'; },
+fab: function(c){ return c === 'fabrication'; }
+};
+var PORTFOLIO_CAT_TITLE = {
+cad: '2D CAD &amp; Construction Drawings',
+'3d': '3D Visualization',
+fab: 'CNC &amp; Fabrication Files'
+};
+function openPortfolioCategory(category){
+var matcher = PORTFOLIO_CAT_MATCH[category];
+if(!matcher) return;
+document.getElementById('portfolioModalTitle').innerHTML = PORTFOLIO_CAT_TITLE[category] || '';
+var cards = document.querySelectorAll('#portfolioModalGrid .portfolio-card');
 cards.forEach(function(card){
-var match = category === 'all' || card.getAttribute('data-category') === category;
+var match = matcher(card.getAttribute('data-category'));
 card.classList.toggle('is-hidden', !match);
 });
+document.getElementById('portfolioModal').classList.add('open');
+document.body.style.overflow = 'hidden';
+}
+function closePortfolioCategory(){
+document.getElementById('portfolioModal').classList.remove('open');
+document.body.style.overflow = '';
+}
+function closePortfolioModalOnOverlay(e){
+if(e.target.id === 'portfolioModal'){ closePortfolioCategory(); }
 }
 function goToPortfolio(category){
-filterPortfolio(category);
 var target = document.getElementById('portfolio');
 if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+setTimeout(function(){ openPortfolioCategory(category); }, 350);
 }
+
+/* ---- Service scope-of-work modal ---- */
+var SERVICE_DATA = {
+'cad-drafting': {
+icon:'<path d="M3 3h18v18H3z"/><path d="M3 9h18M9 3v18"/>',
+title:'2D CAD Drafting',
+scope:[
+'Scaled, dimensioned 2D drawings prepared in AutoCAD',
+'Clean layer structure and standard line-weight conventions',
+'Delivered as DWG and PDF for easy review',
+'Revisions included until the drawing matches your requirements'
+]},
+'floor-plans': {
+icon:'<path d="M4 21V9l8-5 8 5v12"/><path d="M4 21h16"/><path d="M9 21v-6h6v6"/>',
+title:'Floor Plans',
+scope:[
+'Fully dimensioned residential or commercial floor plans',
+'Room labels, door/window schedules and wall types included',
+'Delivered ready for client review or contractor use',
+'Multiple floor levels coordinated into one consistent set'
+]},
+'sketch-to-cad': {
+icon:'<path d="M4 20l1-4L16 5l3 3L8 19l-4 1z"/><path d="M14 7l3 3"/>',
+title:'PDF / Sketch to AutoCAD',
+scope:[
+'Hand sketches, scanned PDFs or legacy drawings redrawn from scratch',
+'Converted into clean, fully editable AutoCAD files',
+'Dimensions verified and corrected where the source was unclear',
+'Delivered in DWG and PDF format'
+]},
+'construction-drawings': {
+icon:'<path d="M5 4h6l3 3v13H5z"/><path d="M11 4v3h3"/><path d="M9 12h4M9 16h4"/>',
+title:'Construction Drawings',
+scope:[
+'Coordinated construction documentation across your drawing set',
+'Sections, details and notes prepared to standard drafting conventions',
+'Cross-checked for consistency between plans, elevations and details',
+'Delivered ready for contractor or permitting use'
+]},
+'permit-support': {
+icon:'<path d="M4 11.5 12 5l8 6.5"/><path d="M6 10v9h12v-9"/><path d="M10 14.5l1.5 1.5 2.5-3"/>',
+title:'Permit Drawing Support',
+scope:[
+'Drawings prepared and formatted for permit submission',
+"Coordinated with your engineer of record's stamped documents",
+'Standard title blocks, notes and code references included',
+'Revisions handled quickly if the permitting office requests changes'
+]},
+'as-built': {
+icon:'<circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/>',
+title:'As-Built Drawings',
+scope:[
+'Field-verified drawings produced from site photos, measurements or redlines',
+'Existing conditions documented accurately for renovation or compliance use',
+'Delivered as clean, scaled CAD drawings',
+'Useful for permitting, leasing or facility records'
+]},
+'modeling-3d': {
+icon:'<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 3v18M4 7.5l8 4.5 8-4.5"/>',
+title:'Architectural 3D Modeling',
+scope:[
+'Accurate 3D models built directly from your 2D plans or concept sketches',
+'Correct proportions, materials and architectural detailing',
+'Model prepared for both still renders and animation',
+'Delivered in a format ready for the next visualization stage'
+]},
+'exterior-viz': {
+icon:'<path d="M3 21h18"/><path d="M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/>',
+title:'Exterior Visualization',
+scope:[
+'Photorealistic exterior renders for presentations and marketing',
+'Accurate lighting, landscaping and materials',
+'Multiple camera angles available per project',
+'High-resolution output suitable for print or web'
+]},
+'interior-viz': {
+icon:'<rect x="3" y="4" width="18" height="14" rx="1"/><path d="M3 15l5-4 4 3 5-5 4 3"/>',
+title:'Interior Visualization',
+scope:[
+'Detailed interior renders showing materials, lighting and layout',
+'Furniture, finishes and fixtures represented realistically',
+'Multiple views per room available on request',
+'Delivered at presentation-ready resolution'
+]},
+'photorealistic': {
+icon:'<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.4"/>',
+title:'Photorealistic Rendering',
+scope:[
+'High-quality still renders for client presentations and approvals',
+'Realistic lighting, shadows and material reflections',
+'Suitable for marketing, listings or stakeholder sign-off',
+'Revisions included to match your design intent'
+]},
+'presentation-boards': {
+icon:'<rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 16v5"/>',
+title:'Architectural Presentation',
+scope:[
+'Presentation boards and visual sets prepared for client or stakeholder review',
+'Clean, professional layout with consistent branding',
+'Combines plans, renders and callouts on one board',
+'Delivered as print-ready PDF or image files'
+]},
+'walkthrough-animation': {
+icon:'<path d="M6 4l14 8-14 8V4z"/>',
+title:'3D Walkthrough &amp; Animation',
+scope:[
+'Animated walkthroughs that bring a design to life before it’s built',
+'Camera paths planned to highlight key spaces',
+'Rendered at a resolution suitable for presentations or online sharing',
+'Turnaround and length scoped per project'
+]}
+};
+function openServiceModal(key){
+var data = SERVICE_DATA[key];
+if(!data) return;
+document.getElementById('serviceModalIcon').innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' + data.icon + '</svg>';
+document.getElementById('serviceModalTitle').innerHTML = data.title;
+var list = document.getElementById('serviceModalScope');
+list.innerHTML = '';
+data.scope.forEach(function(item){
+var li = document.createElement('li');
+li.textContent = item;
+list.appendChild(li);
+});
+document.getElementById('serviceModal').classList.add('open');
+document.body.style.overflow = 'hidden';
+}
+function closeServiceModal(){
+document.getElementById('serviceModal').classList.remove('open');
+document.body.style.overflow = '';
+}
+function closeServiceModalOnOverlay(e){
+if(e.target.id === 'serviceModal'){ closeServiceModal(); }
+}
+
+/* ---- Close any open modal/lightbox on Escape ---- */
+document.addEventListener('keydown', function(e){
+if(e.key !== 'Escape') return;
+closeServiceModal();
+closePortfolioCategory();
+closeLightbox();
+});
+
+/* ---- Subtle 3D tilt on hover (mini-capability, step, why-akp and portfolio-category cards) ---- */
+(function(){
+var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduceMotion) return;
+var els = document.querySelectorAll('.service-mini-card, .step-card, .why-item, .portfolio-cat-card');
+els.forEach(function(el){
+el.addEventListener('mousemove', function(e){
+var r = el.getBoundingClientRect();
+var x = (e.clientX - r.left) / r.width - 0.5;
+var y = (e.clientY - r.top) / r.height - 0.5;
+el.style.transform = 'perspective(700px) rotateY(' + (x * 7) + 'deg) rotateX(' + (-y * 7) + 'deg) translateY(-4px)';
+});
+el.addEventListener('mouseleave', function(){
+el.style.transform = '';
+});
+});
+})();
 
 /* ---- Scroll-reveal animation (site-wide) ---- */
 (function(){
